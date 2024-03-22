@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WibuCoffee", "WibuCoffee.csproj", "{58B448D5-D46A-4EFF-89BC-568AFBB16B53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58B448D5-D46A-4EFF-89BC-568AFBB16B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58B448D5-D46A-4EFF-89BC-568AFBB16B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58B448D5-D46A-4EFF-89BC-568AFBB16B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58B448D5-D46A-4EFF-89BC-568AFBB16B53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28B2FF62-7851-48F5-A8AB-BB1EDB5C6BA3}
+	EndGlobalSection
+EndGlobal
