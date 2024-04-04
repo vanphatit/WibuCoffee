@@ -63,9 +63,39 @@ namespace WibuCoffee.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap acheronn {
+            get {
+                object obj = ResourceManager.GetObject("acheronn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap h1CBC93F0 {
             get {
                 object obj = ResourceManager.GetObject("h1CBC93F0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meoden {
+            get {
+                object obj = ResourceManager.GetObject("meoden", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meoden_removebg {
+            get {
+                object obj = ResourceManager.GetObject("meoden-removebg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
