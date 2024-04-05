@@ -11,7 +11,8 @@ namespace WibuCoffee
 {
     public class DataProvider
     {
-        public static string connectionString = "Data Source=(local);Initial Catalog=WibuCoffee;Integrated Security=True";
+        private static string dataSource = Environment.MachineName;
+        public static string connectionString = "Data Source=" + dataSource +"\\"+ dataSource + ";Initial Catalog=WibuCoffee;Integrated Security=True;";
 
         private static DataProvider instance;
         public static DataProvider Instance
