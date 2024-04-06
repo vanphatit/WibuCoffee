@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WibuCoffee.View;
 
 namespace WibuCoffee
 {
@@ -21,12 +15,23 @@ namespace WibuCoffee
         {
             string username = txbUserName.Text;
             string password = txbPassword.Text;
+            bool isAdmin = false;
 
-            object result = DataProvider.Instance.ExecuteScalar("EXEC dbo.checkUser @username , @password", new object[] { username, password });
+            object result = DataProvider.Instance.ExecuteScalar("EXEC dbo.checkLogin @userName , @pass", new object[] { username, password });
 
-            if (result != null && result.Equals("true"))
+            if (result != "Invalid")
             {
-                MessageBox.Show("Đăng nhập thành công!");
+                if(result.Equals("0"))
+                {
+                    isAdmin = true;
+                }
+                else if(result.Equals("1"))
+                {
+                    isAdmin = false;
+                }
+                this.Hide();
+                MainWindow mainWindow = new MainWindow(isAdmin);
+                mainWindow.Show();
             }
             else
             {
