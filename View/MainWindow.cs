@@ -15,14 +15,6 @@ namespace WibuCoffee.View
         public MainWindow(bool isAdmin)
         {
             InitializeComponent();
-            if(isAdmin)
-            {
-                MessageBox.Show("Admin");
-            }
-            else
-            {
-                MessageBox.Show("User");
-            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace WibuCoffee
             string password = txbPassword.Text;
             bool isAdmin = false;
 
-            object result = DataProvider.Instance.ExecuteScalar("EXEC dbo.checkLogin @userName , @pass", new object[] { username, password });
+            object result = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkLogin( @username , @password )", new object[] { username, password });
 
             if (result != "Invalid")
             {
