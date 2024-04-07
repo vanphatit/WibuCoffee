@@ -32,7 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup
+  <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -96,8 +96,8 @@
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Backup\DBMS PROJECT REPORT K22.docx" />
-    <None Include="Backup\DBMS PROJECT REPORT K22.pdf" />
+    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.docx" />
+    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -122,7 +122,9 @@
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
-    <Content Include="Backup\Data\WibuCoffee.sql" />
+    <Content Include="Docs_SQL\Data\DATA.sql" />
+    <Content Include="Docs_SQL\Data\Feature.sql" />
+    <Content Include="Docs_SQL\Data\WibuCoffee.sql" />
     <None Include="Resources\acheronn.jpg" />
     <None Include="Resources\h1CBC93F0.png" />
   </ItemGroup>
