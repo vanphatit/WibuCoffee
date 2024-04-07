@@ -79,6 +79,18 @@
     <Compile Include="View\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC\UCDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\UCDashboard.Designer.cs">
+      <DependentUpon>UCDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\UCManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\UCManage.Designer.cs">
+      <DependentUpon>UCManage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +107,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\UCDashboard.resx">
+      <DependentUpon>UCDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\UCManage.resx">
+      <DependentUpon>UCManage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Docs_SQL\DBMS PROJECT REPORT K22.docx" />
     <None Include="Docs_SQL\DBMS PROJECT REPORT K22.pdf" />
@@ -115,7 +133,6 @@
   <ItemGroup>
     <Folder Include="DAO\" />
     <Folder Include="Model\" />
-    <Folder Include="View\UserControl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ico\logo.ico" />
