@@ -97,6 +97,54 @@
     <Compile Include="View\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC\Manage\UCCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCCustomer.Designer.cs">
+      <DependentUpon>UCCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCEmployee.Designer.cs">
+      <DependentUpon>UCEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCExpenseBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCExpenseBill.Designer.cs">
+      <DependentUpon>UCExpenseBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCMaterial.Designer.cs">
+      <DependentUpon>UCMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCOrder.Designer.cs">
+      <DependentUpon>UCOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCProduct.Designer.cs">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNote.Designer.cs">
+      <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCSupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCSupplier.Designer.cs">
+      <DependentUpon>UCSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC\UCDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +173,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCCustomer.resx">
+      <DependentUpon>UCCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCEmployee.resx">
+      <DependentUpon>UCEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCExpenseBill.resx">
+      <DependentUpon>UCExpenseBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCMaterial.resx">
+      <DependentUpon>UCMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCOrder.resx">
+      <DependentUpon>UCOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCProduct.resx">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCReceiptNote.resx">
+      <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCSupplier.resx">
+      <DependentUpon>UCSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\UCDashboard.resx">
       <DependentUpon>UCDashboard.cs</DependentUpon>
