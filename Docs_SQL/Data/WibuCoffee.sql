@@ -1,8 +1,6 @@
-﻿USE master
-GO
-
-DROP DATABASE IF EXISTS WibuCoffee
-GO
+﻿
+USE master;
+DROP DATABASE IF EXISTS WibuCoffee;
 
 CREATE DATABASE WibuCoffee
 GO
@@ -18,7 +16,7 @@ CREATE TABLE Job (
 );
 
 CREATE TABLE Employee (
-    ID VARCHAR(3) PRIMARY KEY, -- E01, E02, ...
+    ID VARCHAR(4) PRIMARY KEY, -- E01, E02, ...
     name NVARCHAR(max) NOT NULL,
     birthDate DATE,
     address NVARCHAR(max),
@@ -50,7 +48,7 @@ CREATE TABLE Supplier (
 
 -- Tạo bảng On_Duty
 CREATE TABLE On_Duty (
-    empID VARCHAR(3),
+    empID VARCHAR(4),
     shiftID VARCHAR(5),
     date DATE,
     FOREIGN KEY (empID) REFERENCES Employee(ID)
@@ -90,7 +88,7 @@ CREATE TABLE Bill (
     tableID VARCHAR(3),
     customerID VARCHAR(5) NOT NULL,
     categoryID VARCHAR(4) NOT NULL,
-    empID VARCHAR(3) NOT NULL,
+    empID VARCHAR(4) NOT NULL,
     receiptMoney DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (tableID) REFERENCES [Table](ID)
 		ON UPDATE CASCADE,
@@ -156,7 +154,7 @@ CREATE TABLE ReceiptNote (
     date DATE NOT NULL,
     price DECIMAL(10, 2),
     supplierID VARCHAR(4) NOT NULL,
-    empID VARCHAR(3) NOT NULL,
+    empID VARCHAR(4) NOT NULL,
     FOREIGN KEY (supplierID) REFERENCES Supplier(ID)
 		ON UPDATE CASCADE,
     FOREIGN KEY (empID) REFERENCES Employee(ID)
@@ -200,3 +198,4 @@ CREATE TABLE Account (
 	userRole INT NOT NULL CHECK (userRole >= 0 AND userRole <= 1)
 )
 GO
+
