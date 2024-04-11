@@ -36,6 +36,9 @@
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts.Geared, Version=1.2.8.2, Culture=neutral, PublicKeyToken=7292f245d14ab8bf, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.Geared.1.2.9\lib\net45\LiveCharts.Geared.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
     </Reference>
@@ -225,11 +228,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ico\logo.ico" />
+    <None Include="Assets\img\income.png" />
+    <None Include="Assets\img\expense.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
+    <None Include="Assets\img\revenue.png" />
+    <None Include="Assets\img\table.png" />
+    <Content Include="Docs_SQL\Data\Dashboard.sql" />
     <Content Include="Docs_SQL\Data\DATA.sql" />
     <Content Include="Docs_SQL\Data\Feature.sql" />
+    <Content Include="Docs_SQL\Data\Order.sql" />
     <Content Include="Docs_SQL\Data\WibuCoffee.sql" />
     <None Include="Resources\acheronn.jpg" />
     <None Include="Resources\h1CBC93F0.png" />
