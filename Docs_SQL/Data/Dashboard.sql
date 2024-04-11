@@ -19,6 +19,8 @@ BEGIN
     RETURN ISNULL(@userRole, 'Invalid')
 END
 
+SELECT dbo.checkLogin ('', '')
+
 DROP FUNCTION IF EXISTS getTotalPriceBillbyDate
 GO
 
