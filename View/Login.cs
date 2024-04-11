@@ -19,7 +19,7 @@ namespace WibuCoffee
 
             object result = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkLogin( @username , @password )", new object[] { username, password });
 
-            if (result.ToString() != "Invalid")
+            if (result != "Invalid")
             {
                 if(result.Equals("0"))
                 {
