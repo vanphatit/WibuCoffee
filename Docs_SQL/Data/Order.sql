@@ -109,6 +109,27 @@ BEGIN
 END
 GO
 
+/* VIẾT PROCEDURE THÊM KHÁCH HÀNG MỚI VÀO CSDL */
+
+DROP PROCEDURE IF EXISTS insertCustomer
+GO
+
+CREATE PROCEDURE insertCustomer
+	(@name NVARCHAR(max), 
+	@phone VARCHAR(10))
+AS
+BEGIN
+	DECLARE @customerID VARCHAR(5)
+	IF ((SELECT COUNT(*) FROM customer) < 10)
+		SET @customerID = 'C' + RIGHT('000' + CAST((SELECT COUNT(*) FROM Customer) AS VARCHAR(1)), 1)
+	ELSE
+		SET @customerID = 'C' + RIGHT('00' + CAST((SELECT COUNT(*) FROM Customer) AS VARCHAR(2)), 2)
+	IF NOT EXISTS (SELECT * FROM Customer WHERE phone = @phone)
+		INSERT INTO Customer VALUES (@customerID, @name, @phone, 0)
+
+END
+GO
+
 /* TẠO VIEW BÀN CÓ STATUS LÀ ĐANG ĐƯỢC DÙNG */
 
 DROP VIEW IF EXISTS TableAvailableView
@@ -130,11 +151,8 @@ CREATE PROCEDURE updateTableStatus
 	(@tableID VARCHAR(3))
 AS
 BEGIN
-	IF EXISTS (SELECT * FROM TableAvailableView WHERE ID = @tableID)
-		UPDATE [Table] SET status = 'Occupied' WHERE ID = @tableID
-	ELSE
-		PRINT 'TABLE IS NOT AVAILABLE'
-	EXEC sp_refreshview TableAvailableView
+	IF (SELECT Status FROM TableStatusView WHERE ID = @tableID) = 'Occupied'
+		UPDATE [Table] SET status = 'Available' WHERE ID = @tableID
 END
 GO
 
@@ -150,12 +168,49 @@ AS
 BEGIN
 	DECLARE @tableID VARCHAR(3)
 	SELECT @tableID = tableID FROM inserted
-	IF EXISTS (SELECT * FROM [Table] WHERE ID = @tableID AND status = 'Occupied')
-		UPDATE [Table] SET status = 'Available' WHERE ID = @tableID
+	IF EXISTS (SELECT * FROM [Table] WHERE ID = @tableID AND status = 'Available')
+		UPDATE [Table] SET status = 'Occupied' WHERE ID = @tableID
 	ELSE
 		PRINT 'TABLE IS NOT AVAILABLE'
 	EXEC sp_refreshview TableAvailableView
 END
+GO
+
+/* VIẾT PROCEDURE INSERT BILL */
+
+DROP PROCEDURE IF EXISTS insertBill
+GO
+
+CREATE PROCEDURE insertBill
+	@ID varchar(7),
+	@dateTime varchar(max),
+	@tableID varchar(3),
+	@customerName nvarchar(max),
+	@categoryName nvarchar(max),
+	@empName nvarchar(max),
+	@receiptMoney DECIMAL(10,2)
+AS
+BEGIN
+	DECLARE @customerID VARCHAR(5)
+	DECLARE @categoryID VARCHAR(4)
+	DECLARE @empID VARCHAR(4)
+	SELECT @customerID = ID FROM Customer WHERE name = @customerName
+	SELECT @categoryID = ID FROM BillCategory WHERE name = @categoryName
+	SELECT @empID = ID FROM Employee WHERE name = @empName
+	INSERT INTO Bill(ID, dateTime, tableID, customerID, categoryID, empID, receiptMoney)
+	VALUES (@ID, CAST(@dateTime  AS DATETIME), @tableID, @customerID, @categoryID, @empID, @receiptMoney)
+END
+GO
+
+/* VIẾT VIEW HIỂN THỊ TRẠNG THÁI BÀN */
+
+DROP VIEW IF EXISTS TableStatusView
+GO
+
+CREATE VIEW TableStatusView
+AS
+SELECT ID, status
+FROM [Table]
 GO
 
 /* VIẾT PROCEDURE THÊM BILLINFO KHI BIẾT MÃ HÓA ĐƠN, TÊN SẢN PHẨM, SỐ LƯỢNG */
@@ -205,6 +260,25 @@ BEGIN
 	END
 	UPDATE BillInfo SET quantity = @quantity WHERE billID = @billID AND productID = @productID
 END
+GO
+
+/* VIẾT FUNCTION TRẢ VỀ BẢNG HIỂN THỊ BILL INFO GỒM TÊN SẢN PHẨM, SỐ LƯỢNG, THÀNH TIỀN (PRODUCT.PRICE * QUANTITY) KHI BIẾT MÃ HÓA ĐƠN */
+
+DROP FUNCTION IF EXISTS getBillInfo
+GO
+
+CREATE FUNCTION getBillInfo
+(
+	@billID VARCHAR(7)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT Product.name, BillInfo.quantity, Product.price * BillInfo.quantity AS totalPrice
+	FROM BillInfo, Product
+	WHERE BillInfo.productID = Product.ID AND BillInfo.billID = @billID
+)
 GO
 
 /* VIẾT PROCEDURE CẬP NHẬT ĐIỂM THƯỞNG KHÁCH HÀNG KHI BIẾT BILL.ID VÀ SỐ ĐIỆN THOẠI. ĐIỂM THƯỞNG BẰNG TỔNG GIÁ TRỊ BILL CHIA CHO 10000, TỔNG GIÁ TRỊ BILL BẰNG TỔNG CỦA CÁC TOTAL PRICE TRONG BILLDETAILVIEW */
@@ -301,10 +375,74 @@ FROM Bill, BillDetailView, Customer, BillCategory
 WHERE Bill.ID = BillDetailView.billID 
 AND Bill.customerID = Customer.ID 
 AND Bill.categoryID = BillCategory.ID
-GROUP BY Bill.ID, Bill.categoryID, Bill.dateTime, Customer.bonusPoint, BillCategory.discount
+GROUP BY Bill.ID, Bill.categoryID, Customer.bonusPoint, BillCategory.discount
 GO
 
-SELECT * FROM dbo.BillTotalPriceView
+/* VIẾT FUNCTION LẤY RA TỔNG TIỀN CỦA MỘT HÓA ĐƠN KHI BIẾT MÃ HÓA ĐƠN */
 
+DROP FUNCTION IF EXISTS getBillTotalPrice
+GO
 
-EXEC insertBillInfo 'B000001', 'P03', 3
+CREATE FUNCTION getBillTotalPrice
+(
+	@billID VARCHAR(7)
+)
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+	DECLARE @totalPrice DECIMAL(10, 2)
+	SELECT @totalPrice = totalPrice FROM BillTotalPriceView WHERE ID = @billID
+	RETURN @totalPrice
+END
+GO
+
+/* VIẾT FUNCTION LẤY RA DISCOUNT CỦA MỘT HÓA ĐƠN KHI BIẾT MÃ HÓA ĐƠN */
+
+DROP FUNCTION IF EXISTS getBillDiscount
+GO
+
+CREATE FUNCTION getBillDiscount
+(
+	@billID VARCHAR(7)
+)
+RETURNS DECIMAL(10, 2)
+AS
+BEGIN
+	DECLARE @discount DECIMAL(10, 2)
+	SELECT @discount = discount FROM BillTotalPriceView WHERE ID = @billID
+	RETURN @discount
+END
+GO
+
+/* VIẾT PROCEDURE CẬP NHẬT BILLINFO KHI BIẾT MÃ HÓA ĐƠN, MÃ SẢN PHẨM, SỐ LƯỢNG */
+
+DROP PROCEDURE IF EXISTS updateBillInfoByID
+GO
+
+CREATE PROCEDURE updateBillInfoByID
+	@billID varchar(7),
+	@productID varchar(3),
+	@quantity INT
+AS
+BEGIN
+	UPDATE BillInfo
+	SET quantity = @quantity
+	WHERE billID = @billID AND productID = @productID
+END
+GO
+
+/* VIẾT PROCEDURE XÓA BILLINFO KHI BIẾT TÊN SẢN PHẨM */
+
+DROP PROCEDURE IF EXISTS deleteBillInfoByName
+GO
+
+CREATE PROCEDURE deleteBillInfoByName
+	@billID varchar(7),
+	@productName NVARCHAR(max)
+AS
+BEGIN
+	DECLARE @productID VARCHAR(3)
+	SELECT @productID = ID FROM Product WHERE name = @productName
+	DELETE FROM BillInfo WHERE billID = @billID AND productID = @productID
+END
+GO
