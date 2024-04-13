@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Media3D;
 
 namespace WibuCoffee.View.UC
 {
@@ -14,9 +15,13 @@ namespace WibuCoffee.View.UC
     {
         DataTable top5Products = new DataTable();
         DataTable moneyRecents = new DataTable();
+        DataTable incomeMonthly = new DataTable();
 
         List<Button> btnMoneyChart_Income;
         List<Button> btnMoneyChart_Expense;
+        List<Button> btnIncomeChart;
+        List<Point> btnIncomeChart_point;
+        List<Label> lbIncomeChart;
 
         // Declare the ToolTip at the class level so it's accessible throughout the class
         private ToolTip btnToolTip = new ToolTip();
@@ -51,6 +56,25 @@ namespace WibuCoffee.View.UC
                  btnDate6_Expense, btnDate7_Expense
             };
 
+            btnIncomeChart = new List<Button>
+            {
+                btnT1_Income, btnT2_Income, btnT3_Income, btnT4_Income, btnT5_Income, btnT6_Income, 
+                btnT7_Income, btnT8_Income, btnT9_Income, btnT10_Income, btnT11_Income, btnT12_Income
+            };
+
+            btnIncomeChart_point = new List<Point>
+            {
+                new Point(53, 696), new Point(173, 696), new Point(293, 696), new Point(413, 696), 
+                new Point(533, 696), new Point(653, 696), new Point(773, 696), new Point(893, 696),
+                new Point(1013, 696), new Point(1133, 696), new Point(1253, 696), new Point(1373, 696)
+            };
+
+            lbIncomeChart = new List<Label>
+            {
+                lbT1_Income, lbT2_Income, lbT3_Income, lbT4_Income, lbT5_Income, lbT6_Income, 
+                lbT7_Income, lbT8_Income, lbT9_Income, lbT10_Income, lbT11_Income, lbT12_Income
+            };
+
             foreach (Button btn in btnMoneyChart_Income)
             {
                 btn.BackColor = Color.FromArgb(193, 255, 114);
@@ -63,6 +87,15 @@ namespace WibuCoffee.View.UC
             foreach (Button btn in btnMoneyChart_Expense)
             {
                 btn.BackColor = Color.FromArgb(255, 181, 166);
+                btn.TabStop = false;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            }
+
+            foreach (Button btn in btnIncomeChart)
+            {
+                btn.BackColor = Color.FromArgb(254, 243, 117);
                 btn.TabStop = false;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
@@ -169,10 +202,43 @@ namespace WibuCoffee.View.UC
                     btnMoneyChart_Expense[i].Width = expenseWidth;
                     btnMoneyChart_Expense[i].Left = btnMoneyChart_Income[i].Left + btnMoneyChart_Income[i].Width;
                 }
-
-
             }
 
+            incomeMonthly = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.MonthlyTotalPriceBillView");
+
+            //find max value of incomeMonthly
+            decimal maxIncome = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                decimal total = Convert.ToDecimal(incomeMonthly.Rows[i]["TotalPrice"]);
+                if (total > maxIncome)
+                {
+                    maxIncome = total;
+                }
+            }
+            if (incomeMonthly.Rows.Count >= 12)
+            {
+                int max = 200;
+                for (int i = 0; i < 12; i++)
+                {
+                    decimal total = Convert.ToDecimal(incomeMonthly.Rows[i]["TotalPrice"]);
+                    int height = (int)(total / maxIncome * max);
+                    btnIncomeChart[i].Location = new Point(btnIncomeChart_point[i].X, 726 - height);
+                    btnIncomeChart[i].Height = height;
+
+                    if (height == 0)
+                    {
+                        lbIncomeChart[i].Location = btnIncomeChart_point[i];
+                        lbIncomeChart[i].Text = "0 VNĐ";
+                    }
+                    else
+                    {
+                        // Set the location of the lbIncomeChart[i] to the top of the btnIncomeChart[i]
+                        lbIncomeChart[i].Top = btnIncomeChart[i].Top + lbIncomeChart[i].Height + 20;
+                        lbIncomeChart[i].Text = ((int)(total / 100)).ToString() + "k";
+                    }
+                }
+            }
         }
 
         private void UCDashboard_Load(object sender, EventArgs e)
