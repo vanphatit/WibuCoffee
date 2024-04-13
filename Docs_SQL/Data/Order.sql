@@ -46,6 +46,8 @@ FROM BillInfo, Product
 WHERE BillInfo.productID = Product.ID
 GO
 
+SELECT * FROM BillDetailView
+
 /* VIẾT FUNCTION LẤY RA TẤT CẢ CHI TIẾT HÓA ĐƠN CỦA MỘT HÓA ĐƠN KHI BIẾT MÃ HÓA ĐƠN */
 
 DROP FUNCTION IF EXISTS getBillDetail
@@ -64,6 +66,8 @@ RETURN
 )
 GO
 
+SELECT * FROM dbo.getBillDetail('B000001')
+
 /* VIẾT FUNCTION LẤY RA TỔNG TIỀN CỦA MỘT HÓA ĐƠN KHI BIẾT MÃ HÓA ĐƠN */
 
 DROP FUNCTION IF EXISTS getTotalPrice
@@ -81,6 +85,8 @@ BEGIN
 	RETURN @totalPrice
 END
 GO
+
+
 
 /* CÁC CHỨ NĂNG Ở ORDER */
 
@@ -353,6 +359,7 @@ CREATE VIEW BillTotalPriceView
 AS
 SELECT  Bill.ID, 
 		Bill.categoryID,
+		Bill.dateTime,
 		SUM(totalPrice) AS totalPrice, 
 		CASE 
 			WHEN Bill.categoryID = 'BC01' OR Bill.categoryID = 'BC02' THEN 
