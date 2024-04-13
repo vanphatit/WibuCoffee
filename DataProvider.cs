@@ -11,8 +11,10 @@ namespace WibuCoffee
 {
     public class DataProvider
     {
-        private static string dataSource = Environment.MachineName;
-        public static string connectionString = "Data Source=" + dataSource + "\\" + dataSource + ";Initial Catalog=WibuCoffee;Integrated Security=True;";
+        // get the server name from the servername.txt file
+        private static string dataSource = System.IO.File.ReadAllText("servername.txt");
+
+        public static string connectionString = "Data Source=" + dataSource + ";Initial Catalog=WibuCoffee;Integrated Security=True;";
 
         private static DataProvider instance;
         public static DataProvider Instance

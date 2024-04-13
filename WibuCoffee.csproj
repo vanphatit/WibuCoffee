@@ -233,6 +233,8 @@
     <None Include="Assets\img\first.png" />
     <None Include="Assets\img\4.png" />
     <None Include="Assets\img\5.png" />
+    <None Include="Assets\img\database-storage.png" />
+    <None Include="Assets\img\left-arrow.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
