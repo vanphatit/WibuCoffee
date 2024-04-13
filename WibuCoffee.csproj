@@ -207,8 +207,8 @@
     <EmbeddedResource Include="View\UC\UCManage.resx">
       <DependentUpon>UCManage.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.docx" />
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.pdf" />
+    <None Include="Backup\DBMS PROJECT REPORT K22.docx" />
+    <None Include="Backup\DBMS PROJECT REPORT K22.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -230,16 +230,21 @@
     <Content Include="Assets\ico\logo.ico" />
     <None Include="Assets\img\income.png" />
     <None Include="Assets\img\expense.png" />
+    <None Include="Assets\img\first.png" />
+    <None Include="Assets\img\4.png" />
+    <None Include="Assets\img\5.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
     <None Include="Assets\img\revenue.png" />
     <None Include="Assets\img\table.png" />
-    <Content Include="Docs_SQL\Data\Dashboard.sql" />
-    <Content Include="Docs_SQL\Data\DATA.sql" />
-    <Content Include="Docs_SQL\Data\Feature.sql" />
-    <Content Include="Docs_SQL\Data\Order.sql" />
-    <Content Include="Docs_SQL\Data\WibuCoffee.sql" />
+    <None Include="Assets\img\second.png" />
+    <None Include="Assets\img\third.png" />
+    <Content Include="Backup\Data\Dashboard.sql" />
+    <Content Include="Backup\Data\DATA.sql" />
+    <Content Include="Backup\Data\Feature.sql" />
+    <Content Include="Backup\Data\Order.sql" />
+    <Content Include="Backup\Data\WibuCoffee.sql" />
     <None Include="Resources\acheronn.jpg" />
     <None Include="Resources\h1CBC93F0.png" />
   </ItemGroup>
