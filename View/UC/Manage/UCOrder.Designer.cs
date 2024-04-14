@@ -52,6 +52,7 @@
             this.pBillInfo = new System.Windows.Forms.Panel();
             this.dgvBillInfo = new System.Windows.Forms.DataGridView();
             this.pBill = new System.Windows.Forms.Panel();
+            this.btdAddCus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -80,7 +81,7 @@
             this.pListTable = new System.Windows.Forms.Panel();
             this.lbTable = new System.Windows.Forms.Label();
             this.pTable = new System.Windows.Forms.Panel();
-            this.btdAddCus = new System.Windows.Forms.Button();
+            this.btnNewBill = new System.Windows.Forms.Button();
             this.mainOrderPanel.SuspendLayout();
             this.pButton.SuspendLayout();
             this.pBillDetail.SuspendLayout();
@@ -111,6 +112,7 @@
             // pButton
             // 
             this.pButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pButton.Controls.Add(this.btnNewBill);
             this.pButton.Controls.Add(this.tbxReceiptMoney);
             this.pButton.Controls.Add(this.label3);
             this.pButton.Controls.Add(this.lbTotalPrice);
@@ -172,6 +174,7 @@
             // 
             // lbShowDis
             // 
+            this.lbShowDis.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbShowDis.AutoSize = true;
             this.lbShowDis.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbShowDis.ForeColor = System.Drawing.Color.Red;
@@ -204,6 +207,7 @@
             this.btnHistory.TabIndex = 3;
             this.btnHistory.Text = "LỊCH SỬ";
             this.btnHistory.UseVisualStyleBackColor = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
             // btnUpdate
             // 
@@ -390,6 +394,19 @@
             this.pBill.Size = new System.Drawing.Size(800, 280);
             this.pBill.TabIndex = 1;
             // 
+            // btdAddCus
+            // 
+            this.btdAddCus.BackColor = System.Drawing.Color.Gold;
+            this.btdAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btdAddCus.ForeColor = System.Drawing.Color.White;
+            this.btdAddCus.Location = new System.Drawing.Point(676, 116);
+            this.btdAddCus.Name = "btdAddCus";
+            this.btdAddCus.Size = new System.Drawing.Size(110, 62);
+            this.btdAddCus.TabIndex = 20;
+            this.btdAddCus.Text = "THÊM";
+            this.btdAddCus.UseVisualStyleBackColor = false;
+            this.btdAddCus.Click += new System.EventHandler(this.btdAddCus_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -440,9 +457,9 @@
             this.label7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(573, 191);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 17);
+            this.label7.Size = new System.Drawing.Size(113, 17);
             this.label7.TabIndex = 15;
-            this.label7.Text = "MÃ NHÂN VIÊN:";
+            this.label7.Text = "TÊN NHÂN VIÊN:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSearch
@@ -574,6 +591,7 @@
             this.tbxDate.Location = new System.Drawing.Point(14, 7);
             this.tbxDate.Multiline = true;
             this.tbxDate.Name = "tbxDate";
+            this.tbxDate.ReadOnly = true;
             this.tbxDate.Size = new System.Drawing.Size(202, 46);
             this.tbxDate.TabIndex = 22;
             // 
@@ -596,6 +614,7 @@
             this.tbxIDBill.Location = new System.Drawing.Point(14, 7);
             this.tbxIDBill.Multiline = true;
             this.tbxIDBill.Name = "tbxIDBill";
+            this.tbxIDBill.ReadOnly = true;
             this.tbxIDBill.Size = new System.Drawing.Size(202, 46);
             this.tbxIDBill.TabIndex = 21;
             // 
@@ -660,7 +679,6 @@
             this.cbxCategories.Size = new System.Drawing.Size(202, 34);
             this.cbxCategories.TabIndex = 1;
             this.cbxCategories.Text = "Loại hóa đơn";
-            this.cbxCategories.SelectedIndexChanged += new System.EventHandler(this.cbxCategories_SelectedIndexChanged);
             // 
             // pListTable
             // 
@@ -692,18 +710,18 @@
             this.pTable.Size = new System.Drawing.Size(384, 615);
             this.pTable.TabIndex = 0;
             // 
-            // btdAddCus
+            // btnNewBill
             // 
-            this.btdAddCus.BackColor = System.Drawing.Color.Gold;
-            this.btdAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btdAddCus.ForeColor = System.Drawing.Color.White;
-            this.btdAddCus.Location = new System.Drawing.Point(676, 116);
-            this.btdAddCus.Name = "btdAddCus";
-            this.btdAddCus.Size = new System.Drawing.Size(110, 62);
-            this.btdAddCus.TabIndex = 20;
-            this.btdAddCus.Text = "THÊM";
-            this.btdAddCus.UseVisualStyleBackColor = false;
-            this.btdAddCus.Click += new System.EventHandler(this.btdAddCus_Click);
+            this.btnNewBill.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnNewBill.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewBill.ForeColor = System.Drawing.Color.White;
+            this.btnNewBill.Location = new System.Drawing.Point(33, 234);
+            this.btnNewBill.Name = "btnNewBill";
+            this.btnNewBill.Size = new System.Drawing.Size(150, 50);
+            this.btnNewBill.TabIndex = 9;
+            this.btnNewBill.Text = "LÀM MỚI";
+            this.btnNewBill.UseVisualStyleBackColor = false;
+            this.btnNewBill.Click += new System.EventHandler(this.btnNewBill_Click);
             // 
             // UCOrder
             // 
@@ -792,5 +810,6 @@
         private System.Windows.Forms.ComboBox cbxCategories;
         private System.Windows.Forms.ComboBox cbxEmp;
         private System.Windows.Forms.Button btdAddCus;
+        private System.Windows.Forms.Button btnNewBill;
     }
 }

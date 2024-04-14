@@ -100,6 +100,12 @@
     <Compile Include="View\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC\Manage\UCBillHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCBillHistory.Designer.cs">
+      <DependentUpon>UCBillHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC\Manage\UCCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCBillHistory.resx">
+      <DependentUpon>UCBillHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCCustomer.resx">
       <DependentUpon>UCCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,8 +216,8 @@
     <EmbeddedResource Include="View\UC\UCManage.resx">
       <DependentUpon>UCManage.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.docx" />
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.pdf" />
+    <None Include="Backup\DBMS PROJECT REPORT K22.docx" />
+    <None Include="Backup\DBMS PROJECT REPORT K22.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -235,11 +244,11 @@
     <None Include="Assets\img\meoden-removebg.png" />
     <None Include="Assets\img\revenue.png" />
     <None Include="Assets\img\table.png" />
-    <Content Include="Docs_SQL\Data\Dashboard.sql" />
-    <Content Include="Docs_SQL\Data\DATA.sql" />
-    <Content Include="Docs_SQL\Data\Feature.sql" />
-    <Content Include="Docs_SQL\Data\Order.sql" />
-    <Content Include="Docs_SQL\Data\WibuCoffee.sql" />
+    <Content Include="Backup\Data\Dashboard.sql" />
+    <Content Include="Backup\Data\DATA.sql" />
+    <Content Include="Backup\Data\Feature.sql" />
+    <Content Include="Backup\Data\Order.sql" />
+    <Content Include="Backup\Data\WibuCoffee.sql" />
     <None Include="Resources\acheronn.jpg" />
     <None Include="Resources\h1CBC93F0.png" />
   </ItemGroup>
