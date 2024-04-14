@@ -15,11 +15,13 @@ namespace WibuCoffee.View.UC.Manage
     {
         private int x = 25;
         private int y = 30;
+        private static int w = 85;
+        private static int h = 85;
 
         private Font font = new Font("Google Sans", 12, FontStyle.Bold);
 
         private Button btnAddTable = new Button() {
-            Width = 75, Height = 75,
+            Width = w, Height = h,
             Text = "+",
             Font = new Font("Google Sans", 12, FontStyle.Bold),
             BackColor = Color.LightGray
@@ -27,8 +29,8 @@ namespace WibuCoffee.View.UC.Manage
 
         private Button btnDeleteTable = new Button()
         {
-            Width = 75,
-            Height = 75,
+            Width = w,
+            Height = h,
             Text = "-",
             Font = new Font("Google Sans", 12, FontStyle.Bold),
             BackColor = Color.Red
@@ -90,8 +92,8 @@ namespace WibuCoffee.View.UC.Manage
                 {
                     btnAddTable.Location = new Point(x, y);
                     pTable.Controls.Add(btnAddTable);
-                    x += 85;
-                    if (x > 250)
+                    x += 110;
+                    if (x > 300)
                     {
                         x = 25;
                         y += 100;
@@ -104,7 +106,7 @@ namespace WibuCoffee.View.UC.Manage
                 }
                 else
                 {
-                    Button btn = new Button() { Width = 75, Height = 75 };
+                    Button btn = new Button() { Width = w, Height = h };
                     btn.Text = data.Rows[i]["ID"].ToString();
                     btn.Font = font; 
                     btn.Location = new Point(x, y);
@@ -116,8 +118,8 @@ namespace WibuCoffee.View.UC.Manage
                     {
                         btn.BackColor = Color.LightGray;
                     }
-                    x += 85;
-                    if (x > 250)
+                    x += 110;
+                    if (x > 300)
                     {
                         x = 25;
                         y += 100;

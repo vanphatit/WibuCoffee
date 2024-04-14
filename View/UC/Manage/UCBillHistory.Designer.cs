@@ -32,6 +32,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbBillInfo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbTableID = new System.Windows.Forms.Label();
+            this.lbTable = new System.Windows.Forms.Label();
             this.lbListBillInfo = new System.Windows.Forms.Label();
             this.pListBillInfo = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,14 +63,12 @@
             this.lbSearch = new System.Windows.Forms.Label();
             this.lbShowDis = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.Panel();
+            this.btnDeleteBill = new System.Windows.Forms.Button();
+            this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.lbDiscount = new System.Windows.Forms.Label();
-            this.cbxSearch = new System.Windows.Forms.ComboBox();
-            this.lbTable = new System.Windows.Forms.Label();
-            this.lbTableID = new System.Windows.Forms.Label();
-            this.btnDeleteBill = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -101,7 +101,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(906, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(560, 685);
+            this.panel2.Size = new System.Drawing.Size(570, 685);
             this.panel2.TabIndex = 1;
             // 
             // lbBillInfo
@@ -134,10 +134,33 @@
             this.panel3.Controls.Add(this.pCategories);
             this.panel3.Controls.Add(this.lbBillID);
             this.panel3.Controls.Add(this.pBillID);
-            this.panel3.Location = new System.Drawing.Point(23, 33);
+            this.panel3.Location = new System.Drawing.Point(12, 33);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(511, 640);
+            this.panel3.Size = new System.Drawing.Size(541, 640);
             this.panel3.TabIndex = 0;
+            // 
+            // lbTableID
+            // 
+            this.lbTableID.AutoSize = true;
+            this.lbTableID.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTableID.ForeColor = System.Drawing.Color.Red;
+            this.lbTableID.Location = new System.Drawing.Point(82, 278);
+            this.lbTableID.Name = "lbTableID";
+            this.lbTableID.Size = new System.Drawing.Size(77, 22);
+            this.lbTableID.TabIndex = 22;
+            this.lbTableID.Text = "MÃ BÀN";
+            this.lbTableID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbTable
+            // 
+            this.lbTable.AutoSize = true;
+            this.lbTable.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTable.Location = new System.Drawing.Point(25, 278);
+            this.lbTable.Name = "lbTable";
+            this.lbTable.Size = new System.Drawing.Size(51, 22);
+            this.lbTable.TabIndex = 22;
+            this.lbTable.Text = "BÀN:";
+            this.lbTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbListBillInfo
             // 
@@ -155,7 +178,7 @@
             this.pListBillInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListBillInfo.Location = new System.Drawing.Point(14, 316);
             this.pListBillInfo.Name = "pListBillInfo";
-            this.pListBillInfo.Size = new System.Drawing.Size(474, 312);
+            this.pListBillInfo.Size = new System.Drawing.Size(511, 312);
             this.pListBillInfo.TabIndex = 25;
             // 
             // label11
@@ -173,7 +196,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(273, 196);
+            this.label10.Location = new System.Drawing.Point(310, 196);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(132, 17);
             this.label10.TabIndex = 23;
@@ -184,7 +207,7 @@
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.tbxCustomerName);
-            this.panel4.Location = new System.Drawing.Point(255, 205);
+            this.panel4.Location = new System.Drawing.Point(292, 205);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(233, 62);
             this.panel4.TabIndex = 21;
@@ -228,7 +251,7 @@
             // 
             this.lbTime.AutoSize = true;
             this.lbTime.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.Location = new System.Drawing.Point(276, 109);
+            this.lbTime.Location = new System.Drawing.Point(313, 109);
             this.lbTime.Name = "lbTime";
             this.lbTime.Size = new System.Drawing.Size(82, 17);
             this.lbTime.TabIndex = 20;
@@ -239,7 +262,7 @@
             // 
             this.pTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pTime.Controls.Add(this.tbxDate);
-            this.pTime.Location = new System.Drawing.Point(255, 117);
+            this.pTime.Location = new System.Drawing.Point(292, 117);
             this.pTime.Name = "pTime";
             this.pTime.Size = new System.Drawing.Size(233, 62);
             this.pTime.TabIndex = 19;
@@ -327,7 +350,7 @@
             // 
             this.lbBillID.AutoSize = true;
             this.lbBillID.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBillID.Location = new System.Drawing.Point(272, 20);
+            this.lbBillID.Location = new System.Drawing.Point(309, 20);
             this.lbBillID.Name = "lbBillID";
             this.lbBillID.Size = new System.Drawing.Size(99, 17);
             this.lbBillID.TabIndex = 14;
@@ -338,7 +361,7 @@
             // 
             this.pBillID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pBillID.Controls.Add(this.tbxIDBill);
-            this.pBillID.Location = new System.Drawing.Point(255, 28);
+            this.pBillID.Location = new System.Drawing.Point(292, 28);
             this.pBillID.Name = "pBillID";
             this.pBillID.Size = new System.Drawing.Size(233, 62);
             this.pBillID.TabIndex = 13;
@@ -368,9 +391,9 @@
             this.pBillInfo.Controls.Add(this.lbShowDis);
             this.pBillInfo.Controls.Add(this.searchPanel);
             this.pBillInfo.Controls.Add(this.lbDiscount);
-            this.pBillInfo.Location = new System.Drawing.Point(25, 24);
+            this.pBillInfo.Location = new System.Drawing.Point(22, 24);
             this.pBillInfo.Name = "pBillInfo";
-            this.pBillInfo.Size = new System.Drawing.Size(850, 685);
+            this.pBillInfo.Size = new System.Drawing.Size(853, 685);
             this.pBillInfo.TabIndex = 0;
             // 
             // lbTotalPrice
@@ -425,7 +448,7 @@
             this.pListBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListBill.Location = new System.Drawing.Point(23, 118);
             this.pListBill.Name = "pListBill";
-            this.pListBill.Size = new System.Drawing.Size(800, 501);
+            this.pListBill.Size = new System.Drawing.Size(812, 501);
             this.pListBill.TabIndex = 16;
             // 
             // lbSearch
@@ -445,7 +468,7 @@
             this.lbShowDis.AutoSize = true;
             this.lbShowDis.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbShowDis.ForeColor = System.Drawing.Color.Red;
-            this.lbShowDis.Location = new System.Drawing.Point(365, 642);
+            this.lbShowDis.Location = new System.Drawing.Point(366, 642);
             this.lbShowDis.Name = "lbShowDis";
             this.lbShowDis.Size = new System.Drawing.Size(100, 22);
             this.lbShowDis.TabIndex = 19;
@@ -462,13 +485,39 @@
             this.searchPanel.Controls.Add(this.cbxFilter);
             this.searchPanel.Location = new System.Drawing.Point(23, 33);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(800, 60);
+            this.searchPanel.Size = new System.Drawing.Size(812, 60);
             this.searchPanel.TabIndex = 0;
+            // 
+            // btnDeleteBill
+            // 
+            this.btnDeleteBill.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteBill.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteBill.Location = new System.Drawing.Point(676, 7);
+            this.btnDeleteBill.Name = "btnDeleteBill";
+            this.btnDeleteBill.Size = new System.Drawing.Size(125, 40);
+            this.btnDeleteBill.TabIndex = 17;
+            this.btnDeleteBill.Text = "XÓA";
+            this.btnDeleteBill.UseVisualStyleBackColor = false;
+            this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
+            // 
+            // cbxSearch
+            // 
+            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxSearch.BackColor = System.Drawing.Color.White;
+            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Location = new System.Drawing.Point(166, 11);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(373, 34);
+            this.cbxSearch.TabIndex = 16;
+            this.cbxSearch.Text = "TÌM KIẾM";
+            this.cbxSearch.Visible = false;
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.LightGray;
-            this.btnSearch.Location = new System.Drawing.Point(522, 9);
+            this.btnSearch.Location = new System.Drawing.Point(545, 7);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(125, 40);
             this.btnSearch.TabIndex = 15;
@@ -486,7 +535,7 @@
             this.tbxSearch.Location = new System.Drawing.Point(166, 11);
             this.tbxSearch.Multiline = true;
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(350, 34);
+            this.tbxSearch.Size = new System.Drawing.Size(373, 34);
             this.tbxSearch.TabIndex = 15;
             this.tbxSearch.Text = "TÌM KIẾM";
             this.tbxSearch.Click += new System.EventHandler(this.tbxSearch_Click);
@@ -515,55 +564,6 @@
             this.lbDiscount.TabIndex = 18;
             this.lbDiscount.Text = "CHIẾC KHẤU:";
             this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cbxSearch
-            // 
-            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxSearch.BackColor = System.Drawing.Color.White;
-            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(166, 11);
-            this.cbxSearch.Name = "cbxSearch";
-            this.cbxSearch.Size = new System.Drawing.Size(350, 34);
-            this.cbxSearch.TabIndex = 16;
-            this.cbxSearch.Text = "TÌM KIẾM";
-            this.cbxSearch.Visible = false;
-            // 
-            // lbTable
-            // 
-            this.lbTable.AutoSize = true;
-            this.lbTable.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTable.Location = new System.Drawing.Point(25, 278);
-            this.lbTable.Name = "lbTable";
-            this.lbTable.Size = new System.Drawing.Size(51, 22);
-            this.lbTable.TabIndex = 22;
-            this.lbTable.Text = "BÀN:";
-            this.lbTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbTableID
-            // 
-            this.lbTableID.AutoSize = true;
-            this.lbTableID.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTableID.ForeColor = System.Drawing.Color.Red;
-            this.lbTableID.Location = new System.Drawing.Point(82, 278);
-            this.lbTableID.Name = "lbTableID";
-            this.lbTableID.Size = new System.Drawing.Size(77, 22);
-            this.lbTableID.TabIndex = 22;
-            this.lbTableID.Text = "MÃ BÀN";
-            this.lbTableID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnDeleteBill
-            // 
-            this.btnDeleteBill.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteBill.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteBill.Location = new System.Drawing.Point(653, 9);
-            this.btnDeleteBill.Name = "btnDeleteBill";
-            this.btnDeleteBill.Size = new System.Drawing.Size(125, 40);
-            this.btnDeleteBill.TabIndex = 17;
-            this.btnDeleteBill.Text = "XÓA";
-            this.btnDeleteBill.UseVisualStyleBackColor = false;
-            this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
             // 
             // UCBillHistory
             // 
