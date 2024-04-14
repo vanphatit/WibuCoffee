@@ -235,6 +235,8 @@
     <None Include="Assets\img\5.png" />
     <None Include="Assets\img\database-storage.png" />
     <None Include="Assets\img\left-arrow.png" />
+    <None Include="Assets\img\edit.png" />
+    <None Include="Assets\img\delete.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
@@ -242,6 +244,7 @@
     <None Include="Assets\img\table.png" />
     <None Include="Assets\img\second.png" />
     <None Include="Assets\img\third.png" />
+    <None Include="Assets\img\plus.png" />
     <Content Include="Backup\Data\Dashboard.sql" />
     <Content Include="Backup\Data\DATA.sql" />
     <Content Include="Backup\Data\Feature.sql" />

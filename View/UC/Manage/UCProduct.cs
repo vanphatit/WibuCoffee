@@ -12,6 +12,10 @@ namespace WibuCoffee.View.UC.Manage
 {
     public partial class UCProduct : UserControl
     {
+        private DataTable dtProductCategory;
+        private DataTable dtProduct;
+        private DataTable dtProductMaterial;
+
         public UCProduct()
         {
             InitializeComponent();
