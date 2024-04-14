@@ -17,7 +17,7 @@ namespace WibuCoffee.View.UC.Manage
         DataTable dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
  
         Font font = new Font("Google Sans", 12, FontStyle.Regular);
-        Font fontSmall = new Font("Google Sans", 10, FontStyle.Regular);
+        Font fontSmall = new Font("Google Sans", 12, FontStyle.Regular);
 
         public UCBillHistory()
         {
@@ -208,8 +208,8 @@ namespace WibuCoffee.View.UC.Manage
             dgvBillInfo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvListBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvBillInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvListBill.ColumnHeadersHeight = 35;
-            dgvBillInfo.ColumnHeadersHeight = 50;
+            dgvListBill.ColumnHeadersHeight = 50;
+            dgvBillInfo.ColumnHeadersHeight = 65;
 
             dgvListBill.AllowDrop = false;
             dgvBillInfo.AllowDrop = false;
