@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace WibuCoffee.View.UC.Manage
 {
-    public partial class UCReceiptNote : UserControl
+    public partial class UCReceiptNoteDetail : UserControl
     {
-        public UCReceiptNote()
+        public UCReceiptNoteDetail()
         {
             InitializeComponent();
         }
-        
     }
 }
