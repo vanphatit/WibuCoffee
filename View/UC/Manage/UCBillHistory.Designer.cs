@@ -66,9 +66,9 @@
             this.btnDeleteBill = new System.Windows.Forms.Button();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.lbDiscount = new System.Windows.Forms.Label();
+            this.dtpSearch = new System.Windows.Forms.DateTimePicker();
             this.mainPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -178,6 +178,7 @@
             this.pListBillInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListBillInfo.Location = new System.Drawing.Point(14, 316);
             this.pListBillInfo.Name = "pListBillInfo";
+            this.pListBillInfo.Padding = new System.Windows.Forms.Padding(10);
             this.pListBillInfo.Size = new System.Drawing.Size(511, 312);
             this.pListBillInfo.TabIndex = 25;
             // 
@@ -448,6 +449,7 @@
             this.pListBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListBill.Location = new System.Drawing.Point(23, 118);
             this.pListBill.Name = "pListBill";
+            this.pListBill.Padding = new System.Windows.Forms.Padding(20);
             this.pListBill.Size = new System.Drawing.Size(812, 501);
             this.pListBill.TabIndex = 16;
             // 
@@ -478,10 +480,10 @@
             // searchPanel
             // 
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchPanel.Controls.Add(this.btnDeleteBill);
             this.searchPanel.Controls.Add(this.cbxSearch);
+            this.searchPanel.Controls.Add(this.dtpSearch);
+            this.searchPanel.Controls.Add(this.btnDeleteBill);
             this.searchPanel.Controls.Add(this.btnSearch);
-            this.searchPanel.Controls.Add(this.tbxSearch);
             this.searchPanel.Controls.Add(this.cbxFilter);
             this.searchPanel.Location = new System.Drawing.Point(23, 33);
             this.searchPanel.Name = "searchPanel";
@@ -525,21 +527,6 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxSearch.BackColor = System.Drawing.Color.White;
-            this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.tbxSearch.Location = new System.Drawing.Point(166, 11);
-            this.tbxSearch.Multiline = true;
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(373, 34);
-            this.tbxSearch.TabIndex = 15;
-            this.tbxSearch.Text = "TÌM KIẾM";
-            this.tbxSearch.Click += new System.EventHandler(this.tbxSearch_Click);
-            // 
             // cbxFilter
             // 
             this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -564,6 +551,21 @@
             this.lbDiscount.TabIndex = 18;
             this.lbDiscount.Text = "CHIẾC KHẤU:";
             this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dtpSearch
+            // 
+            this.dtpSearch.CalendarFont = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSearch.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtpSearch.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpSearch.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.dtpSearch.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dtpSearch.CalendarTrailingForeColor = System.Drawing.Color.White;
+            this.dtpSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpSearch.CustomFormat = "yyyy/MM/dd";
+            this.dtpSearch.Location = new System.Drawing.Point(166, 11);
+            this.dtpSearch.Name = "dtpSearch";
+            this.dtpSearch.Size = new System.Drawing.Size(373, 32);
+            this.dtpSearch.TabIndex = 24;
             // 
             // UCBillHistory
             // 
@@ -592,7 +594,6 @@
             this.pBillInfo.ResumeLayout(false);
             this.pBillInfo.PerformLayout();
             this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -605,7 +606,6 @@
         private System.Windows.Forms.Panel searchPanel;
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.ComboBox cbxFilter;
-        private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lbListBill;
         private System.Windows.Forms.Panel pListBill;
@@ -640,5 +640,6 @@
         private System.Windows.Forms.Label lbTableID;
         private System.Windows.Forms.Label lbTable;
         private System.Windows.Forms.Button btnDeleteBill;
+        private System.Windows.Forms.DateTimePicker dtpSearch;
     }
 }

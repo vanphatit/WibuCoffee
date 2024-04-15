@@ -14,10 +14,11 @@ namespace WibuCoffee.View.UC.Manage
     {
         DataGridView dgvListBill = new DataGridView();
         DataGridView dgvBillInfo = new DataGridView();
+
         DataTable dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
  
         Font font = new Font("Google Sans", 12, FontStyle.Regular);
-        Font fontSmall = new Font("Google Sans", 10, FontStyle.Regular);
+        Font fontSmall = new Font("Google Sans", 12, FontStyle.Regular);
 
         public UCBillHistory()
         {
@@ -56,10 +57,7 @@ namespace WibuCoffee.View.UC.Manage
             }  
             else if (cbxFilter.Text == "Ngày lập")
             {
-                string[] dateStr = tbxSearch.Text.Split('/');
-                String dateTime = dateStr[2] + "/" + dateStr[1] + "/" + dateStr[0];
-
-                DateTime date = DateTime.Parse(dateTime);
+                DateTime date = dtpSearch.Value;
 
                 dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByDate ( @date )", new object[] { date });
                 reloadDGV(dataBill);
@@ -81,16 +79,15 @@ namespace WibuCoffee.View.UC.Manage
         {
             if (cbxFilter.Text == "Tất cả")
             {
-                tbxSearch.Visible = true;
+                dtpSearch.Visible = true;
                 cbxSearch.Visible = false;
-                tbxSearch.Text = "TÌM KIẾM";
                 dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
                 reloadDGV(dataBill);
             }
             else if (cbxFilter.Text == "Mã hóa đơn")
             {
                 cbxSearch.Visible = true;
-                tbxSearch.Visible = false;
+                dtpSearch.Visible = false;
                 cbxSearch.Items.Clear();
                 cbxSearch.Text = "Chọn mã hóa đơn";
                 DataTable data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillID");
@@ -102,15 +99,14 @@ namespace WibuCoffee.View.UC.Manage
             }
             else if (cbxFilter.Text == "Ngày lập")
             {
-                tbxSearch.Visible = true;
+                dtpSearch.Visible = true;
                 cbxSearch.Visible = false;
                 cbxSearch.Items.Clear();
-                tbxSearch.Text = "Vui lòng nhập theo định dạng dd/mm/yyyy";
             }
             else if (cbxFilter.Text == "Loại hóa đơn")
             {
                 cbxSearch.Visible = true;
-                tbxSearch.Visible = false;
+                dtpSearch.Visible = false;
                 cbxSearch.Items.Clear();
                 cbxSearch.Text = "Chọn loại hóa đơn";
                 DataTable data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillCategory");
@@ -121,7 +117,7 @@ namespace WibuCoffee.View.UC.Manage
             }
             else
             {
-                tbxSearch.Visible = true;
+                dtpSearch.Visible = true;
                 cbxSearch.Visible = false;
                 dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
                 reloadDGV(dataBill);
@@ -178,10 +174,6 @@ namespace WibuCoffee.View.UC.Manage
 
             dgvListBill.Dock = DockStyle.Fill;
             dgvBillInfo.Dock = DockStyle.Fill;
-            dgvListBill.Location = new Point(20, 30);
-            dgvBillInfo.Location = new Point(20, 30);
-            dgvListBill.Size = new Size(758, 456);
-            dgvBillInfo.Size = new Size(474, 293);
             dgvListBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvBillInfo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListBill.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -195,8 +187,8 @@ namespace WibuCoffee.View.UC.Manage
             dgvListBill.GridColor = Color.Black;
             dgvBillInfo.GridColor = Color.Black;
 
-            dgvListBill.BorderStyle = BorderStyle.None;
-            dgvBillInfo.BorderStyle = BorderStyle.None;
+            dgvListBill.BorderStyle = BorderStyle.FixedSingle;
+            dgvBillInfo.BorderStyle = BorderStyle.FixedSingle;
 
             dgvListBill.ColumnHeadersDefaultCellStyle.Font = font;
             dgvBillInfo.ColumnHeadersDefaultCellStyle.Font = fontSmall;
@@ -208,8 +200,10 @@ namespace WibuCoffee.View.UC.Manage
             dgvBillInfo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvListBill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvBillInfo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvListBill.ColumnHeadersHeight = 35;
-            dgvBillInfo.ColumnHeadersHeight = 50;
+            dgvListBill.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvBillInfo.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvListBill.ColumnHeadersHeight = 50;
+            dgvBillInfo.ColumnHeadersHeight = 65;
 
             dgvListBill.AllowDrop = false;
             dgvBillInfo.AllowDrop = false;
@@ -246,11 +240,6 @@ namespace WibuCoffee.View.UC.Manage
             pListBillInfo.Controls.Add(dgvBillInfo);
             pListBill.Controls.Add(dgvListBill);
 
-        }
-
-        private void tbxSearch_Click(object sender, EventArgs e)
-        {
-            tbxSearch.Text = "";
         }
 
         private void btnDeleteBill_Click(object sender, EventArgs e)
