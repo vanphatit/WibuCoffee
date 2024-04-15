@@ -37,44 +37,47 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pListTable = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.lbListBill = new System.Windows.Forms.Label();
+            this.pListBill = new System.Windows.Forms.Panel();
+            this.dgvListReceiptNote = new System.Windows.Forms.DataGridView();
             this.lbSearch = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
-            this.lbListBill = new System.Windows.Forms.Label();
-            this.pListBill = new System.Windows.Forms.Panel();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.dgvListReceiptNote = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDeleteRNDetail = new System.Windows.Forms.Button();
-            this.btnUpdateRNDetail = new System.Windows.Forms.Button();
-            this.btnAddRNDetail = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dgvRNDetail = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tbxIDBill = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbxCategories = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dgvRNDetail = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnDeleteRNDetail = new System.Windows.Forms.Button();
+            this.btnUpdateRNDetail = new System.Windows.Forms.Button();
+            this.btnAddRNDetail = new System.Windows.Forms.Button();
             this.pListTable.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.searchPanel.SuspendLayout();
             this.pListBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListReceiptNote)).BeginInit();
+            this.searchPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRNDetail)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRNDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // pListTable
@@ -91,96 +94,18 @@
             this.pListTable.Size = new System.Drawing.Size(1260, 1061);
             this.pListTable.TabIndex = 1;
             // 
-            // panel1
+            // btnBack
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(1310, 38);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 1061);
-            this.panel1.TabIndex = 1;
-            // 
-            // lbSearch
-            // 
-            this.lbSearch.AutoSize = true;
-            this.lbSearch.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSearch.Location = new System.Drawing.Point(44, 21);
-            this.lbSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbSearch.Name = "lbSearch";
-            this.lbSearch.Size = new System.Drawing.Size(148, 36);
-            this.lbSearch.TabIndex = 16;
-            this.lbSearch.Text = "TÌM KIẾM:";
-            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // searchPanel
-            // 
-            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.searchPanel.Controls.Add(this.cbxSearch);
-            this.searchPanel.Controls.Add(this.btnSearch);
-            this.searchPanel.Controls.Add(this.tbxSearch);
-            this.searchPanel.Controls.Add(this.cbxFilter);
-            this.searchPanel.Location = new System.Drawing.Point(18, 39);
-            this.searchPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(1217, 93);
-            this.searchPanel.TabIndex = 15;
-            // 
-            // cbxSearch
-            // 
-            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxSearch.BackColor = System.Drawing.Color.White;
-            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(249, 16);
-            this.cbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbxSearch.Name = "cbxSearch";
-            this.cbxSearch.Size = new System.Drawing.Size(755, 49);
-            this.cbxSearch.TabIndex = 16;
-            this.cbxSearch.Text = "TÌM KIẾM";
-            this.cbxSearch.Visible = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.LightGray;
-            this.btnSearch.Location = new System.Drawing.Point(1012, 11);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(188, 62);
-            this.btnSearch.TabIndex = 15;
-            this.btnSearch.Text = "TÌM";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxSearch.BackColor = System.Drawing.Color.White;
-            this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.tbxSearch.Location = new System.Drawing.Point(249, 16);
-            this.tbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxSearch.Multiline = true;
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(755, 52);
-            this.tbxSearch.TabIndex = 15;
-            this.tbxSearch.Text = "TÌM KIẾM";
-            // 
-            // cbxFilter
-            // 
-            this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxFilter.BackColor = System.Drawing.Color.White;
-            this.cbxFilter.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxFilter.ForeColor = System.Drawing.Color.Black;
-            this.cbxFilter.FormattingEnabled = true;
-            this.cbxFilter.Location = new System.Drawing.Point(15, 16);
-            this.cbxFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbxFilter.Name = "cbxFilter";
-            this.cbxFilter.Size = new System.Drawing.Size(223, 49);
-            this.cbxFilter.TabIndex = 15;
-            this.cbxFilter.Text = "LỌC";
+            this.btnBack.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnBack.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(18, 979);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(225, 72);
+            this.btnBack.TabIndex = 20;
+            this.btnBack.Text = "TRỞ VỀ";
+            this.btnBack.UseVisualStyleBackColor = false;
             // 
             // lbListBill
             // 
@@ -196,26 +121,13 @@
             // 
             // pListBill
             // 
-            this.pListBill.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pListBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListBill.Controls.Add(this.dgvListReceiptNote);
             this.pListBill.Location = new System.Drawing.Point(18, 187);
             this.pListBill.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pListBill.Name = "pListBill";
             this.pListBill.Size = new System.Drawing.Size(1217, 782);
             this.pListBill.TabIndex = 18;
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnBack.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(18, 979);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(225, 72);
-            this.btnBack.TabIndex = 20;
-            this.btnBack.Text = "TRỞ VỀ";
-            this.btnBack.UseVisualStyleBackColor = false;
             // 
             // dgvListReceiptNote
             // 
@@ -250,7 +162,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListReceiptNote.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListReceiptNote.GridColor = System.Drawing.Color.Black;
-            this.dgvListReceiptNote.Location = new System.Drawing.Point(13, 39);
+            this.dgvListReceiptNote.Location = new System.Drawing.Point(13, 40);
             this.dgvListReceiptNote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvListReceiptNote.Name = "dgvListReceiptNote";
             this.dgvListReceiptNote.RowHeadersVisible = false;
@@ -265,12 +177,117 @@
             this.dgvListReceiptNote.Size = new System.Drawing.Size(1187, 726);
             this.dgvListReceiptNote.TabIndex = 2;
             // 
+            // lbSearch
+            // 
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearch.Location = new System.Drawing.Point(44, 21);
+            this.lbSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(148, 36);
+            this.lbSearch.TabIndex = 16;
+            this.lbSearch.Text = "TÌM KIẾM:";
+            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchPanel
+            // 
+            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchPanel.Controls.Add(this.cbxSearch);
+            this.searchPanel.Controls.Add(this.btnSearch);
+            this.searchPanel.Controls.Add(this.tbxSearch);
+            this.searchPanel.Controls.Add(this.cbxFilter);
+            this.searchPanel.Location = new System.Drawing.Point(18, 39);
+            this.searchPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(1217, 93);
+            this.searchPanel.TabIndex = 15;
+            // 
+            // cbxSearch
+            // 
+            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxSearch.BackColor = System.Drawing.Color.White;
+            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Location = new System.Drawing.Point(249, 17);
+            this.cbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(755, 49);
+            this.cbxSearch.TabIndex = 16;
+            this.cbxSearch.Text = "TÌM KIẾM";
+            this.cbxSearch.Visible = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.LightGray;
+            this.btnSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(1012, 11);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(188, 62);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.Text = "TÌM";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // tbxSearch
+            // 
+            this.tbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxSearch.BackColor = System.Drawing.Color.White;
+            this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSearch.ForeColor = System.Drawing.Color.Black;
+            this.tbxSearch.Location = new System.Drawing.Point(249, 17);
+            this.tbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbxSearch.Multiline = true;
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(755, 52);
+            this.tbxSearch.TabIndex = 15;
+            this.tbxSearch.Text = "TÌM KIẾM";
+            // 
+            // cbxFilter
+            // 
+            this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxFilter.BackColor = System.Drawing.Color.White;
+            this.cbxFilter.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFilter.ForeColor = System.Drawing.Color.Black;
+            this.cbxFilter.FormattingEnabled = true;
+            this.cbxFilter.Location = new System.Drawing.Point(15, 17);
+            this.cbxFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxFilter.Name = "cbxFilter";
+            this.cbxFilter.Size = new System.Drawing.Size(223, 49);
+            this.cbxFilter.TabIndex = 15;
+            this.cbxFilter.Text = "LỌC";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(1310, 38);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(895, 1061);
+            this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(47, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(386, 36);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "CHI TIẾT ĐƠN NHẬP HÀNG:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.dgvRNDetail);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label5);
@@ -285,41 +302,137 @@
             this.panel2.Size = new System.Drawing.Size(853, 1000);
             this.panel2.TabIndex = 0;
             // 
-            // btnDeleteRNDetail
+            // label7
             // 
-            this.btnDeleteRNDetail.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteRNDetail.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteRNDetail.Location = new System.Drawing.Point(657, 302);
-            this.btnDeleteRNDetail.Name = "btnDeleteRNDetail";
-            this.btnDeleteRNDetail.Size = new System.Drawing.Size(143, 75);
-            this.btnDeleteRNDetail.TabIndex = 7;
-            this.btnDeleteRNDetail.Text = "XÓA";
-            this.btnDeleteRNDetail.UseVisualStyleBackColor = false;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(44, 427);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(557, 36);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "DANH SÁCH CHI TIẾT ĐƠN NHẬP HÀNG:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnUpdateRNDetail
+            // panel5
             // 
-            this.btnUpdateRNDetail.BackColor = System.Drawing.Color.Gold;
-            this.btnUpdateRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateRNDetail.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateRNDetail.Location = new System.Drawing.Point(657, 178);
-            this.btnUpdateRNDetail.Name = "btnUpdateRNDetail";
-            this.btnUpdateRNDetail.Size = new System.Drawing.Size(143, 75);
-            this.btnUpdateRNDetail.TabIndex = 6;
-            this.btnUpdateRNDetail.Text = "SỬA";
-            this.btnUpdateRNDetail.UseVisualStyleBackColor = false;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.dgvRNDetail);
+            this.panel5.Location = new System.Drawing.Point(14, 450);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(817, 478);
+            this.panel5.TabIndex = 23;
             // 
-            // btnAddRNDetail
+            // dgvRNDetail
             // 
-            this.btnAddRNDetail.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnAddRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRNDetail.ForeColor = System.Drawing.Color.White;
-            this.btnAddRNDetail.Location = new System.Drawing.Point(657, 51);
-            this.btnAddRNDetail.Name = "btnAddRNDetail";
-            this.btnAddRNDetail.Size = new System.Drawing.Size(143, 75);
-            this.btnAddRNDetail.TabIndex = 5;
-            this.btnAddRNDetail.Text = "THÊM";
-            this.btnAddRNDetail.UseVisualStyleBackColor = false;
+            this.dgvRNDetail.AllowUserToAddRows = false;
+            this.dgvRNDetail.AllowUserToDeleteRows = false;
+            this.dgvRNDetail.AllowUserToResizeColumns = false;
+            this.dgvRNDetail.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvRNDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvRNDetail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvRNDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRNDetail.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRNDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvRNDetail.ColumnHeadersHeight = 35;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRNDetail.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvRNDetail.GridColor = System.Drawing.Color.Black;
+            this.dgvRNDetail.Location = new System.Drawing.Point(15, 27);
+            this.dgvRNDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvRNDetail.Name = "dgvRNDetail";
+            this.dgvRNDetail.RowHeadersVisible = false;
+            this.dgvRNDetail.RowHeadersWidth = 50;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvRNDetail.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvRNDetail.RowTemplate.Height = 24;
+            this.dgvRNDetail.Size = new System.Drawing.Size(784, 435);
+            this.dgvRNDetail.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(576, 944);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(233, 36);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "xxx.xxx.xxx VND";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(445, 944);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 36);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "TỔNG:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(57, 281);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 27);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "ĐƠN GIÁ:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Location = new System.Drawing.Point(31, 293);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(558, 96);
+            this.panel4.TabIndex = 17;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(21, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(517, 72);
+            this.textBox1.TabIndex = 21;
             // 
             // label5
             // 
@@ -392,127 +505,41 @@
             this.cbxCategories.TabIndex = 1;
             this.cbxCategories.Text = "Tên nguyên liệu";
             // 
-            // label1
+            // btnDeleteRNDetail
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(386, 36);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "CHI TIẾT ĐƠN NHẬP HÀNG:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDeleteRNDetail.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRNDetail.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteRNDetail.Location = new System.Drawing.Point(622, 293);
+            this.btnDeleteRNDetail.Name = "btnDeleteRNDetail";
+            this.btnDeleteRNDetail.Size = new System.Drawing.Size(202, 96);
+            this.btnDeleteRNDetail.TabIndex = 7;
+            this.btnDeleteRNDetail.Text = "XÓA";
+            this.btnDeleteRNDetail.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // btnUpdateRNDetail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 281);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 27);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "ĐƠN GIÁ:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnUpdateRNDetail.BackColor = System.Drawing.Color.Gold;
+            this.btnUpdateRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateRNDetail.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateRNDetail.Location = new System.Drawing.Point(622, 169);
+            this.btnUpdateRNDetail.Name = "btnUpdateRNDetail";
+            this.btnUpdateRNDetail.Size = new System.Drawing.Size(202, 96);
+            this.btnUpdateRNDetail.TabIndex = 6;
+            this.btnUpdateRNDetail.Text = "SỬA";
+            this.btnUpdateRNDetail.UseVisualStyleBackColor = false;
             // 
-            // panel4
+            // btnAddRNDetail
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Location = new System.Drawing.Point(31, 293);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(558, 96);
-            this.panel4.TabIndex = 17;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(21, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(517, 72);
-            this.textBox1.TabIndex = 21;
-            // 
-            // dgvRNDetail
-            // 
-            this.dgvRNDetail.AllowUserToAddRows = false;
-            this.dgvRNDetail.AllowUserToDeleteRows = false;
-            this.dgvRNDetail.AllowUserToResizeColumns = false;
-            this.dgvRNDetail.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvRNDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvRNDetail.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dgvRNDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRNDetail.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRNDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvRNDetail.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRNDetail.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvRNDetail.GridColor = System.Drawing.Color.Black;
-            this.dgvRNDetail.Location = new System.Drawing.Point(31, 399);
-            this.dgvRNDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvRNDetail.Name = "dgvRNDetail";
-            this.dgvRNDetail.RowHeadersVisible = false;
-            this.dgvRNDetail.RowHeadersWidth = 50;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvRNDetail.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvRNDetail.RowTemplate.Height = 24;
-            this.dgvRNDetail.Size = new System.Drawing.Size(790, 514);
-            this.dgvRNDetail.TabIndex = 19;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(121, 936);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 36);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "TỔNG:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(252, 936);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 36);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "xxx.xxx.xxx VND";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAddRNDetail.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAddRNDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRNDetail.ForeColor = System.Drawing.Color.White;
+            this.btnAddRNDetail.Location = new System.Drawing.Point(622, 44);
+            this.btnAddRNDetail.Name = "btnAddRNDetail";
+            this.btnAddRNDetail.Size = new System.Drawing.Size(202, 96);
+            this.btnAddRNDetail.TabIndex = 5;
+            this.btnAddRNDetail.Text = "THÊM";
+            this.btnAddRNDetail.UseVisualStyleBackColor = false;
             // 
             // UCReceiptNoteDetail
             // 
@@ -525,20 +552,21 @@
             this.Size = new System.Drawing.Size(2248, 1141);
             this.pListTable.ResumeLayout(false);
             this.pListTable.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
             this.pListBill.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListReceiptNote)).EndInit();
+            this.searchPanel.ResumeLayout(false);
+            this.searchPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRNDetail)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRNDetail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,8 +599,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dgvRNDetail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dgvRNDetail;
     }
 }

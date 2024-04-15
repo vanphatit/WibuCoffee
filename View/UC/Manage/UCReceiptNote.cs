@@ -16,5 +16,6 @@ namespace WibuCoffee.View.UC.Manage
         {
             InitializeComponent();
         }
+        
     }
 }

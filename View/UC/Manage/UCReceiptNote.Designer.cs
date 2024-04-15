@@ -28,27 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnViewDetail = new System.Windows.Forms.Button();
             this.lbSearch = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvReceiptNoteInfo = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDeleteReceiptNote = new System.Windows.Forms.Button();
-            this.btnUpdateReceiptNote = new System.Windows.Forms.Button();
-            this.btnAddReceiptNote = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.tbxEmployee = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.tbxSuplier = new System.Windows.Forms.TextBox();
@@ -58,33 +57,20 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tbxID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.tbxIDBill = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.tbxEmployee = new System.Windows.Forms.TextBox();
-            this.btnViewDetail = new System.Windows.Forms.Button();
+            this.btnDeleteReceiptNote = new System.Windows.Forms.Button();
+            this.btnUpdateReceiptNote = new System.Windows.Forms.Button();
+            this.btnAddReceiptNote = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.searchPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNoteInfo)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -100,11 +86,23 @@
             this.panel2.Size = new System.Drawing.Size(1585, 1088);
             this.panel2.TabIndex = 3;
             // 
+            // btnViewDetail
+            // 
+            this.btnViewDetail.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnViewDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewDetail.ForeColor = System.Drawing.Color.White;
+            this.btnViewDetail.Location = new System.Drawing.Point(1299, 68);
+            this.btnViewDetail.Name = "btnViewDetail";
+            this.btnViewDetail.Size = new System.Drawing.Size(219, 93);
+            this.btnViewDetail.TabIndex = 17;
+            this.btnViewDetail.Text = "CHI TIẾT";
+            this.btnViewDetail.UseVisualStyleBackColor = false;
+            // 
             // lbSearch
             // 
             this.lbSearch.AutoSize = true;
             this.lbSearch.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSearch.Location = new System.Drawing.Point(68, 50);
+            this.lbSearch.Location = new System.Drawing.Point(105, 50);
             this.lbSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSearch.Name = "lbSearch";
             this.lbSearch.Size = new System.Drawing.Size(148, 36);
@@ -116,10 +114,10 @@
             // 
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchPanel.Controls.Add(this.cbxSearch);
+            this.searchPanel.Controls.Add(this.dateTimePicker1);
             this.searchPanel.Controls.Add(this.btnSearch);
-            this.searchPanel.Controls.Add(this.tbxSearch);
             this.searchPanel.Controls.Add(this.cbxFilter);
-            this.searchPanel.Location = new System.Drawing.Point(17, 68);
+            this.searchPanel.Location = new System.Drawing.Point(54, 68);
             this.searchPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(1229, 93);
@@ -132,7 +130,7 @@
             this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSearch.ForeColor = System.Drawing.Color.Black;
             this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(226, 17);
+            this.cbxSearch.Location = new System.Drawing.Point(225, 17);
             this.cbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxSearch.Name = "cbxSearch";
             this.cbxSearch.Size = new System.Drawing.Size(760, 49);
@@ -143,28 +141,14 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.LightGray;
-            this.btnSearch.Location = new System.Drawing.Point(994, 12);
+            this.btnSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(994, 17);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(216, 62);
+            this.btnSearch.Size = new System.Drawing.Size(216, 49);
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "TÌM";
             this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxSearch.BackColor = System.Drawing.Color.White;
-            this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.tbxSearch.Location = new System.Drawing.Point(226, 17);
-            this.tbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxSearch.Multiline = true;
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(760, 52);
-            this.tbxSearch.TabIndex = 15;
-            this.tbxSearch.Text = "TÌM KIẾM";
             // 
             // cbxFilter
             // 
@@ -192,7 +176,7 @@
             // 
             // panel5
             // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.dgvReceiptNoteInfo);
             this.panel5.Location = new System.Drawing.Point(27, 241);
             this.panel5.Name = "panel5";
@@ -205,44 +189,44 @@
             this.dgvReceiptNoteInfo.AllowUserToDeleteRows = false;
             this.dgvReceiptNoteInfo.AllowUserToResizeColumns = false;
             this.dgvReceiptNoteInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvReceiptNoteInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvReceiptNoteInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvReceiptNoteInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvReceiptNoteInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReceiptNoteInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceiptNoteInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReceiptNoteInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvReceiptNoteInfo.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReceiptNoteInfo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReceiptNoteInfo.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvReceiptNoteInfo.GridColor = System.Drawing.Color.Black;
-            this.dgvReceiptNoteInfo.Location = new System.Drawing.Point(15, 33);
+            this.dgvReceiptNoteInfo.Location = new System.Drawing.Point(15, 34);
             this.dgvReceiptNoteInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvReceiptNoteInfo.Name = "dgvReceiptNoteInfo";
             this.dgvReceiptNoteInfo.RowHeadersVisible = false;
             this.dgvReceiptNoteInfo.RowHeadersWidth = 50;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvReceiptNoteInfo.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvReceiptNoteInfo.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvReceiptNoteInfo.RowTemplate.Height = 24;
             this.dgvReceiptNoteInfo.Size = new System.Drawing.Size(1475, 758);
             this.dgvReceiptNoteInfo.TabIndex = 1;
@@ -250,57 +234,21 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnDeleteReceiptNote);
             this.panel1.Controls.Add(this.btnUpdateReceiptNote);
             this.panel1.Controls.Add(this.btnAddReceiptNote);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(29, 26);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(582, 1088);
             this.panel1.TabIndex = 2;
             // 
-            // btnDeleteReceiptNote
-            // 
-            this.btnDeleteReceiptNote.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteReceiptNote.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteReceiptNote.Location = new System.Drawing.Point(395, 886);
-            this.btnDeleteReceiptNote.Name = "btnDeleteReceiptNote";
-            this.btnDeleteReceiptNote.Size = new System.Drawing.Size(143, 93);
-            this.btnDeleteReceiptNote.TabIndex = 4;
-            this.btnDeleteReceiptNote.Text = "XÓA";
-            this.btnDeleteReceiptNote.UseVisualStyleBackColor = false;
-            // 
-            // btnUpdateReceiptNote
-            // 
-            this.btnUpdateReceiptNote.BackColor = System.Drawing.Color.Gold;
-            this.btnUpdateReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateReceiptNote.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateReceiptNote.Location = new System.Drawing.Point(225, 886);
-            this.btnUpdateReceiptNote.Name = "btnUpdateReceiptNote";
-            this.btnUpdateReceiptNote.Size = new System.Drawing.Size(143, 93);
-            this.btnUpdateReceiptNote.TabIndex = 3;
-            this.btnUpdateReceiptNote.Text = "SỬA";
-            this.btnUpdateReceiptNote.UseVisualStyleBackColor = false;
-            // 
-            // btnAddReceiptNote
-            // 
-            this.btnAddReceiptNote.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnAddReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddReceiptNote.ForeColor = System.Drawing.Color.White;
-            this.btnAddReceiptNote.Location = new System.Drawing.Point(52, 886);
-            this.btnAddReceiptNote.Name = "btnAddReceiptNote";
-            this.btnAddReceiptNote.Size = new System.Drawing.Size(143, 93);
-            this.btnAddReceiptNote.TabIndex = 2;
-            this.btnAddReceiptNote.Text = "THÊM";
-            this.btnAddReceiptNote.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Google Sans", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 33);
+            this.label1.Location = new System.Drawing.Point(46, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(410, 35);
             this.label1.TabIndex = 1;
@@ -308,44 +256,66 @@
             // 
             // panel3
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.panel9);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.panel8);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Location = new System.Drawing.Point(27, 54);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.panel10);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.panel11);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.panel12);
+            this.panel3.Location = new System.Drawing.Point(12, 55);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(531, 774);
-            this.panel3.TabIndex = 0;
+            this.panel3.Size = new System.Drawing.Size(555, 805);
+            this.panel3.TabIndex = 5;
             // 
-            // panel9
+            // label6
             // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel9.Controls.Add(this.label6);
-            this.panel9.Controls.Add(this.panel4);
-            this.panel9.Controls.Add(this.label4);
-            this.panel9.Controls.Add(this.panel10);
-            this.panel9.Controls.Add(this.label8);
-            this.panel9.Controls.Add(this.panel11);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Controls.Add(this.panel12);
-            this.panel9.Location = new System.Drawing.Point(-2, -2);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(531, 774);
-            this.panel9.TabIndex = 19;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(84, 617);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(196, 27);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "NHÂN VIÊN NHẬP:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.tbxEmployee);
+            this.panel4.Location = new System.Drawing.Point(58, 629);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(437, 96);
+            this.panel4.TabIndex = 27;
+            // 
+            // tbxEmployee
+            // 
+            this.tbxEmployee.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxEmployee.BackColor = System.Drawing.Color.White;
+            this.tbxEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxEmployee.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxEmployee.ForeColor = System.Drawing.Color.Black;
+            this.tbxEmployee.Location = new System.Drawing.Point(21, 11);
+            this.tbxEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbxEmployee.Multiline = true;
+            this.tbxEmployee.Name = "tbxEmployee";
+            this.tbxEmployee.ReadOnly = true;
+            this.tbxEmployee.Size = new System.Drawing.Size(393, 72);
+            this.tbxEmployee.TabIndex = 21;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(67, 408);
+            this.label4.Location = new System.Drawing.Point(84, 436);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(182, 27);
-            this.label4.TabIndex = 18;
+            this.label4.TabIndex = 26;
             this.label4.Text = "NHÀ CUNG CẤP:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -353,11 +323,11 @@
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.tbxSuplier);
-            this.panel10.Location = new System.Drawing.Point(41, 420);
+            this.panel10.Location = new System.Drawing.Point(58, 448);
             this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(437, 96);
-            this.panel10.TabIndex = 17;
+            this.panel10.TabIndex = 25;
             // 
             // tbxSuplier
             // 
@@ -378,11 +348,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(67, 228);
+            this.label8.Location = new System.Drawing.Point(84, 256);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 27);
-            this.label8.TabIndex = 16;
+            this.label8.TabIndex = 24;
             this.label8.Text = "NGÀY NHẬP:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -390,11 +360,11 @@
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.tbxDate);
-            this.panel11.Location = new System.Drawing.Point(41, 240);
+            this.panel11.Location = new System.Drawing.Point(58, 268);
             this.panel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(437, 96);
-            this.panel11.TabIndex = 15;
+            this.panel11.TabIndex = 23;
             // 
             // tbxDate
             // 
@@ -415,11 +385,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(67, 50);
+            this.label9.Location = new System.Drawing.Point(84, 78);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 27);
-            this.label9.TabIndex = 14;
+            this.label9.TabIndex = 22;
             this.label9.Text = "MÃ ĐƠN:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -427,11 +397,11 @@
             // 
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Controls.Add(this.tbxID);
-            this.panel12.Location = new System.Drawing.Point(41, 62);
+            this.panel12.Location = new System.Drawing.Point(58, 90);
             this.panel12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(437, 96);
-            this.panel12.TabIndex = 13;
+            this.panel12.TabIndex = 21;
             // 
             // tbxID
             // 
@@ -448,165 +418,53 @@
             this.tbxID.Size = new System.Drawing.Size(393, 72);
             this.tbxID.TabIndex = 21;
             // 
-            // label3
+            // btnDeleteReceiptNote
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(67, 370);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 27);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "MÃ HÓA ĐƠN:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDeleteReceiptNote.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteReceiptNote.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteReceiptNote.Location = new System.Drawing.Point(388, 912);
+            this.btnDeleteReceiptNote.Name = "btnDeleteReceiptNote";
+            this.btnDeleteReceiptNote.Size = new System.Drawing.Size(143, 102);
+            this.btnDeleteReceiptNote.TabIndex = 4;
+            this.btnDeleteReceiptNote.Text = "XÓA";
+            this.btnDeleteReceiptNote.UseVisualStyleBackColor = false;
             // 
-            // panel8
+            // btnUpdateReceiptNote
             // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.textBox2);
-            this.panel8.Location = new System.Drawing.Point(41, 382);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(437, 96);
-            this.panel8.TabIndex = 17;
+            this.btnUpdateReceiptNote.BackColor = System.Drawing.Color.Gold;
+            this.btnUpdateReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateReceiptNote.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateReceiptNote.Location = new System.Drawing.Point(218, 912);
+            this.btnUpdateReceiptNote.Name = "btnUpdateReceiptNote";
+            this.btnUpdateReceiptNote.Size = new System.Drawing.Size(143, 102);
+            this.btnUpdateReceiptNote.TabIndex = 3;
+            this.btnUpdateReceiptNote.Text = "SỬA";
+            this.btnUpdateReceiptNote.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // btnAddReceiptNote
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(21, 11);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(393, 72);
-            this.textBox2.TabIndex = 21;
+            this.btnAddReceiptNote.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAddReceiptNote.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddReceiptNote.ForeColor = System.Drawing.Color.White;
+            this.btnAddReceiptNote.Location = new System.Drawing.Point(45, 912);
+            this.btnAddReceiptNote.Name = "btnAddReceiptNote";
+            this.btnAddReceiptNote.Size = new System.Drawing.Size(143, 102);
+            this.btnAddReceiptNote.TabIndex = 2;
+            this.btnAddReceiptNote.Text = "THÊM";
+            this.btnAddReceiptNote.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // dateTimePicker1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 208);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 27);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "MÃ HÓA ĐƠN:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.textBox1);
-            this.panel7.Location = new System.Drawing.Point(41, 220);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(437, 96);
-            this.panel7.TabIndex = 15;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(21, 11);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(393, 72);
-            this.textBox1.TabIndex = 21;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(67, 50);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 27);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "MÃ HÓA ĐƠN:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.tbxIDBill);
-            this.panel6.Location = new System.Drawing.Point(41, 62);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(437, 96);
-            this.panel6.TabIndex = 13;
-            // 
-            // tbxIDBill
-            // 
-            this.tbxIDBill.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxIDBill.BackColor = System.Drawing.Color.White;
-            this.tbxIDBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxIDBill.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxIDBill.ForeColor = System.Drawing.Color.Black;
-            this.tbxIDBill.Location = new System.Drawing.Point(21, 11);
-            this.tbxIDBill.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxIDBill.Multiline = true;
-            this.tbxIDBill.Name = "tbxIDBill";
-            this.tbxIDBill.ReadOnly = true;
-            this.tbxIDBill.Size = new System.Drawing.Size(393, 72);
-            this.tbxIDBill.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(67, 589);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(196, 27);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "NHÂN VIÊN NHẬP:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.tbxEmployee);
-            this.panel4.Location = new System.Drawing.Point(41, 601);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(437, 96);
-            this.panel4.TabIndex = 19;
-            // 
-            // tbxEmployee
-            // 
-            this.tbxEmployee.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxEmployee.BackColor = System.Drawing.Color.White;
-            this.tbxEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxEmployee.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxEmployee.ForeColor = System.Drawing.Color.Black;
-            this.tbxEmployee.Location = new System.Drawing.Point(21, 11);
-            this.tbxEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxEmployee.Multiline = true;
-            this.tbxEmployee.Name = "tbxEmployee";
-            this.tbxEmployee.ReadOnly = true;
-            this.tbxEmployee.Size = new System.Drawing.Size(393, 72);
-            this.tbxEmployee.TabIndex = 21;
-            // 
-            // btnViewDetail
-            // 
-            this.btnViewDetail.BackColor = System.Drawing.Color.Blue;
-            this.btnViewDetail.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewDetail.ForeColor = System.Drawing.Color.White;
-            this.btnViewDetail.Location = new System.Drawing.Point(1270, 41);
-            this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(283, 144);
-            this.btnViewDetail.TabIndex = 17;
-            this.btnViewDetail.Text = "XEM\r\nCHI TIẾT";
-            this.btnViewDetail.UseVisualStyleBackColor = false;
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.Black;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Gray;
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(225, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(760, 47);
+            this.dateTimePicker1.TabIndex = 17;
             // 
             // UCReceiptNote
             // 
@@ -621,29 +479,20 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNoteInfo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -655,7 +504,6 @@
         private System.Windows.Forms.Panel searchPanel;
         private System.Windows.Forms.ComboBox cbxSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.ComboBox cbxFilter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel5;
@@ -665,8 +513,8 @@
         private System.Windows.Forms.Button btnUpdateReceiptNote;
         private System.Windows.Forms.Button btnAddReceiptNote;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnViewDetail;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox tbxEmployee;
@@ -679,15 +527,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox tbxID;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox tbxIDBill;
-        private System.Windows.Forms.Button btnViewDetail;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
