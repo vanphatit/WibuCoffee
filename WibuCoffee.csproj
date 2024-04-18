@@ -106,12 +106,6 @@
     <Compile Include="View\UC\Manage\UCBillHistory.Designer.cs">
       <DependentUpon>UCBillHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UC\Manage\UCCustomer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UC\Manage\UCCustomer.Designer.cs">
-      <DependentUpon>UCCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\UC\Manage\UCEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,6 +147,11 @@
     </Compile>
     <Compile Include="View\UC\Manage\UCShift.Designer.cs">
       <DependentUpon>UCShift.cs</DependentUpon>
+    <Compile Include="View\UC\Manage\UCReceiptNoteDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNoteDetail.Designer.cs">
+      <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UC\Manage\UCSupplier.cs">
       <SubType>UserControl</SubType>
@@ -192,9 +191,6 @@
     <EmbeddedResource Include="View\UC\Manage\UCBillHistory.resx">
       <DependentUpon>UCBillHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UC\Manage\UCCustomer.resx">
-      <DependentUpon>UCCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCEmployee.resx">
       <DependentUpon>UCEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +211,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCShift.resx">
       <DependentUpon>UCShift.cs</DependentUpon>
+    <EmbeddedResource Include="View\UC\Manage\UCReceiptNoteDetail.resx">
+      <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCSupplier.resx">
       <DependentUpon>UCSupplier.cs</DependentUpon>
@@ -253,6 +251,8 @@
     <None Include="Assets\img\5.png" />
     <None Include="Assets\img\database-storage.png" />
     <None Include="Assets\img\left-arrow.png" />
+    <None Include="Assets\img\edit.png" />
+    <None Include="Assets\img\delete.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
@@ -260,6 +260,7 @@
     <None Include="Assets\img\table.png" />
     <None Include="Assets\img\second.png" />
     <None Include="Assets\img\third.png" />
+    <None Include="Assets\img\plus.png" />
     <Content Include="Backup\Data\Dashboard.sql" />
     <Content Include="Backup\Data\DATA.sql" />
     <Content Include="Backup\Data\Feature.sql" />

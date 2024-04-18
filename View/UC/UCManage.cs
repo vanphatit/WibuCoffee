@@ -25,7 +25,6 @@ namespace WibuCoffee.View.UC
             listButton.Add(btnProduct);
             listButton.Add(btnMaterial);
             listButton.Add(btnSupplier);
-            listButton.Add(btnCustomer);
             listButton.Add(btnReceiptNote);
             listButton.Add(btnExpenseBill);
 
@@ -37,6 +36,11 @@ namespace WibuCoffee.View.UC
 
             //set color #D9D9D9 for panel1
             panel1.BackColor = Color.FromArgb(217, 217, 217);
+
+            UCOrder ucOrder = new UCOrder();
+            ucOrder.Dock = DockStyle.Fill;
+            panel4.Controls.Clear();
+            panel4.Controls.Add(ucOrder);
         }
 
         private void customButton()
@@ -92,27 +96,6 @@ namespace WibuCoffee.View.UC
             ucEmployee.Dock = DockStyle.Fill;
             panel4.Controls.Clear();
             panel4.Controls.Add(ucEmployee);
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-            btnCustomer.BackColor = Color.FromArgb(115, 115, 115);
-            btnCustomer.ForeColor = Color.FromArgb(255, 255, 255);
-
-            //set color #D9D9D9 for other buttons
-            foreach (Button btn in listButton)
-            {
-                if (btn != btnCustomer)
-                {
-                    btn.BackColor = Color.FromArgb(217, 217, 217);
-                    btn.ForeColor = Color.FromArgb(0, 0, 0);
-                }
-            }
-
-            UCCustomer ucCustomer = new UCCustomer();
-            ucCustomer.Dock = DockStyle.Fill;
-            panel4.Controls.Clear();
-            panel4.Controls.Add(ucCustomer);
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
