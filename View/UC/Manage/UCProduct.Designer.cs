@@ -66,7 +66,6 @@
             this.lbBillInfo = new System.Windows.Forms.Label();
             this.pBillInfo = new System.Windows.Forms.Panel();
             this.pTable = new System.Windows.Forms.Panel();
-            this.btnDeleteCategory = new System.Windows.Forms.PictureBox();
             this.btnEditCategory = new System.Windows.Forms.PictureBox();
             this.btnAddCategory = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -103,7 +102,6 @@
             this.pListTable.SuspendLayout();
             this.pBillInfo.SuspendLayout();
             this.pTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddCategory)).BeginInit();
             this.panel10.SuspendLayout();
@@ -446,7 +444,6 @@
             // 
             this.pTable.AutoScroll = true;
             this.pTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pTable.Controls.Add(this.btnDeleteCategory);
             this.pTable.Controls.Add(this.btnEditCategory);
             this.pTable.Controls.Add(this.btnAddCategory);
             this.pTable.Controls.Add(this.label2);
@@ -459,21 +456,10 @@
             this.pTable.Size = new System.Drawing.Size(577, 284);
             this.pTable.TabIndex = 0;
             // 
-            // btnDeleteCategory
-            // 
-            this.btnDeleteCategory.Image = global::WibuCoffee.Properties.Resources.delete;
-            this.btnDeleteCategory.Location = new System.Drawing.Point(496, 201);
-            this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(62, 62);
-            this.btnDeleteCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnDeleteCategory.TabIndex = 27;
-            this.btnDeleteCategory.TabStop = false;
-            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
-            // 
             // btnEditCategory
             // 
             this.btnEditCategory.Image = global::WibuCoffee.Properties.Resources.edit;
-            this.btnEditCategory.Location = new System.Drawing.Point(411, 201);
+            this.btnEditCategory.Location = new System.Drawing.Point(454, 201);
             this.btnEditCategory.Name = "btnEditCategory";
             this.btnEditCategory.Size = new System.Drawing.Size(62, 62);
             this.btnEditCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -484,7 +470,7 @@
             // btnAddCategory
             // 
             this.btnAddCategory.Image = global::WibuCoffee.Properties.Resources.plus;
-            this.btnAddCategory.Location = new System.Drawing.Point(325, 201);
+            this.btnAddCategory.Location = new System.Drawing.Point(368, 201);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(62, 62);
             this.btnAddCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -831,7 +817,6 @@
             this.pBillInfo.ResumeLayout(false);
             this.pTable.ResumeLayout(false);
             this.pTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddCategory)).EndInit();
             this.panel10.ResumeLayout(false);
@@ -890,7 +875,6 @@
         private System.Windows.Forms.TextBox tbxIDCate;
         private System.Windows.Forms.PictureBox btnAddCategory;
         private System.Windows.Forms.PictureBox btnEditCategory;
-        private System.Windows.Forms.PictureBox btnDeleteCategory;
         private System.Windows.Forms.PictureBox btnDeleteProduct;
         private System.Windows.Forms.PictureBox btnEditProduct;
         private System.Windows.Forms.PictureBox btnAddProduct;
