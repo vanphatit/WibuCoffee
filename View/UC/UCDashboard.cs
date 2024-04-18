@@ -234,7 +234,7 @@ namespace WibuCoffee.View.UC
                     else
                     {
                         // Set the location of the lbIncomeChart[i] to the top of the btnIncomeChart[i]
-                        lbIncomeChart[i].Top = btnIncomeChart[i].Top + lbIncomeChart[i].Height + 20;
+                        lbIncomeChart[i].Top = btnIncomeChart[i].Top - lbIncomeChart[i].Height;
                         lbIncomeChart[i].Text = ((int)(total / 100)).ToString() + "k";
                     }
                 }

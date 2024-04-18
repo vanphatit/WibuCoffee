@@ -106,12 +106,6 @@
     <Compile Include="View\UC\Manage\UCBillHistory.Designer.cs">
       <DependentUpon>UCBillHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UC\Manage\UCCustomer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UC\Manage\UCCustomer.Designer.cs">
-      <DependentUpon>UCCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\UC\Manage\UCEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,9 +185,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCBillHistory.resx">
       <DependentUpon>UCBillHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UC\Manage\UCCustomer.resx">
-      <DependentUpon>UCCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCEmployee.resx">
       <DependentUpon>UCEmployee.cs</DependentUpon>
