@@ -212,7 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCShift.resx">
       <DependentUpon>UCShift.cs</DependentUpon>
+
 	</EmbeddedResource>
+
     <EmbeddedResource Include="View\UC\Manage\UCReceiptNoteDetail.resx">
       <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>
     </EmbeddedResource>
