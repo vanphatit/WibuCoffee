@@ -148,6 +148,12 @@
     <Compile Include="View\UC\Manage\UCReceiptNote.Designer.cs">
       <DependentUpon>UCReceiptNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC\Manage\UCShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCShift.Designer.cs">
+      <DependentUpon>UCShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC\Manage\UCSupplier.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCReceiptNote.resx">
       <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCShift.resx">
+      <DependentUpon>UCShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCSupplier.resx">
       <DependentUpon>UCSupplier.cs</DependentUpon>

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainOrderPanel = new System.Windows.Forms.Panel();
             this.pButton = new System.Windows.Forms.Panel();
             this.btnNewBill = new System.Windows.Forms.Button();
@@ -57,7 +57,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,8 +64,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.cbxEmp = new System.Windows.Forms.ComboBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.tbxQuantity = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tbxCustomerName = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -82,6 +79,12 @@
             this.pListTable = new System.Windows.Forms.Panel();
             this.lbTable = new System.Windows.Forms.Label();
             this.pTable = new System.Windows.Forms.Panel();
+            this.tbxQuantity = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.tbxAvai = new System.Windows.Forms.TextBox();
             this.mainOrderPanel.SuspendLayout();
             this.pButton.SuspendLayout();
             this.pBillDetail.SuspendLayout();
@@ -89,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillInfo)).BeginInit();
             this.pBill.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -97,6 +99,8 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pListTable.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainOrderPanel
@@ -339,43 +343,43 @@
             this.dgvBillInfo.AllowUserToDeleteRows = false;
             this.dgvBillInfo.AllowUserToResizeColumns = false;
             this.dgvBillInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvBillInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvBillInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBillInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBillInfo.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBillInfo.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBillInfo.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBillInfo.GridColor = System.Drawing.Color.Black;
             this.dgvBillInfo.Location = new System.Drawing.Point(34, 27);
             this.dgvBillInfo.Name = "dgvBillInfo";
             this.dgvBillInfo.RowHeadersVisible = false;
             this.dgvBillInfo.RowHeadersWidth = 50;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvBillInfo.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBillInfo.RowTemplate.Height = 24;
             this.dgvBillInfo.Size = new System.Drawing.Size(735, 197);
             this.dgvBillInfo.TabIndex = 0;
@@ -384,6 +388,8 @@
             // pBill
             // 
             this.pBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pBill.Controls.Add(this.label1);
+            this.pBill.Controls.Add(this.panel9);
             this.pBill.Controls.Add(this.btdAddCus);
             this.pBill.Controls.Add(this.label11);
             this.pBill.Controls.Add(this.label10);
@@ -452,17 +458,6 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "TÊN SẢN PHẨM:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(304, 191);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "SỐ LƯỢNG:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -540,28 +535,6 @@
             this.cbxEmp.Size = new System.Drawing.Size(202, 34);
             this.cbxEmp.TabIndex = 2;
             this.cbxEmp.Text = "Tên nhân viên";
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.tbxQuantity);
-            this.panel8.Location = new System.Drawing.Point(287, 200);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(233, 62);
-            this.panel8.TabIndex = 1;
-            // 
-            // tbxQuantity
-            // 
-            this.tbxQuantity.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxQuantity.BackColor = System.Drawing.Color.White;
-            this.tbxQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxQuantity.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxQuantity.ForeColor = System.Drawing.Color.Black;
-            this.tbxQuantity.Location = new System.Drawing.Point(14, 7);
-            this.tbxQuantity.Multiline = true;
-            this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(202, 46);
-            this.tbxQuantity.TabIndex = 25;
             // 
             // panel4
             // 
@@ -650,6 +623,7 @@
             this.cbxProduct.Size = new System.Drawing.Size(202, 34);
             this.cbxProduct.TabIndex = 0;
             this.cbxProduct.Text = "Tên sản phẩm";
+            this.cbxProduct.SelectedIndexChanged += new System.EventHandler(this.cbxProduct_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -723,6 +697,73 @@
             this.pTable.Size = new System.Drawing.Size(357, 615);
             this.pTable.TabIndex = 0;
             // 
+            // tbxQuantity
+            // 
+            this.tbxQuantity.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxQuantity.BackColor = System.Drawing.Color.White;
+            this.tbxQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxQuantity.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxQuantity.ForeColor = System.Drawing.Color.Black;
+            this.tbxQuantity.Location = new System.Drawing.Point(13, 13);
+            this.tbxQuantity.Multiline = true;
+            this.tbxQuantity.Name = "tbxQuantity";
+            this.tbxQuantity.Size = new System.Drawing.Size(81, 34);
+            this.tbxQuantity.TabIndex = 25;
+            // 
+            // panel8
+            // 
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.tbxQuantity);
+            this.panel8.Location = new System.Drawing.Point(409, 200);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(111, 62);
+            this.panel8.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(413, 191);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "SỐ LƯỢNG:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(305, 191);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "KHẢ DỤNG:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel9
+            // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.tbxAvai);
+            this.panel9.Location = new System.Drawing.Point(287, 200);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(116, 62);
+            this.panel9.TabIndex = 21;
+            // 
+            // tbxAvai
+            // 
+            this.tbxAvai.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxAvai.BackColor = System.Drawing.Color.White;
+            this.tbxAvai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxAvai.Enabled = false;
+            this.tbxAvai.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxAvai.ForeColor = System.Drawing.Color.Black;
+            this.tbxAvai.Location = new System.Drawing.Point(19, 13);
+            this.tbxAvai.Multiline = true;
+            this.tbxAvai.Name = "tbxAvai";
+            this.tbxAvai.Size = new System.Drawing.Size(81, 34);
+            this.tbxAvai.TabIndex = 25;
+            // 
             // UCOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -741,8 +782,6 @@
             this.pBill.ResumeLayout(false);
             this.pBill.PerformLayout();
             this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -755,6 +794,10 @@
             this.panel1.ResumeLayout(false);
             this.pListTable.ResumeLayout(false);
             this.pListTable.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -789,7 +832,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
@@ -799,9 +841,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbxQuantity;
         private System.Windows.Forms.TextBox tbxCustomerName;
         private System.Windows.Forms.TextBox tbxIDBill;
         private System.Windows.Forms.TextBox tbxPhone;
@@ -811,5 +851,11 @@
         private System.Windows.Forms.ComboBox cbxEmp;
         private System.Windows.Forms.Button btdAddCus;
         private System.Windows.Forms.Button btnNewBill;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox tbxAvai;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox tbxQuantity;
     }
 }
