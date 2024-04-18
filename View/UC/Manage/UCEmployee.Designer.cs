@@ -30,21 +30,34 @@
         {
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.lbSearch = new System.Windows.Forms.Label();
+            this.searchPanel = new System.Windows.Forms.Panel();
+            this.cbxSearch = new System.Windows.Forms.ComboBox();
+            this.dtpSearch = new System.Windows.Forms.DateTimePicker();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cbxFilter = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pEmpShift = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.lbBill = new System.Windows.Forms.Label();
             this.pEmpInfo = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.cbxCateEmp = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.cbxJob = new System.Windows.Forms.ComboBox();
             this.btnShift = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxEmpName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.dtpRecruitment = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbxPhone = new System.Windows.Forms.TextBox();
@@ -53,6 +66,7 @@
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dtpBirth = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.tbxNumberOfShift = new System.Windows.Forms.TextBox();
@@ -66,34 +80,23 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tbxIDEmp = new System.Windows.Forms.TextBox();
             this.pSalary = new System.Windows.Forms.Panel();
+            this.btnChange = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.tbxNewSalary = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.tbxCurentSalary = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.lbSearch = new System.Windows.Forms.Label();
-            this.searchPanel = new System.Windows.Forms.Panel();
-            this.cbxSearch = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.cbxFilter = new System.Windows.Forms.ComboBox();
-            this.pEmpShift = new System.Windows.Forms.Panel();
-            this.btnChange = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbxJob = new System.Windows.Forms.ComboBox();
-            this.tbxCurentSalary = new System.Windows.Forms.TextBox();
             this.cbxJobDetail = new System.Windows.Forms.ComboBox();
-            this.dtpBirth = new System.Windows.Forms.DateTimePicker();
-            this.dtpRecruitment = new System.Windows.Forms.DateTimePicker();
-            this.cbxCateEmp = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnReload = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.searchPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pEmpInfo.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -108,8 +111,6 @@
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
-            this.searchPanel.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -128,14 +129,111 @@
             // panel14
             // 
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.label12);
-            this.panel14.Controls.Add(this.pEmpShift);
             this.panel14.Controls.Add(this.lbSearch);
             this.panel14.Controls.Add(this.searchPanel);
+            this.panel14.Controls.Add(this.label12);
+            this.panel14.Controls.Add(this.pEmpShift);
             this.panel14.Location = new System.Drawing.Point(768, 18);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(700, 694);
             this.panel14.TabIndex = 1;
+            // 
+            // lbSearch
+            // 
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearch.Location = new System.Drawing.Point(33, 11);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(91, 22);
+            this.lbSearch.TabIndex = 19;
+            this.lbSearch.Text = "TÌM KIẾM:";
+            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchPanel
+            // 
+            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchPanel.Controls.Add(this.cbxSearch);
+            this.searchPanel.Controls.Add(this.dtpSearch);
+            this.searchPanel.Controls.Add(this.btnSearch);
+            this.searchPanel.Controls.Add(this.cbxFilter);
+            this.searchPanel.Location = new System.Drawing.Point(16, 22);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Size = new System.Drawing.Size(660, 60);
+            this.searchPanel.TabIndex = 18;
+            // 
+            // cbxSearch
+            // 
+            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxSearch.BackColor = System.Drawing.Color.White;
+            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Location = new System.Drawing.Point(187, 11);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(331, 34);
+            this.cbxSearch.TabIndex = 16;
+            this.cbxSearch.Text = "TÌM KIẾM";
+            this.cbxSearch.Visible = false;
+            // 
+            // dtpSearch
+            // 
+            this.dtpSearch.CalendarFont = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSearch.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtpSearch.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpSearch.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.dtpSearch.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dtpSearch.CalendarTrailingForeColor = System.Drawing.Color.White;
+            this.dtpSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpSearch.CustomFormat = "yyyy/MM/dd";
+            this.dtpSearch.Location = new System.Drawing.Point(187, 11);
+            this.dtpSearch.Name = "dtpSearch";
+            this.dtpSearch.Size = new System.Drawing.Size(331, 32);
+            this.dtpSearch.TabIndex = 24;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.LightGray;
+            this.btnSearch.Location = new System.Drawing.Point(524, 7);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(125, 40);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.Text = "TÌM";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // cbxFilter
+            // 
+            this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxFilter.BackColor = System.Drawing.Color.White;
+            this.cbxFilter.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFilter.ForeColor = System.Drawing.Color.Black;
+            this.cbxFilter.FormattingEnabled = true;
+            this.cbxFilter.Location = new System.Drawing.Point(10, 11);
+            this.cbxFilter.Name = "cbxFilter";
+            this.cbxFilter.Size = new System.Drawing.Size(171, 34);
+            this.cbxFilter.TabIndex = 15;
+            this.cbxFilter.Text = "LỌC";
+            this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged_1);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(33, 104);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(228, 22);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "BẢNG LƯƠNG NHÂN VIÊN:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pEmpShift
+            // 
+            this.pEmpShift.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pEmpShift.Location = new System.Drawing.Point(16, 117);
+            this.pEmpShift.Name = "pEmpShift";
+            this.pEmpShift.Padding = new System.Windows.Forms.Padding(20);
+            this.pEmpShift.Size = new System.Drawing.Size(660, 555);
+            this.pEmpShift.TabIndex = 17;
             // 
             // panel1
             // 
@@ -205,6 +303,67 @@
             this.pEmpInfo.Size = new System.Drawing.Size(682, 460);
             this.pEmpInfo.TabIndex = 0;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(177, 17);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(117, 17);
+            this.label16.TabIndex = 44;
+            this.label16.Text = "KIỂU NHÂN VIÊN:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel12
+            // 
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Controls.Add(this.cbxCateEmp);
+            this.panel12.Location = new System.Drawing.Point(166, 25);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(153, 62);
+            this.panel12.TabIndex = 43;
+            // 
+            // cbxCateEmp
+            // 
+            this.cbxCateEmp.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxCateEmp.FormattingEnabled = true;
+            this.cbxCateEmp.Location = new System.Drawing.Point(5, 15);
+            this.cbxCateEmp.Name = "cbxCateEmp";
+            this.cbxCateEmp.Size = new System.Drawing.Size(143, 30);
+            this.cbxCateEmp.TabIndex = 22;
+            this.cbxCateEmp.Text = "Fulltime";
+            this.cbxCateEmp.SelectedIndexChanged += new System.EventHandler(this.cbxCateEmp_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(37, 270);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(87, 17);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "CÔNG VIỆC:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.cbxJob);
+            this.panel11.Location = new System.Drawing.Point(18, 277);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(303, 62);
+            this.panel11.TabIndex = 30;
+            // 
+            // cbxJob
+            // 
+            this.cbxJob.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxJob.FormattingEnabled = true;
+            this.cbxJob.Location = new System.Drawing.Point(3, 13);
+            this.cbxJob.Name = "cbxJob";
+            this.cbxJob.Size = new System.Drawing.Size(293, 30);
+            this.cbxJob.TabIndex = 0;
+            this.cbxJob.Text = "Công việc";
+            // 
             // btnShift
             // 
             this.btnShift.BackColor = System.Drawing.Color.DodgerBlue;
@@ -216,6 +375,7 @@
             this.btnShift.TabIndex = 22;
             this.btnShift.Text = "LỊCH TRỰC";
             this.btnShift.UseVisualStyleBackColor = false;
+            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
             // 
             // btnDelete
             // 
@@ -228,6 +388,7 @@
             this.btnDelete.TabIndex = 42;
             this.btnDelete.Text = "XÓA";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -240,17 +401,7 @@
             this.btnUpdate.TabIndex = 41;
             this.btnUpdate.Text = "SỬA";
             this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(37, 270);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 17);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "CÔNG VIỆC:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -275,15 +426,6 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "TÊN NHÂN VIÊN:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel11
-            // 
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.cbxJob);
-            this.panel11.Location = new System.Drawing.Point(18, 277);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(303, 62);
-            this.panel11.TabIndex = 30;
             // 
             // panel2
             // 
@@ -326,6 +468,21 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(301, 62);
             this.panel7.TabIndex = 36;
+            // 
+            // dtpRecruitment
+            // 
+            this.dtpRecruitment.CalendarFont = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRecruitment.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtpRecruitment.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpRecruitment.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.dtpRecruitment.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dtpRecruitment.CalendarTrailingForeColor = System.Drawing.Color.White;
+            this.dtpRecruitment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpRecruitment.CustomFormat = "yyyy/MM/dd";
+            this.dtpRecruitment.Location = new System.Drawing.Point(11, 14);
+            this.dtpRecruitment.Name = "dtpRecruitment";
+            this.dtpRecruitment.Size = new System.Drawing.Size(277, 32);
+            this.dtpRecruitment.TabIndex = 24;
             // 
             // label4
             // 
@@ -412,6 +569,21 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(301, 62);
             this.panel3.TabIndex = 32;
+            // 
+            // dtpBirth
+            // 
+            this.dtpBirth.CalendarFont = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBirth.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtpBirth.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpBirth.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.dtpBirth.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.dtpBirth.CalendarTrailingForeColor = System.Drawing.Color.White;
+            this.dtpBirth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpBirth.CustomFormat = "yyyy/MM/dd";
+            this.dtpBirth.Location = new System.Drawing.Point(10, 11);
+            this.dtpBirth.Name = "dtpBirth";
+            this.dtpBirth.Size = new System.Drawing.Size(284, 32);
+            this.dtpBirth.TabIndex = 23;
             // 
             // label9
             // 
@@ -549,6 +721,7 @@
             // pSalary
             // 
             this.pSalary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pSalary.Controls.Add(this.btnReload);
             this.pSalary.Controls.Add(this.btnChange);
             this.pSalary.Controls.Add(this.label15);
             this.pSalary.Controls.Add(this.panel17);
@@ -560,6 +733,19 @@
             this.pSalary.Name = "pSalary";
             this.pSalary.Size = new System.Drawing.Size(682, 152);
             this.pSalary.TabIndex = 34;
+            // 
+            // btnChange
+            // 
+            this.btnChange.BackColor = System.Drawing.Color.Gold;
+            this.btnChange.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChange.ForeColor = System.Drawing.Color.White;
+            this.btnChange.Location = new System.Drawing.Point(485, 83);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(169, 62);
+            this.btnChange.TabIndex = 42;
+            this.btnChange.Text = "ĐIỀU CHỈNH";
+            this.btnChange.UseVisualStyleBackColor = false;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // label15
             // 
@@ -591,7 +777,6 @@
             this.tbxNewSalary.Location = new System.Drawing.Point(12, 14);
             this.tbxNewSalary.Multiline = true;
             this.tbxNewSalary.Name = "tbxNewSalary";
-            this.tbxNewSalary.ReadOnly = true;
             this.tbxNewSalary.Size = new System.Drawing.Size(138, 33);
             this.tbxNewSalary.TabIndex = 21;
             // 
@@ -615,6 +800,21 @@
             this.panel16.Size = new System.Drawing.Size(165, 62);
             this.panel16.TabIndex = 34;
             // 
+            // tbxCurentSalary
+            // 
+            this.tbxCurentSalary.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxCurentSalary.BackColor = System.Drawing.Color.White;
+            this.tbxCurentSalary.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxCurentSalary.Enabled = false;
+            this.tbxCurentSalary.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCurentSalary.ForeColor = System.Drawing.Color.Black;
+            this.tbxCurentSalary.Location = new System.Drawing.Point(12, 14);
+            this.tbxCurentSalary.Multiline = true;
+            this.tbxCurentSalary.Name = "tbxCurentSalary";
+            this.tbxCurentSalary.ReadOnly = true;
+            this.tbxCurentSalary.Size = new System.Drawing.Size(134, 33);
+            this.tbxCurentSalary.TabIndex = 21;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -635,137 +835,6 @@
             this.panel15.Size = new System.Drawing.Size(281, 62);
             this.panel15.TabIndex = 32;
             // 
-            // lbSearch
-            // 
-            this.lbSearch.AutoSize = true;
-            this.lbSearch.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSearch.Location = new System.Drawing.Point(33, 11);
-            this.lbSearch.Name = "lbSearch";
-            this.lbSearch.Size = new System.Drawing.Size(91, 22);
-            this.lbSearch.TabIndex = 16;
-            this.lbSearch.Text = "TÌM KIẾM:";
-            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // searchPanel
-            // 
-            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchPanel.Controls.Add(this.cbxSearch);
-            this.searchPanel.Controls.Add(this.btnSearch);
-            this.searchPanel.Controls.Add(this.tbxSearch);
-            this.searchPanel.Controls.Add(this.cbxFilter);
-            this.searchPanel.Location = new System.Drawing.Point(16, 22);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(660, 60);
-            this.searchPanel.TabIndex = 15;
-            // 
-            // cbxSearch
-            // 
-            this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxSearch.BackColor = System.Drawing.Color.White;
-            this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(166, 11);
-            this.cbxSearch.Name = "cbxSearch";
-            this.cbxSearch.Size = new System.Drawing.Size(346, 34);
-            this.cbxSearch.TabIndex = 16;
-            this.cbxSearch.Text = "TÌM KIẾM";
-            this.cbxSearch.Visible = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.LightGray;
-            this.btnSearch.Location = new System.Drawing.Point(518, 7);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(125, 40);
-            this.btnSearch.TabIndex = 15;
-            this.btnSearch.Text = "TÌM";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxSearch.BackColor = System.Drawing.Color.White;
-            this.tbxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSearch.ForeColor = System.Drawing.Color.Black;
-            this.tbxSearch.Location = new System.Drawing.Point(166, 11);
-            this.tbxSearch.Multiline = true;
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(346, 34);
-            this.tbxSearch.TabIndex = 15;
-            this.tbxSearch.Text = "TÌM KIẾM";
-            // 
-            // cbxFilter
-            // 
-            this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbxFilter.BackColor = System.Drawing.Color.White;
-            this.cbxFilter.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxFilter.ForeColor = System.Drawing.Color.Black;
-            this.cbxFilter.FormattingEnabled = true;
-            this.cbxFilter.Location = new System.Drawing.Point(10, 11);
-            this.cbxFilter.Name = "cbxFilter";
-            this.cbxFilter.Size = new System.Drawing.Size(150, 34);
-            this.cbxFilter.TabIndex = 15;
-            this.cbxFilter.Text = "LỌC";
-            this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
-            // 
-            // pEmpShift
-            // 
-            this.pEmpShift.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pEmpShift.Location = new System.Drawing.Point(16, 117);
-            this.pEmpShift.Name = "pEmpShift";
-            this.pEmpShift.Padding = new System.Windows.Forms.Padding(20);
-            this.pEmpShift.Size = new System.Drawing.Size(660, 555);
-            this.pEmpShift.TabIndex = 17;
-            // 
-            // btnChange
-            // 
-            this.btnChange.BackColor = System.Drawing.Color.Gold;
-            this.btnChange.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChange.ForeColor = System.Drawing.Color.White;
-            this.btnChange.Location = new System.Drawing.Point(485, 83);
-            this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(169, 62);
-            this.btnChange.TabIndex = 42;
-            this.btnChange.Text = "ĐIỀU CHỈNH";
-            this.btnChange.UseVisualStyleBackColor = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(33, 104);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(228, 22);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "BẢNG LƯƠNG NHÂN VIÊN:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cbxJob
-            // 
-            this.cbxJob.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxJob.FormattingEnabled = true;
-            this.cbxJob.Location = new System.Drawing.Point(3, 13);
-            this.cbxJob.Name = "cbxJob";
-            this.cbxJob.Size = new System.Drawing.Size(293, 30);
-            this.cbxJob.TabIndex = 0;
-            this.cbxJob.Text = "Công việc";
-            // 
-            // tbxCurentSalary
-            // 
-            this.tbxCurentSalary.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxCurentSalary.BackColor = System.Drawing.Color.White;
-            this.tbxCurentSalary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxCurentSalary.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxCurentSalary.ForeColor = System.Drawing.Color.Black;
-            this.tbxCurentSalary.Location = new System.Drawing.Point(12, 14);
-            this.tbxCurentSalary.Multiline = true;
-            this.tbxCurentSalary.Name = "tbxCurentSalary";
-            this.tbxCurentSalary.ReadOnly = true;
-            this.tbxCurentSalary.Size = new System.Drawing.Size(134, 33);
-            this.tbxCurentSalary.TabIndex = 21;
-            // 
             // cbxJobDetail
             // 
             this.cbxJobDetail.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -775,67 +844,20 @@
             this.cbxJobDetail.Size = new System.Drawing.Size(269, 30);
             this.cbxJobDetail.TabIndex = 1;
             this.cbxJobDetail.Text = "Công việc";
+            this.cbxJobDetail.SelectedIndexChanged += new System.EventHandler(this.cbxJobDetail_SelectedIndexChanged);
             // 
-            // dtpBirth
+            // btnReload
             // 
-            this.dtpBirth.CalendarFont = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBirth.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtpBirth.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dtpBirth.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
-            this.dtpBirth.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.dtpBirth.CalendarTrailingForeColor = System.Drawing.Color.White;
-            this.dtpBirth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dtpBirth.CustomFormat = "yyyy/MM/dd";
-            this.dtpBirth.Location = new System.Drawing.Point(10, 11);
-            this.dtpBirth.Name = "dtpBirth";
-            this.dtpBirth.Size = new System.Drawing.Size(284, 32);
-            this.dtpBirth.TabIndex = 23;
-            // 
-            // dtpRecruitment
-            // 
-            this.dtpRecruitment.CalendarFont = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpRecruitment.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtpRecruitment.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dtpRecruitment.CalendarTitleBackColor = System.Drawing.Color.DeepSkyBlue;
-            this.dtpRecruitment.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.dtpRecruitment.CalendarTrailingForeColor = System.Drawing.Color.White;
-            this.dtpRecruitment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dtpRecruitment.CustomFormat = "yyyy/MM/dd";
-            this.dtpRecruitment.Location = new System.Drawing.Point(11, 14);
-            this.dtpRecruitment.Name = "dtpRecruitment";
-            this.dtpRecruitment.Size = new System.Drawing.Size(277, 32);
-            this.dtpRecruitment.TabIndex = 24;
-            // 
-            // cbxCateEmp
-            // 
-            this.cbxCateEmp.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxCateEmp.FormattingEnabled = true;
-            this.cbxCateEmp.Location = new System.Drawing.Point(5, 15);
-            this.cbxCateEmp.Name = "cbxCateEmp";
-            this.cbxCateEmp.Size = new System.Drawing.Size(143, 30);
-            this.cbxCateEmp.TabIndex = 22;
-            this.cbxCateEmp.Text = "Fulltime";
-            this.cbxCateEmp.SelectedIndexChanged += new System.EventHandler(this.cbxCateEmp_SelectedIndexChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(177, 17);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(117, 17);
-            this.label16.TabIndex = 44;
-            this.label16.Text = "KIỂU NHÂN VIÊN:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel12
-            // 
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.cbxCateEmp);
-            this.panel12.Location = new System.Drawing.Point(166, 25);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(153, 62);
-            this.panel12.TabIndex = 43;
+            this.btnReload.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnReload.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.ForeColor = System.Drawing.Color.White;
+            this.btnReload.Location = new System.Drawing.Point(313, 80);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(165, 65);
+            this.btnReload.TabIndex = 45;
+            this.btnReload.Text = "LÀM MỚI";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // UCEmployee
             // 
@@ -843,14 +865,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainPanel);
             this.Name = "UCEmployee";
-            this.Size = new System.Drawing.Size(1499, 730);
+            this.Size = new System.Drawing.Size(1507, 730);
             this.mainPanel.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
+            this.searchPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pEmpInfo.ResumeLayout(false);
             this.pEmpInfo.PerformLayout();
+            this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -875,9 +899,6 @@
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.panel15.ResumeLayout(false);
-            this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
-            this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -930,12 +951,6 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel pEmpShift;
-        private System.Windows.Forms.Label lbSearch;
-        private System.Windows.Forms.Panel searchPanel;
-        private System.Windows.Forms.ComboBox cbxSearch;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox tbxSearch;
-        private System.Windows.Forms.ComboBox cbxFilter;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbxJob;
@@ -946,5 +961,12 @@
         private System.Windows.Forms.ComboBox cbxCateEmp;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.Panel searchPanel;
+        private System.Windows.Forms.ComboBox cbxSearch;
+        private System.Windows.Forms.DateTimePicker dtpSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cbxFilter;
+        private System.Windows.Forms.Button btnReload;
     }
 }
