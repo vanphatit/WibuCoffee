@@ -478,6 +478,11 @@ namespace WibuCoffee.View.UC.Manage
                     if (DataProvider.Instance.ExecuteNonQuery("EXEC updateBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
                     {
                         MessageBox.Show("Cập nhật sản phẩm thành công");
+                        tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật sản phẩm thất bại");
                     }
                 }
                 catch (SqlException ev)
@@ -498,12 +503,18 @@ namespace WibuCoffee.View.UC.Manage
         {
             string billID = tbxIDBill.Text;
             string productName = cbxProduct.Text;
+            int quantity = Convert.ToInt32(tbxQuantity.Text);
 
             try
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName ", new object[] { billID, productName }) > 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
                 {
                     MessageBox.Show("Xóa sản phẩm thành công");
+                    tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa sản phẩm thất bại");
                 }
             }
             catch (SqlException ev)
