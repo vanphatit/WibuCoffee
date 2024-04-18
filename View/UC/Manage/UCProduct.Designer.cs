@@ -40,14 +40,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvBillInfo = new System.Windows.Forms.DataGridView();
+            this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.lbTable = new System.Windows.Forms.Label();
             this.pBill = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteProduct = new System.Windows.Forms.PictureBox();
+            this.btnEditProduct = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btn = new System.Windows.Forms.PictureBox();
+            this.btnAddProduct = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,41 +60,41 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxPriceProduct = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbxProductCategories = new System.Windows.Forms.ComboBox();
+            this.cbbProductCategories = new System.Windows.Forms.ComboBox();
             this.pListTable = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.lbBillInfo = new System.Windows.Forms.Label();
             this.pBillInfo = new System.Windows.Forms.Panel();
             this.pTable = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteCategory = new System.Windows.Forms.PictureBox();
+            this.btnEditCategory = new System.Windows.Forms.PictureBox();
+            this.btnAddCategory = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxNameCate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbxIDCate = new System.Windows.Forms.TextBox();
+            this.dgvProductCategory = new System.Windows.Forms.DataGridView();
             this.mainOrderPanel = new System.Windows.Forms.Panel();
             this.pBillDetail = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteMaterial = new System.Windows.Forms.PictureBox();
+            this.btnEditMaterial = new System.Windows.Forms.PictureBox();
+            this.btnAddMaterial = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txbMaterialCount = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.cbbMaterialName = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBillInfo)).BeginInit();
+            this.dgvMaterialProduct = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.pBill.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddProduct)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -103,38 +103,38 @@
             this.pListTable.SuspendLayout();
             this.pBillInfo.SuspendLayout();
             this.pTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategory)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategory)).BeginInit();
             this.mainOrderPanel.SuspendLayout();
             this.pBillDetail.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditMaterial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddMaterial)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialProduct)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvBillInfo
+            // dgvProduct
             // 
-            this.dgvBillInfo.AllowUserToAddRows = false;
-            this.dgvBillInfo.AllowUserToDeleteRows = false;
-            this.dgvBillInfo.AllowUserToResizeColumns = false;
-            this.dgvBillInfo.AllowUserToResizeRows = false;
+            this.dgvProduct.AllowUserToAddRows = false;
+            this.dgvProduct.AllowUserToDeleteRows = false;
+            this.dgvProduct.AllowUserToResizeColumns = false;
+            this.dgvProduct.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBillInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dgvBillInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBillInfo.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProduct.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProduct.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -142,8 +142,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBillInfo.ColumnHeadersHeight = 35;
+            this.dgvProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProduct.ColumnHeadersHeight = 35;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,21 +151,22 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBillInfo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvBillInfo.GridColor = System.Drawing.Color.Black;
-            this.dgvBillInfo.Location = new System.Drawing.Point(32, 24);
-            this.dgvBillInfo.Name = "dgvBillInfo";
-            this.dgvBillInfo.RowHeadersVisible = false;
-            this.dgvBillInfo.RowHeadersWidth = 50;
+            this.dgvProduct.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProduct.GridColor = System.Drawing.Color.Black;
+            this.dgvProduct.Location = new System.Drawing.Point(34, 34);
+            this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.RowHeadersVisible = false;
+            this.dgvProduct.RowHeadersWidth = 50;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvBillInfo.RowTemplate.Height = 24;
-            this.dgvBillInfo.Size = new System.Drawing.Size(735, 368);
-            this.dgvBillInfo.TabIndex = 0;
+            this.dgvProduct.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvProduct.RowTemplate.Height = 24;
+            this.dgvProduct.Size = new System.Drawing.Size(735, 328);
+            this.dgvProduct.TabIndex = 0;
+            this.dgvProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
             // 
             // label11
             // 
@@ -192,11 +193,11 @@
             // pBill
             // 
             this.pBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBill.Controls.Add(this.pictureBox4);
+            this.pBill.Controls.Add(this.btnDeleteProduct);
             this.pBill.Controls.Add(this.label11);
-            this.pBill.Controls.Add(this.pictureBox5);
+            this.pBill.Controls.Add(this.btnEditProduct);
             this.pBill.Controls.Add(this.label8);
-            this.pBill.Controls.Add(this.btn);
+            this.pBill.Controls.Add(this.btnAddProduct);
             this.pBill.Controls.Add(this.label6);
             this.pBill.Controls.Add(this.label5);
             this.pBill.Controls.Add(this.label4);
@@ -210,25 +211,27 @@
             this.pBill.Size = new System.Drawing.Size(800, 198);
             this.pBill.TabIndex = 1;
             // 
-            // pictureBox4
+            // btnDeleteProduct
             // 
-            this.pictureBox4.Image = global::WibuCoffee.Properties.Resources.delete;
-            this.pictureBox4.Location = new System.Drawing.Point(717, 116);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(65, 62);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 30;
-            this.pictureBox4.TabStop = false;
+            this.btnDeleteProduct.Image = global::WibuCoffee.Properties.Resources.delete;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(717, 116);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(65, 62);
+            this.btnDeleteProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnDeleteProduct.TabIndex = 30;
+            this.btnDeleteProduct.TabStop = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
-            // pictureBox5
+            // btnEditProduct
             // 
-            this.pictureBox5.Image = global::WibuCoffee.Properties.Resources.edit;
-            this.pictureBox5.Location = new System.Drawing.Point(632, 116);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(65, 62);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 29;
-            this.pictureBox5.TabStop = false;
+            this.btnEditProduct.Image = global::WibuCoffee.Properties.Resources.edit;
+            this.btnEditProduct.Location = new System.Drawing.Point(632, 116);
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.Size = new System.Drawing.Size(65, 62);
+            this.btnEditProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEditProduct.TabIndex = 29;
+            this.btnEditProduct.TabStop = false;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // label8
             // 
@@ -241,15 +244,16 @@
             this.label8.Text = "TRẠNG THÁI:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn
+            // btnAddProduct
             // 
-            this.btn.Image = global::WibuCoffee.Properties.Resources.plus;
-            this.btn.Location = new System.Drawing.Point(546, 116);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(65, 62);
-            this.btn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn.TabIndex = 28;
-            this.btn.TabStop = false;
+            this.btnAddProduct.Image = global::WibuCoffee.Properties.Resources.plus;
+            this.btnAddProduct.Location = new System.Drawing.Point(546, 116);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(65, 62);
+            this.btnAddProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddProduct.TabIndex = 28;
+            this.btnAddProduct.TabStop = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // label6
             // 
@@ -265,6 +269,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Enabled = false;
             this.label5.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(299, 24);
             this.label5.Name = "label5";
@@ -332,6 +337,7 @@
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.tbxIDProduct);
+            this.panel6.Enabled = false;
             this.panel6.Location = new System.Drawing.Point(282, 32);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(233, 62);
@@ -375,22 +381,23 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.cbxProductCategories);
+            this.panel1.Controls.Add(this.cbbProductCategories);
             this.panel1.Location = new System.Drawing.Point(16, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 62);
             this.panel1.TabIndex = 0;
             // 
-            // cbxProductCategories
+            // cbbProductCategories
             // 
-            this.cbxProductCategories.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxProductCategories.FormattingEnabled = true;
-            this.cbxProductCategories.ItemHeight = 26;
-            this.cbxProductCategories.Location = new System.Drawing.Point(14, 13);
-            this.cbxProductCategories.Name = "cbxProductCategories";
-            this.cbxProductCategories.Size = new System.Drawing.Size(202, 34);
-            this.cbxProductCategories.TabIndex = 1;
-            this.cbxProductCategories.Text = "Loại món";
+            this.cbbProductCategories.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbbProductCategories.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbProductCategories.FormattingEnabled = true;
+            this.cbbProductCategories.ItemHeight = 26;
+            this.cbbProductCategories.Location = new System.Drawing.Point(14, 13);
+            this.cbbProductCategories.Name = "cbbProductCategories";
+            this.cbbProductCategories.Size = new System.Drawing.Size(202, 34);
+            this.cbbProductCategories.TabIndex = 1;
+            this.cbbProductCategories.Text = "Loại món";
             // 
             // pListTable
             // 
@@ -419,7 +426,7 @@
             // 
             this.lbBillInfo.AutoSize = true;
             this.lbBillInfo.Font = new System.Drawing.Font("Google Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBillInfo.Location = new System.Drawing.Point(50, 240);
+            this.lbBillInfo.Location = new System.Drawing.Point(50, 268);
             this.lbBillInfo.Name = "lbBillInfo";
             this.lbBillInfo.Size = new System.Drawing.Size(202, 22);
             this.lbBillInfo.TabIndex = 10;
@@ -429,58 +436,61 @@
             // pBillInfo
             // 
             this.pBillInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBillInfo.Controls.Add(this.dgvBillInfo);
-            this.pBillInfo.Location = new System.Drawing.Point(19, 251);
+            this.pBillInfo.Controls.Add(this.dgvProduct);
+            this.pBillInfo.Location = new System.Drawing.Point(19, 278);
             this.pBillInfo.Name = "pBillInfo";
-            this.pBillInfo.Size = new System.Drawing.Size(800, 412);
+            this.pBillInfo.Size = new System.Drawing.Size(800, 385);
             this.pBillInfo.TabIndex = 2;
             // 
             // pTable
             // 
             this.pTable.AutoScroll = true;
             this.pTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pTable.Controls.Add(this.pictureBox3);
-            this.pTable.Controls.Add(this.pictureBox2);
-            this.pTable.Controls.Add(this.pictureBox1);
+            this.pTable.Controls.Add(this.btnDeleteCategory);
+            this.pTable.Controls.Add(this.btnEditCategory);
+            this.pTable.Controls.Add(this.btnAddCategory);
             this.pTable.Controls.Add(this.label2);
             this.pTable.Controls.Add(this.panel10);
             this.pTable.Controls.Add(this.label1);
             this.pTable.Controls.Add(this.panel9);
-            this.pTable.Controls.Add(this.dataGridView1);
+            this.pTable.Controls.Add(this.dgvProductCategory);
             this.pTable.Location = new System.Drawing.Point(20, 26);
             this.pTable.Name = "pTable";
             this.pTable.Size = new System.Drawing.Size(577, 284);
             this.pTable.TabIndex = 0;
             // 
-            // pictureBox3
+            // btnDeleteCategory
             // 
-            this.pictureBox3.Image = global::WibuCoffee.Properties.Resources.delete;
-            this.pictureBox3.Location = new System.Drawing.Point(496, 201);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 27;
-            this.pictureBox3.TabStop = false;
+            this.btnDeleteCategory.Image = global::WibuCoffee.Properties.Resources.delete;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(496, 201);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(62, 62);
+            this.btnDeleteCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnDeleteCategory.TabIndex = 27;
+            this.btnDeleteCategory.TabStop = false;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
-            // pictureBox2
+            // btnEditCategory
             // 
-            this.pictureBox2.Image = global::WibuCoffee.Properties.Resources.edit;
-            this.pictureBox2.Location = new System.Drawing.Point(411, 201);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 26;
-            this.pictureBox2.TabStop = false;
+            this.btnEditCategory.Image = global::WibuCoffee.Properties.Resources.edit;
+            this.btnEditCategory.Location = new System.Drawing.Point(411, 201);
+            this.btnEditCategory.Name = "btnEditCategory";
+            this.btnEditCategory.Size = new System.Drawing.Size(62, 62);
+            this.btnEditCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEditCategory.TabIndex = 26;
+            this.btnEditCategory.TabStop = false;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
-            // pictureBox1
+            // btnAddCategory
             // 
-            this.pictureBox1.Image = global::WibuCoffee.Properties.Resources.plus;
-            this.pictureBox1.Location = new System.Drawing.Point(325, 201);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 25;
-            this.pictureBox1.TabStop = false;
+            this.btnAddCategory.Image = global::WibuCoffee.Properties.Resources.plus;
+            this.btnAddCategory.Location = new System.Drawing.Point(325, 201);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(62, 62);
+            this.btnAddCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddCategory.TabIndex = 25;
+            this.btnAddCategory.TabStop = false;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // label2
             // 
@@ -496,28 +506,29 @@
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.textBox2);
+            this.panel10.Controls.Add(this.tbxNameCate);
             this.panel10.Location = new System.Drawing.Point(325, 130);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(233, 62);
             this.panel10.TabIndex = 23;
             // 
-            // textBox2
+            // tbxNameCate
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(18, 7);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 46);
-            this.textBox2.TabIndex = 21;
+            this.tbxNameCate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxNameCate.BackColor = System.Drawing.Color.White;
+            this.tbxNameCate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxNameCate.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNameCate.ForeColor = System.Drawing.Color.Black;
+            this.tbxNameCate.Location = new System.Drawing.Point(18, 7);
+            this.tbxNameCate.Multiline = true;
+            this.tbxNameCate.Name = "tbxNameCate";
+            this.tbxNameCate.Size = new System.Drawing.Size(202, 46);
+            this.tbxNameCate.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(341, 27);
             this.label1.Name = "label1";
@@ -529,40 +540,41 @@
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.textBox1);
+            this.panel9.Controls.Add(this.tbxIDCate);
+            this.panel9.Enabled = false;
             this.panel9.Location = new System.Drawing.Point(325, 39);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(233, 62);
             this.panel9.TabIndex = 21;
             // 
-            // textBox1
+            // tbxIDCate
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(18, 7);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 46);
-            this.textBox1.TabIndex = 21;
+            this.tbxIDCate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxIDCate.BackColor = System.Drawing.Color.White;
+            this.tbxIDCate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxIDCate.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxIDCate.ForeColor = System.Drawing.Color.Black;
+            this.tbxIDCate.Location = new System.Drawing.Point(18, 7);
+            this.tbxIDCate.Multiline = true;
+            this.tbxIDCate.Name = "tbxIDCate";
+            this.tbxIDCate.Size = new System.Drawing.Size(202, 46);
+            this.tbxIDCate.TabIndex = 21;
             // 
-            // dataGridView1
+            // dgvProductCategory
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dgvProductCategory.AllowUserToAddRows = false;
+            this.dgvProductCategory.AllowUserToDeleteRows = false;
+            this.dgvProductCategory.AllowUserToResizeColumns = false;
+            this.dgvProductCategory.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProductCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvProductCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvProductCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductCategory.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -570,8 +582,8 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.ColumnHeadersHeight = 35;
+            this.dgvProductCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvProductCategory.ColumnHeadersHeight = 35;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -579,21 +591,22 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.GridColor = System.Drawing.Color.Black;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 27);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 50;
+            this.dgvProductCategory.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvProductCategory.GridColor = System.Drawing.Color.Black;
+            this.dgvProductCategory.Location = new System.Drawing.Point(13, 27);
+            this.dgvProductCategory.Name = "dgvProductCategory";
+            this.dgvProductCategory.RowHeadersVisible = false;
+            this.dgvProductCategory.RowHeadersWidth = 50;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(295, 236);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvProductCategory.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvProductCategory.RowTemplate.Height = 24;
+            this.dgvProductCategory.Size = new System.Drawing.Size(295, 236);
+            this.dgvProductCategory.TabIndex = 1;
+            this.dgvProductCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductCategory_CellClick);
             // 
             // mainOrderPanel
             // 
@@ -632,48 +645,51 @@
             // 
             this.panel3.AutoScroll = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.pictureBox7);
-            this.panel3.Controls.Add(this.pictureBox8);
-            this.panel3.Controls.Add(this.pictureBox9);
+            this.panel3.Controls.Add(this.btnDeleteMaterial);
+            this.panel3.Controls.Add(this.btnEditMaterial);
+            this.panel3.Controls.Add(this.btnAddMaterial);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.dataGridView2);
+            this.panel3.Controls.Add(this.dgvMaterialProduct);
             this.panel3.Location = new System.Drawing.Point(20, 346);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(577, 317);
             this.panel3.TabIndex = 28;
             // 
-            // pictureBox7
+            // btnDeleteMaterial
             // 
-            this.pictureBox7.Image = global::WibuCoffee.Properties.Resources.delete;
-            this.pictureBox7.Location = new System.Drawing.Point(496, 211);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 27;
-            this.pictureBox7.TabStop = false;
+            this.btnDeleteMaterial.Image = global::WibuCoffee.Properties.Resources.delete;
+            this.btnDeleteMaterial.Location = new System.Drawing.Point(496, 211);
+            this.btnDeleteMaterial.Name = "btnDeleteMaterial";
+            this.btnDeleteMaterial.Size = new System.Drawing.Size(62, 62);
+            this.btnDeleteMaterial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnDeleteMaterial.TabIndex = 27;
+            this.btnDeleteMaterial.TabStop = false;
+            this.btnDeleteMaterial.Click += new System.EventHandler(this.btnDeleteMaterial_Click);
             // 
-            // pictureBox8
+            // btnEditMaterial
             // 
-            this.pictureBox8.Image = global::WibuCoffee.Properties.Resources.edit;
-            this.pictureBox8.Location = new System.Drawing.Point(411, 211);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 26;
-            this.pictureBox8.TabStop = false;
+            this.btnEditMaterial.Image = global::WibuCoffee.Properties.Resources.edit;
+            this.btnEditMaterial.Location = new System.Drawing.Point(411, 211);
+            this.btnEditMaterial.Name = "btnEditMaterial";
+            this.btnEditMaterial.Size = new System.Drawing.Size(62, 62);
+            this.btnEditMaterial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnEditMaterial.TabIndex = 26;
+            this.btnEditMaterial.TabStop = false;
+            this.btnEditMaterial.Click += new System.EventHandler(this.btnEditMaterial_Click);
             // 
-            // pictureBox9
+            // btnAddMaterial
             // 
-            this.pictureBox9.Image = global::WibuCoffee.Properties.Resources.plus;
-            this.pictureBox9.Location = new System.Drawing.Point(325, 211);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(62, 62);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 25;
-            this.pictureBox9.TabStop = false;
+            this.btnAddMaterial.Image = global::WibuCoffee.Properties.Resources.plus;
+            this.btnAddMaterial.Location = new System.Drawing.Point(325, 211);
+            this.btnAddMaterial.Name = "btnAddMaterial";
+            this.btnAddMaterial.Size = new System.Drawing.Size(62, 62);
+            this.btnAddMaterial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddMaterial.TabIndex = 25;
+            this.btnAddMaterial.TabStop = false;
+            this.btnAddMaterial.Click += new System.EventHandler(this.btnAddMaterial_Click);
             // 
             // label7
             // 
@@ -739,21 +755,21 @@
             this.cbbMaterialName.TabIndex = 2;
             this.cbbMaterialName.Text = "Nguyên liệu";
             // 
-            // dataGridView2
+            // dgvMaterialProduct
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dgvMaterialProduct.AllowUserToAddRows = false;
+            this.dgvMaterialProduct.AllowUserToDeleteRows = false;
+            this.dgvMaterialProduct.AllowUserToResizeColumns = false;
+            this.dgvMaterialProduct.AllowUserToResizeRows = false;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dgvMaterialProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvMaterialProduct.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dgvMaterialProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMaterialProduct.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -761,8 +777,8 @@
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView2.ColumnHeadersHeight = 35;
+            this.dgvMaterialProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvMaterialProduct.ColumnHeadersHeight = 35;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -770,21 +786,22 @@
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridView2.GridColor = System.Drawing.Color.Black;
-            this.dataGridView2.Location = new System.Drawing.Point(13, 25);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 50;
+            this.dgvMaterialProduct.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvMaterialProduct.GridColor = System.Drawing.Color.Black;
+            this.dgvMaterialProduct.Location = new System.Drawing.Point(13, 25);
+            this.dgvMaterialProduct.Name = "dgvMaterialProduct";
+            this.dgvMaterialProduct.RowHeadersVisible = false;
+            this.dgvMaterialProduct.RowHeadersWidth = 50;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(295, 269);
-            this.dataGridView2.TabIndex = 1;
+            this.dgvMaterialProduct.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvMaterialProduct.RowTemplate.Height = 24;
+            this.dgvMaterialProduct.Size = new System.Drawing.Size(295, 269);
+            this.dgvMaterialProduct.TabIndex = 1;
+            this.dgvMaterialProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterialProduct_CellClick);
             // 
             // UCProduct
             // 
@@ -793,12 +810,13 @@
             this.Controls.Add(this.mainOrderPanel);
             this.Name = "UCProduct";
             this.Size = new System.Drawing.Size(1499, 730);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBillInfo)).EndInit();
+            this.Load += new System.EventHandler(this.UCProduct_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.pBill.ResumeLayout(false);
             this.pBill.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddProduct)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -813,33 +831,33 @@
             this.pBillInfo.ResumeLayout(false);
             this.pTable.ResumeLayout(false);
             this.pTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddCategory)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductCategory)).EndInit();
             this.mainOrderPanel.ResumeLayout(false);
             this.pBillDetail.ResumeLayout(false);
             this.pBillDetail.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEditMaterial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddMaterial)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaterialProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvBillInfo;
+        private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbTable;
         private System.Windows.Forms.Panel pBill;
@@ -856,37 +874,37 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tbxPriceProduct;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cbxProductCategories;
+        private System.Windows.Forms.ComboBox cbbProductCategories;
         private System.Windows.Forms.Panel pListTable;
         private System.Windows.Forms.Panel pTable;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProductCategory;
         private System.Windows.Forms.Panel mainOrderPanel;
         private System.Windows.Forms.Panel pBillDetail;
         private System.Windows.Forms.Label lbBillInfo;
         private System.Windows.Forms.Panel pBillInfo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxNameCate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox btn;
+        private System.Windows.Forms.TextBox tbxIDCate;
+        private System.Windows.Forms.PictureBox btnAddCategory;
+        private System.Windows.Forms.PictureBox btnEditCategory;
+        private System.Windows.Forms.PictureBox btnDeleteCategory;
+        private System.Windows.Forms.PictureBox btnDeleteProduct;
+        private System.Windows.Forms.PictureBox btnEditProduct;
+        private System.Windows.Forms.PictureBox btnAddProduct;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox btnDeleteMaterial;
+        private System.Windows.Forms.PictureBox btnEditMaterial;
+        private System.Windows.Forms.PictureBox btnAddMaterial;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txbMaterialCount;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvMaterialProduct;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbbMaterialName;
     }
