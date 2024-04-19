@@ -60,7 +60,7 @@ namespace WibuCoffee.View.UC.Manage
                 tbxDetail.Text = "";
             }
             else if (DateTime.Now < dtpDate.Value)
-                MessageBox.Show("Vui lòng chọn ngày nhập phiếu chi hợp lệ (không)!");
+                MessageBox.Show("Vui lòng chọn ngày nhập phiếu chi hợp lệ!");
             else if (!decimal.TryParse(tbxPrice.Text, out decimal Decimal))
                 MessageBox.Show("Vui lòng nhập giá trị phiếu chi hợp lệ!");
             else if (tbxDetail.Text == "")
@@ -103,7 +103,7 @@ namespace WibuCoffee.View.UC.Manage
                 DataProvider.Instance.ExecuteNonQuery("EXEC updateExpenseBill @id , @date , @price , @detail",
                     new object[] { id, date, price, detail });
 
-                MessageBox.Show("Đã sửa phiếu chi mới thành công.");
+                MessageBox.Show("Đã sửa phiếu chi thành công.");
                 initComponent();
             }
         }
@@ -112,7 +112,7 @@ namespace WibuCoffee.View.UC.Manage
         private void btnDeleteExpenseBill_Click(object sender, EventArgs e)
         {
             if (tbxID.Text == "")
-                MessageBox.Show("Vui lòng chọn phiếu chi cần sửa trong bảng dữ liệu.");
+                MessageBox.Show("Vui lòng chọn phiếu chi cần xóa trong bảng dữ liệu.");
 
             else
             {
@@ -121,7 +121,7 @@ namespace WibuCoffee.View.UC.Manage
                 DataProvider.Instance.ExecuteNonQuery("EXEC deleteExpenseBill @id",
                     new object[] { id });
 
-                MessageBox.Show("Đã xóa phiếu chi mới thành công.");
+                MessageBox.Show("Đã xóa phiếu chi thành công.");
                 initComponent();
             }
         }
@@ -162,6 +162,7 @@ namespace WibuCoffee.View.UC.Manage
                 cbxSearch.Items.Clear();
                 cbxSearch.Items.Add("TÌM KIẾM");
                 cbxSearch.SelectedIndex = 0;
+                cbxSearch.Visible = true;
                 cbxSearch.Enabled = false;
             }
             else if (cbxFilter.SelectedItem.ToString() == "ID")
@@ -174,6 +175,7 @@ namespace WibuCoffee.View.UC.Manage
                 cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT ID FROM ExpenseBillView");
                 cbxSearch.DisplayMember = "ID";
                 cbxSearch.SelectedIndex = 0;
+                cbxSearch.Visible = true;
                 cbxSearch.Enabled = true;
             }
             else if (cbxFilter.SelectedItem.ToString() == "NGÀY")
@@ -187,7 +189,7 @@ namespace WibuCoffee.View.UC.Manage
             }
         }
 
-        //Bắt sự kiện cập nhật các ô khi click vào dgv
+        //Bắt sự kiện cập nhật các ô thông tin bên trái khi click vào dgv
         private void dgvExpenseBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)

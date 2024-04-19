@@ -28,45 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnViewDetail = new System.Windows.Forms.Button();
             this.lbSearch = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
+            this.dtpSearch = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.dgvReceiptNoteInfo = new System.Windows.Forms.DataGridView();
+            this.dgvReceiptNote = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.tbxPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.tbxEmployee = new System.Windows.Forms.TextBox();
+            this.cbxEmployee = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.tbxSuplier = new System.Windows.Forms.TextBox();
+            this.cbxSupplier = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.tbxDate = new System.Windows.Forms.TextBox();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tbxID = new System.Windows.Forms.TextBox();
             this.btnDeleteReceiptNote = new System.Windows.Forms.Button();
             this.btnUpdateReceiptNote = new System.Windows.Forms.Button();
             this.btnAddReceiptNote = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.searchPanel.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNoteInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNote)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -97,6 +99,7 @@
             this.btnViewDetail.TabIndex = 17;
             this.btnViewDetail.Text = "CHI TIẾT";
             this.btnViewDetail.UseVisualStyleBackColor = false;
+            this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
             // 
             // lbSearch
             // 
@@ -114,7 +117,7 @@
             // 
             this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.searchPanel.Controls.Add(this.cbxSearch);
-            this.searchPanel.Controls.Add(this.dateTimePicker1);
+            this.searchPanel.Controls.Add(this.dtpSearch);
             this.searchPanel.Controls.Add(this.btnSearch);
             this.searchPanel.Controls.Add(this.cbxFilter);
             this.searchPanel.Location = new System.Drawing.Point(54, 68);
@@ -127,16 +130,29 @@
             // 
             this.cbxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbxSearch.BackColor = System.Drawing.Color.White;
+            this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSearch.ForeColor = System.Drawing.Color.Black;
             this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(225, 17);
+            this.cbxSearch.Location = new System.Drawing.Point(301, 17);
             this.cbxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxSearch.Name = "cbxSearch";
-            this.cbxSearch.Size = new System.Drawing.Size(760, 49);
+            this.cbxSearch.Size = new System.Drawing.Size(684, 49);
             this.cbxSearch.TabIndex = 16;
-            this.cbxSearch.Text = "TÌM KIẾM";
-            this.cbxSearch.Visible = false;
+            // 
+            // dtpSearch
+            // 
+            this.dtpSearch.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtpSearch.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dtpSearch.CalendarTitleBackColor = System.Drawing.Color.Gray;
+            this.dtpSearch.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dtpSearch.CustomFormat = " yyyy - MM - dd";
+            this.dtpSearch.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpSearch.Location = new System.Drawing.Point(301, 18);
+            this.dtpSearch.Name = "dtpSearch";
+            this.dtpSearch.Size = new System.Drawing.Size(684, 47);
+            this.dtpSearch.TabIndex = 17;
             // 
             // btnSearch
             // 
@@ -149,20 +165,28 @@
             this.btnSearch.TabIndex = 15;
             this.btnSearch.Text = "TÌM";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cbxFilter
             // 
             this.cbxFilter.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbxFilter.BackColor = System.Drawing.Color.White;
+            this.cbxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFilter.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxFilter.ForeColor = System.Drawing.Color.Black;
             this.cbxFilter.FormattingEnabled = true;
+            this.cbxFilter.Items.AddRange(new object[] {
+            "LỌC",
+            "ID",
+            "NGÀY",
+            "NHÀ C.CẤP",
+            "NHÂN VIÊN"});
             this.cbxFilter.Location = new System.Drawing.Point(15, 17);
             this.cbxFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxFilter.Name = "cbxFilter";
-            this.cbxFilter.Size = new System.Drawing.Size(203, 49);
+            this.cbxFilter.Size = new System.Drawing.Size(279, 49);
             this.cbxFilter.TabIndex = 15;
-            this.cbxFilter.Text = "LỌC";
+            this.cbxFilter.SelectedIndexChanged += new System.EventHandler(this.cbxFilter_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -177,59 +201,49 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.dgvReceiptNoteInfo);
+            this.panel5.Controls.Add(this.dgvReceiptNote);
             this.panel5.Location = new System.Drawing.Point(27, 241);
             this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(20);
             this.panel5.Size = new System.Drawing.Size(1526, 811);
             this.panel5.TabIndex = 2;
             // 
-            // dgvReceiptNoteInfo
+            // dgvReceiptNote
             // 
-            this.dgvReceiptNoteInfo.AllowUserToAddRows = false;
-            this.dgvReceiptNoteInfo.AllowUserToDeleteRows = false;
-            this.dgvReceiptNoteInfo.AllowUserToResizeColumns = false;
-            this.dgvReceiptNoteInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvReceiptNoteInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvReceiptNoteInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dgvReceiptNoteInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReceiptNoteInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReceiptNoteInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvReceiptNoteInfo.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReceiptNoteInfo.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvReceiptNoteInfo.GridColor = System.Drawing.Color.Black;
-            this.dgvReceiptNoteInfo.Location = new System.Drawing.Point(15, 34);
-            this.dgvReceiptNoteInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvReceiptNoteInfo.Name = "dgvReceiptNoteInfo";
-            this.dgvReceiptNoteInfo.RowHeadersVisible = false;
-            this.dgvReceiptNoteInfo.RowHeadersWidth = 50;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvReceiptNoteInfo.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvReceiptNoteInfo.RowTemplate.Height = 24;
-            this.dgvReceiptNoteInfo.Size = new System.Drawing.Size(1475, 758);
-            this.dgvReceiptNoteInfo.TabIndex = 1;
+            this.dgvReceiptNote.AllowUserToAddRows = false;
+            this.dgvReceiptNote.AllowUserToDeleteRows = false;
+            this.dgvReceiptNote.AllowUserToResizeColumns = false;
+            this.dgvReceiptNote.AllowUserToResizeRows = false;
+            this.dgvReceiptNote.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReceiptNote.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReceiptNote.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReceiptNote.ColumnHeadersHeight = 85;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReceiptNote.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvReceiptNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvReceiptNote.Location = new System.Drawing.Point(20, 20);
+            this.dgvReceiptNote.Name = "dgvReceiptNote";
+            this.dgvReceiptNote.ReadOnly = true;
+            this.dgvReceiptNote.RowHeadersVisible = false;
+            this.dgvReceiptNote.RowHeadersWidth = 82;
+            this.dgvReceiptNote.RowTemplate.Height = 33;
+            this.dgvReceiptNote.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReceiptNote.Size = new System.Drawing.Size(1484, 769);
+            this.dgvReceiptNote.TabIndex = 1;
+            this.dgvReceiptNote.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceiptNote_CellClick);
             // 
             // panel1
             // 
@@ -257,6 +271,8 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label4);
@@ -270,11 +286,44 @@
             this.panel3.Size = new System.Drawing.Size(555, 805);
             this.panel3.TabIndex = 5;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(84, 635);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 27);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "GIÁ TRỊ:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.tbxPrice);
+            this.panel6.Location = new System.Drawing.Point(58, 647);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(437, 96);
+            this.panel6.TabIndex = 29;
+            // 
+            // tbxPrice
+            // 
+            this.tbxPrice.BackColor = System.Drawing.Color.White;
+            this.tbxPrice.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxPrice.Location = new System.Drawing.Point(20, 17);
+            this.tbxPrice.Multiline = true;
+            this.tbxPrice.Name = "tbxPrice";
+            this.tbxPrice.ReadOnly = true;
+            this.tbxPrice.Size = new System.Drawing.Size(394, 60);
+            this.tbxPrice.TabIndex = 0;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(84, 617);
+            this.label6.Location = new System.Drawing.Point(84, 483);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 27);
@@ -285,33 +334,34 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.tbxEmployee);
-            this.panel4.Location = new System.Drawing.Point(58, 629);
+            this.panel4.Controls.Add(this.cbxEmployee);
+            this.panel4.Location = new System.Drawing.Point(58, 495);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(437, 96);
             this.panel4.TabIndex = 27;
             // 
-            // tbxEmployee
+            // cbxEmployee
             // 
-            this.tbxEmployee.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxEmployee.BackColor = System.Drawing.Color.White;
-            this.tbxEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxEmployee.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxEmployee.ForeColor = System.Drawing.Color.Black;
-            this.tbxEmployee.Location = new System.Drawing.Point(21, 11);
-            this.tbxEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxEmployee.Multiline = true;
-            this.tbxEmployee.Name = "tbxEmployee";
-            this.tbxEmployee.ReadOnly = true;
-            this.tbxEmployee.Size = new System.Drawing.Size(393, 72);
-            this.tbxEmployee.TabIndex = 21;
+            this.cbxEmployee.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxEmployee.BackColor = System.Drawing.Color.White;
+            this.cbxEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEmployee.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxEmployee.ForeColor = System.Drawing.Color.Black;
+            this.cbxEmployee.FormattingEnabled = true;
+            this.cbxEmployee.Items.AddRange(new object[] {
+            "Chọn nhân viên"});
+            this.cbxEmployee.Location = new System.Drawing.Point(16, 23);
+            this.cbxEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxEmployee.Name = "cbxEmployee";
+            this.cbxEmployee.Size = new System.Drawing.Size(403, 49);
+            this.cbxEmployee.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(84, 436);
+            this.label4.Location = new System.Drawing.Point(84, 332);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(182, 27);
@@ -322,33 +372,34 @@
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.tbxSuplier);
-            this.panel10.Location = new System.Drawing.Point(58, 448);
+            this.panel10.Controls.Add(this.cbxSupplier);
+            this.panel10.Location = new System.Drawing.Point(58, 344);
             this.panel10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(437, 96);
             this.panel10.TabIndex = 25;
             // 
-            // tbxSuplier
+            // cbxSupplier
             // 
-            this.tbxSuplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxSuplier.BackColor = System.Drawing.Color.White;
-            this.tbxSuplier.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxSuplier.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxSuplier.ForeColor = System.Drawing.Color.Black;
-            this.tbxSuplier.Location = new System.Drawing.Point(21, 11);
-            this.tbxSuplier.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxSuplier.Multiline = true;
-            this.tbxSuplier.Name = "tbxSuplier";
-            this.tbxSuplier.ReadOnly = true;
-            this.tbxSuplier.Size = new System.Drawing.Size(393, 72);
-            this.tbxSuplier.TabIndex = 21;
+            this.cbxSupplier.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxSupplier.BackColor = System.Drawing.Color.White;
+            this.cbxSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSupplier.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSupplier.ForeColor = System.Drawing.Color.Black;
+            this.cbxSupplier.FormattingEnabled = true;
+            this.cbxSupplier.Items.AddRange(new object[] {
+            "Chọn nhà cung cấp"});
+            this.cbxSupplier.Location = new System.Drawing.Point(17, 19);
+            this.cbxSupplier.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxSupplier.Name = "cbxSupplier";
+            this.cbxSupplier.Size = new System.Drawing.Size(403, 49);
+            this.cbxSupplier.TabIndex = 17;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(84, 256);
+            this.label8.Location = new System.Drawing.Point(85, 183);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 27);
@@ -359,33 +410,29 @@
             // panel11
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.tbxDate);
-            this.panel11.Location = new System.Drawing.Point(58, 268);
+            this.panel11.Controls.Add(this.dtpDate);
+            this.panel11.Location = new System.Drawing.Point(59, 195);
             this.panel11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(437, 96);
             this.panel11.TabIndex = 23;
             // 
-            // tbxDate
+            // dtpDate
             // 
-            this.tbxDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbxDate.BackColor = System.Drawing.Color.White;
-            this.tbxDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbxDate.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDate.ForeColor = System.Drawing.Color.Black;
-            this.tbxDate.Location = new System.Drawing.Point(21, 11);
-            this.tbxDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbxDate.Multiline = true;
-            this.tbxDate.Name = "tbxDate";
-            this.tbxDate.ReadOnly = true;
-            this.tbxDate.Size = new System.Drawing.Size(393, 72);
-            this.tbxDate.TabIndex = 21;
+            this.dtpDate.CalendarFont = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.CustomFormat = " yyyy - MM - dd";
+            this.dtpDate.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDate.Location = new System.Drawing.Point(20, 26);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(394, 47);
+            this.dtpDate.TabIndex = 0;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(84, 78);
+            this.label9.Location = new System.Drawing.Point(84, 36);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 27);
@@ -397,7 +444,7 @@
             // 
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Controls.Add(this.tbxID);
-            this.panel12.Location = new System.Drawing.Point(58, 90);
+            this.panel12.Location = new System.Drawing.Point(58, 48);
             this.panel12.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(437, 96);
@@ -405,18 +452,14 @@
             // 
             // tbxID
             // 
-            this.tbxID.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tbxID.BackColor = System.Drawing.Color.White;
-            this.tbxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxID.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxID.ForeColor = System.Drawing.Color.Black;
-            this.tbxID.Location = new System.Drawing.Point(21, 11);
-            this.tbxID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbxID.Location = new System.Drawing.Point(20, 17);
             this.tbxID.Multiline = true;
             this.tbxID.Name = "tbxID";
             this.tbxID.ReadOnly = true;
-            this.tbxID.Size = new System.Drawing.Size(393, 72);
-            this.tbxID.TabIndex = 21;
+            this.tbxID.Size = new System.Drawing.Size(394, 60);
+            this.tbxID.TabIndex = 0;
             // 
             // btnDeleteReceiptNote
             // 
@@ -429,6 +472,7 @@
             this.btnDeleteReceiptNote.TabIndex = 4;
             this.btnDeleteReceiptNote.Text = "XÓA";
             this.btnDeleteReceiptNote.UseVisualStyleBackColor = false;
+            this.btnDeleteReceiptNote.Click += new System.EventHandler(this.btnDeleteReceiptNote_Click);
             // 
             // btnUpdateReceiptNote
             // 
@@ -441,6 +485,7 @@
             this.btnUpdateReceiptNote.TabIndex = 3;
             this.btnUpdateReceiptNote.Text = "SỬA";
             this.btnUpdateReceiptNote.UseVisualStyleBackColor = false;
+            this.btnUpdateReceiptNote.Click += new System.EventHandler(this.btnUpdateReceiptNote_Click);
             // 
             // btnAddReceiptNote
             // 
@@ -453,18 +498,7 @@
             this.btnAddReceiptNote.TabIndex = 2;
             this.btnAddReceiptNote.Text = "THÊM";
             this.btnAddReceiptNote.UseVisualStyleBackColor = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.Black;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.White;
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.Gray;
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(225, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(760, 47);
-            this.dateTimePicker1.TabIndex = 17;
+            this.btnAddReceiptNote.Click += new System.EventHandler(this.btnAddReceiptNote_Click);
             // 
             // UCReceiptNote
             // 
@@ -480,17 +514,16 @@
             this.panel2.PerformLayout();
             this.searchPanel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNoteInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReceiptNote)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.ResumeLayout(false);
@@ -507,7 +540,6 @@
         private System.Windows.Forms.ComboBox cbxFilter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dgvReceiptNoteInfo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDeleteReceiptNote;
         private System.Windows.Forms.Button btnUpdateReceiptNote;
@@ -517,16 +549,20 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox tbxEmployee;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TextBox tbxSuplier;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox tbxDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.DateTimePicker dtpSearch;
+        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.TextBox tbxID;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dgvReceiptNote;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox tbxPrice;
+        private System.Windows.Forms.ComboBox cbxEmployee;
+        private System.Windows.Forms.ComboBox cbxSupplier;
     }
 }
