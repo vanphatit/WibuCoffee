@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WibuCoffee.Model;
 
 namespace WibuCoffee.View.UC.Manage
 {
@@ -36,8 +35,6 @@ namespace WibuCoffee.View.UC.Manage
         {
             LoadData();
         }
-
-       
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
@@ -120,11 +117,6 @@ namespace WibuCoffee.View.UC.Manage
             tbxNameSupplier.Text = selectedRow.Cells["name"].Value.ToString();
             tbxPhoneSupplier.Text = selectedRow.Cells["phone"].Value.ToString();
             tbxAddressSupplier.Text = selectedRow.Cells["address"].Value.ToString();
-        }
-
-        private void pBill_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

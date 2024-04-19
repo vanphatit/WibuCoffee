@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -126,9 +127,9 @@ namespace WibuCoffee.View.UC.Manage
                 MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
 
-            } catch (Exception ex)
+            } catch (SqlException err)
             {
-                MessageBox.Show("Thêm sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Thêm sản phẩm thất bại \n " + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -181,9 +182,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Sửa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sửa sản phẩm thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -206,9 +207,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                MessageBox.Show("Xóa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Xóa sản phẩm thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -240,9 +241,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Thêm loại món thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Thêm loại món thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -265,9 +266,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Sửa loại món thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sửa loại món thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -314,9 +315,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
                 LoadProductMaterial();
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Thêm nguyên liệu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Thêm nguyên liệu thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -363,9 +364,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
                 LoadProductMaterial();
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Sửa nguyên liệu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sửa nguyên liệu thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -399,9 +400,9 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
                 LoadProductMaterial();
             }
-            catch (Exception ex)
+            catch (SqlException err)
             {
-                MessageBox.Show("Xóa nguyên liệu thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Xóa nguyên liệu thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }

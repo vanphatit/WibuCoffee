@@ -258,7 +258,6 @@ namespace WibuCoffee.View.UC.Manage
             this.pBill.Name = "pBill";
             this.pBill.Size = new System.Drawing.Size(800, 198);
             this.pBill.TabIndex = 1;
-            this.pBill.Paint += new System.Windows.Forms.PaintEventHandler(this.pBill_Paint);
             // 
             // label1
             // 
