@@ -75,9 +75,9 @@ namespace WibuCoffee
                 }
                 
             }
-            catch (SqlException)
+            catch (SqlException err)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu! Vui lòng xem lại server name");
+                MessageBox.Show("Error from SQL!\n" + err.Message);
                 // delete the servername.txt file
                 System.IO.File.Delete("servername.txt");
                 pnlServerName.Enabled = true;
