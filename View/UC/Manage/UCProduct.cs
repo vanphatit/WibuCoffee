@@ -59,6 +59,11 @@ namespace WibuCoffee.View.UC.Manage
 
         private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            LoadProductMaterial();
+        }
+
+        void LoadProductMaterial()
+        {
             // Get selected row
             int index = dgvProduct.CurrentCell.RowIndex;
             DataGridViewRow selectedRow = dgvProduct.Rows[index];
@@ -171,7 +176,7 @@ namespace WibuCoffee.View.UC.Manage
             try
             {
                 // Edit product
-                DataProvider.Instance.ExecuteNonQuery("EXEC UpdateProduct @id , @name , @categoryID , @price , @status"
+                DataProvider.Instance.ExecuteNonQuery("EXEC UpdateProductByID @id , @name , @categoryID , @price , @status"
                                                       , new object[] { tbxIDProduct.Text, tbxNameProduct.Text, productCategoryID, price, tbxStatusProduct.Text });
                 MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
@@ -196,7 +201,7 @@ namespace WibuCoffee.View.UC.Manage
                 }
 
                 // Delete product
-                DataProvider.Instance.ExecuteNonQuery("EXEC DeleteProduct @id"
+                DataProvider.Instance.ExecuteNonQuery("EXEC DeleteProductByID @id"
                                                                          , new object[] { tbxIDProduct.Text });
                 MessageBox.Show("Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
@@ -268,31 +273,6 @@ namespace WibuCoffee.View.UC.Manage
             }
         }
 
-        private void btnDeleteCategory_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // show confirm dialog
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa loại món này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
-
-                // Delete product category
-                DataProvider.Instance.ExecuteNonQuery("EXEC deleteProductCategoryByID @id"
-                                                                                            , new object[] { tbxIDCate.Text });
-                MessageBox.Show("Xóa loại món thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Xóa loại món thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
-
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
             // Check empty
@@ -318,12 +298,22 @@ namespace WibuCoffee.View.UC.Manage
 
             try
             {
+                string materialID = "";
+                foreach (DataRow row in dtMaterial.Rows)
+                {
+                    if (row["Name"].ToString() == cbbMaterialName.SelectedItem.ToString())
+                    {
+                        materialID = row["ID"].ToString();
+                        break;
+                    }
+                }
+
                 // Add material
                 DataProvider.Instance.ExecuteNonQuery("EXEC addProductMaterial @productID , @materialID , @quantity"
-                                                                         , new object[] { IDProduct, cbbMaterialName.SelectedItem.ToString(), txbMaterialCount.Text });
+                                                                         , new object[] { IDProduct, materialID, txbMaterialCount.Text });
                 MessageBox.Show("Thêm nguyên liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
-
+                LoadProductMaterial();
             }
             catch (SqlException err)
             {
@@ -342,7 +332,7 @@ namespace WibuCoffee.View.UC.Manage
             }
 
             // Check unit
-            if (Int32.TryParse(txbMaterialCount.Text, out int count) && count > 0)
+            if (Int32.TryParse(txbMaterialCount.Text, out int count) && count <= 0)
             {
                 MessageBox.Show("Đơn vị không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -357,12 +347,22 @@ namespace WibuCoffee.View.UC.Manage
 
             try
             {
+                string materialID = "";
+                foreach (DataRow row in dtMaterial.Rows)
+                {
+                    if (row["Name"].ToString() == cbbMaterialName.SelectedItem.ToString())
+                    {
+                        materialID = row["ID"].ToString();
+                        break;
+                    }
+                }
+
                 // Edit material
                 DataProvider.Instance.ExecuteNonQuery("EXEC updateProductMaterialByID @productID , @materialID , @quantity"
-                                                                                            , new object[] { IDProduct, cbbMaterialName.SelectedItem.ToString(), txbMaterialCount.Text });
+                                                                                            , new object[] { IDProduct, materialID, txbMaterialCount.Text });
                 MessageBox.Show("Sửa nguyên liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
-
+                LoadProductMaterial();
             }
             catch (SqlException err)
             {
@@ -383,12 +383,22 @@ namespace WibuCoffee.View.UC.Manage
                     return;
                 }
 
+                string materialID = "";
+                foreach (DataRow row in dtMaterial.Rows)
+                {
+                    if (row["Name"].ToString() == cbbMaterialName.SelectedItem.ToString())
+                    {
+                        materialID = row["ID"].ToString();
+                        break;
+                    }
+                }
+
                 // Delete material
                 DataProvider.Instance.ExecuteNonQuery("EXEC deleteProductMaterialByID @productID , @materialID"
-                                                      , new object[] { IDProduct, cbbMaterialName.SelectedItem.ToString() });
+                                                      , new object[] { IDProduct, materialID });
                 MessageBox.Show("Xóa nguyên liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
-
+                LoadProductMaterial();
             }
             catch (SqlException err)
             {

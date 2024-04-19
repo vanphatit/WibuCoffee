@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,17 +38,19 @@ namespace WibuCoffee.View.UC.Manage
         };
 
         private DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
-        private DataTable dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Bill");
-        private DataTable dataProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Product");
+        private DataTable dataProduct = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllProduct");
         private DataTable dataCategories = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillCategory");
-        private DataTable dataEmployee = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Employee");
 
         private List<Button> listButton = new List<Button>();
         private List<Boolean> buttonClick = new List<Boolean>();
         public UCOrder()
         {
             InitializeComponent();
+            reload();
+        }
 
+        private void reload()
+        {
             Timer timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += (s, e) =>
@@ -68,6 +71,11 @@ namespace WibuCoffee.View.UC.Manage
             {
                 cbxCategories.Items.Add(dataCategories.Rows[i]["name"].ToString());
             }
+
+            cbxCategories.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxEmp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxProduct.DropDownStyle = ComboBoxStyle.DropDownList;
+
             insertDataToEmployee();
             tbxQuantity.Text = "0";
             tbxReceiptMoney.Text = "0";
@@ -166,14 +174,14 @@ namespace WibuCoffee.View.UC.Manage
             }
             else if (count > 0 && count < 10)
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T0" + (count + 1), "Table0" + (count + 1), "Available" }) > 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T0" + (count), "Table0" + (count), "Available" }) > 0)
                 {
                     paintTable();
                 }
             }
             else
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T" + (count + 1), "Table" + (count + 1), "Available" }) > 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T" + (count), "Table" + (count), "Available" }) > 0)
                 {
                     paintTable();
                 }
@@ -281,9 +289,21 @@ namespace WibuCoffee.View.UC.Manage
             }
             else
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC addBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) <= 0)
+                try
                 {
-                    MessageBox.Show("Thêm sản phẩm thất bại");
+                    if (DataProvider.Instance.ExecuteNonQuery("EXEC addBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
+                    {
+                        MessageBox.Show("Thêm sản phẩm thành công");
+                        tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm sản phẩm thất bại");
+                    }
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Thêm sản phẩm thất bại! \n Do: \n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
@@ -297,9 +317,7 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //Ngừng thời gian để lấy giờ hiện tại
-            Timer timer = new Timer();
-            timer.Stop();
+            tbxDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             if (cbxCategories.Text == "Loại hóa đơn")
             {
@@ -372,7 +390,7 @@ namespace WibuCoffee.View.UC.Manage
                 }
                 else if (categories != "In place")
                 {
-                    string tableID = "N/A";
+                    string tableID = "NA";
                     if (DataProvider.Instance.ExecuteNonQuery("EXEC insertBill @ID , @date , @tableID , @name , @categories , @emp , @receiptMoney ", new object[] { billID, date, tableID, name, categories, emp, receipMoney }) <= 0)
                     {
                         MessageBox.Show("Thêm hóa đơn thất bại");
@@ -415,14 +433,17 @@ namespace WibuCoffee.View.UC.Manage
             }
             else if (check == "CUSTOMER DOES NOT EXIST")
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertCustomer @name , @phone ", new object[] { name, phone }) > 0)
+               try
                 {
-                    MessageBox.Show("Thêm khách hàng thành công");
-                }
-                else
+                    if (DataProvider.Instance.ExecuteNonQuery("EXEC insertCustomer @name , @phone ", new object[] { name, phone }) > 0)
+                    {
+                        MessageBox.Show("Thêm khách hàng thành công");
+                    }
+               }
+               catch (SqlException ev)
                 {
-                    MessageBox.Show("Thêm khách hàng thất bại");
-                }
+                    MessageBox.Show("Thêm khách hàng thất bại! \n Do: \n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               }
             }
             else
             {
@@ -452,9 +473,16 @@ namespace WibuCoffee.View.UC.Manage
             }
             else
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC updateBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) <= 0)
+                try
                 {
-                    MessageBox.Show("Cập nhật sản phẩm thất bại");
+                    if (DataProvider.Instance.ExecuteNonQuery("EXEC updateBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
+                    {
+                        MessageBox.Show("Cập nhật sản phẩm thành công");
+                    }
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Cập nhật sản phẩm thất bại! \n Do: \n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
@@ -471,11 +499,18 @@ namespace WibuCoffee.View.UC.Manage
             string billID = tbxIDBill.Text;
             string productName = cbxProduct.Text;
 
-            if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName ", new object[] { billID, productName }) <= 0)
+            try
             {
-                MessageBox.Show("Xóa sản phẩm thất bại");
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName ", new object[] { billID, productName }) > 0)
+                {
+                    MessageBox.Show("Xóa sản phẩm thành công");
+                }
             }
-
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Xóa sản phẩm thất bại! \n Do: \n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
@@ -513,7 +548,18 @@ namespace WibuCoffee.View.UC.Manage
             dgvBillInfo.Refresh();
             lbShowDis.Text = "0 VND";
             lbTotalPrice.Text = "0 VND";
+            tbxQuantity.Text = "0";
+            tbxAvai.Text = "0";
+            cbxProduct.Text = "";
+            cbxCategories.Text = "Loại hóa đơn";
+            cbxEmp.Text = "Tên nhân viên";
 
+        }
+
+        private void cbxProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string productName = cbxProduct.Text;
+            tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
         }
     }
 }
