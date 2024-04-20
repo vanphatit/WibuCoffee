@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,17 @@ namespace WibuCoffee.View.UC.Manage
             dataRN.Columns[3].ColumnName = "Nhà cung cấp";
 
             dgvRN.DataSource = dataRN;
+
+            DataGridViewRow row = dgvRN.Rows[0];
+            string id = row.Cells["Mã đơn"].Value.ToString();
+            dataRNDetail =
+                DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
+                    new object[] { id });
+            decimal price = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )",
+                new object[] { id });
+            lblPrice.Text = price + " VND";
+
+            loadDataRNDetail();
         }
 
         private void loadDataRNDetail()
@@ -69,9 +81,10 @@ namespace WibuCoffee.View.UC.Manage
                         new object[] { id });
                 loadDataRNDetail();
 
-                decimal price =
-                    (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )", new object[] { id });
-                lblPrice.Text = price.ToString() + " VND";
+                decimal price = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )",
+                    new object[] { id });
+
+                lblPrice.Text = price + " VND";
             }
         }
 
@@ -95,34 +108,44 @@ namespace WibuCoffee.View.UC.Manage
         {
             if (cbxMaterial.Text == "")
                 MessageBox.Show("Vui lòng chọn nguyên liệu cần nhập!");
-            else if (double.TryParse(tbxQuantity.Text, out double result1) && result1 <= 0)
-                MessageBox.Show("Vui lòng nhập số lượng lớn hơn 0!");
-            else if (double.TryParse(tbxUnitPrice.Text, out double result2) && result2 <= 0)
-                MessageBox.Show("Vui lòng nhập đơn giá lớn hơn 0!");
+            else if (!int.TryParse(tbxQuantity.Text, out int result1))
+                MessageBox.Show("Vui lòng nhập số lượng là một số nguyên hợp lệ!");
+            else if (!double.TryParse(tbxUnitPrice.Text, out double result2))
+                MessageBox.Show("Vui lòng nhập đơn giá là một số hợp lệ!");
 
             else
             {
-                string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value.ToString(); //Lấy ID trong dgvRN
+                try
+                {
+                    string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value
+                        .ToString(); //Lấy ID trong dgvRN
 
-                string mID =
-                    (string)DataProvider.Instance.ExecuteQuery(
-                        "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
-                decimal quantity = decimal.Parse(tbxQuantity.Text);
-                decimal unitPrice = decimal.Parse(tbxUnitPrice.Text);
+                    string mID =
+                        (string)DataProvider.Instance.ExecuteQuery(
+                            "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
+                    decimal quantity = decimal.Parse(tbxQuantity.Text);
+                    decimal unitPrice = decimal.Parse(tbxUnitPrice.Text);
 
-                DataProvider.Instance.ExecuteNonQuery("EXEC addReceiptNoteDetail @rnNoteID , @materialID , @quantity , @unitPrice",
-                    new object[] { rnID, mID, quantity, unitPrice });
+                    DataProvider.Instance.ExecuteNonQuery(
+                        "EXEC addReceiptNoteDetail @rnNoteID , @materialID , @quantity , @unitPrice",
+                        new object[] { rnID, mID, quantity, unitPrice });
 
-                MessageBox.Show("Đã thêm chi tiết đơn nhập hàng mới thành công.");
+                    MessageBox.Show("Đã thêm chi tiết đơn nhập hàng mới thành công.");
 
-                dataRNDetail =
-                    DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
-                        new object[] { rnID });
-                loadDataRNDetail();
+                    dataRNDetail =
+                        DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
+                            new object[] { rnID });
+                    loadDataRNDetail();
 
-                decimal price =
-                    (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )", new object[] { rnID });
-                lblPrice.Text = price.ToString() + " VND";
+                    decimal price =
+                        (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )",
+                            new object[] { rnID });
+                    lblPrice.Text = price.ToString() + " VND";
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
             }
         }
 
@@ -133,35 +156,44 @@ namespace WibuCoffee.View.UC.Manage
             {
                 MessageBox.Show("Vui lòng chọn thông tin chi tiết đơn nhập hàng cần sửa!");
             }
-            else if (double.TryParse(tbxQuantity.Text, out double result1) && result1 <= 0)
-                MessageBox.Show("Vui lòng nhập số lượng lớn hơn 0!");
-            else if (double.TryParse(tbxUnitPrice.Text, out double result2) && result2 <= 0)
-                MessageBox.Show("Vui lòng nhập đơn giá lớn hơn 0!");
+            else if (!int.TryParse(tbxQuantity.Text, out int result1))
+                MessageBox.Show("Vui lòng nhập số lượng là một số nguyên hợp lệ!");
+            else if (!double.TryParse(tbxUnitPrice.Text, out double result2))
+                MessageBox.Show("Vui lòng nhập đơn giá là một số hợp lệ!");
 
             else
             {
-                string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value.ToString(); //Lấy ID trong dgvRN
+                try
+                {
+                    string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value
+                        .ToString(); //Lấy ID trong dgvRN
 
-                string mID =
-                    (string)DataProvider.Instance.ExecuteQuery(
-                        "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
-                decimal quantity = decimal.Parse(tbxQuantity.Text);
-                decimal unitPrice = decimal.Parse(tbxUnitPrice.Text);
+                    string mID =
+                        (string)DataProvider.Instance.ExecuteQuery(
+                            "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
+                    decimal quantity = decimal.Parse(tbxQuantity.Text);
+                    decimal unitPrice = decimal.Parse(tbxUnitPrice.Text);
 
-                DataProvider.Instance.ExecuteNonQuery("EXEC updateReceiptNoteDetail @rnNoteID , @materialID , @quantity , @unitPrice",
-                    new object[] { rnID, mID, quantity, unitPrice });
+                    DataProvider.Instance.ExecuteNonQuery(
+                        "EXEC updateReceiptNoteDetail @rnNoteID , @materialID , @quantity , @unitPrice",
+                        new object[] { rnID, mID, quantity, unitPrice });
 
-                MessageBox.Show("Đã sửa chi tiết đơn nhập hàng thành công.");
+                    MessageBox.Show("Đã sửa chi tiết đơn nhập hàng thành công.");
 
-                dataRNDetail =
-                    DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
-                        new object[] { rnID });
-                loadDataRNDetail();
+                    dataRNDetail =
+                        DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
+                            new object[] { rnID });
+                    loadDataRNDetail();
 
-                decimal price =
-                    (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )", new object[] { rnID });
-                lblPrice.Text = price.ToString() + " VND";
-
+                    decimal price =
+                        (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )",
+                            new object[] { rnID });
+                    lblPrice.Text = price.ToString() + " VND";
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
             }
         }
 
@@ -176,26 +208,35 @@ namespace WibuCoffee.View.UC.Manage
 
             else
             {
-                string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value.ToString(); //Lấy ID trong dgvRN
+                try
+                {
+                    string rnID = dgvRN.Rows[dgvRN.SelectedCells[0].RowIndex].Cells[0].Value
+                        .ToString(); //Lấy ID trong dgvRN
 
-                string mID =
-                    (string)DataProvider.Instance.ExecuteQuery(
-                        "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
-                
+                    string mID =
+                        (string)DataProvider.Instance.ExecuteQuery(
+                            "SELECT ID FROM Material WHERE name = '" + cbxMaterial.Text + "'").Rows[0]["ID"];
 
-                DataProvider.Instance.ExecuteNonQuery("EXEC deleteReceiptNoteDetail @rnNoteID , @materialID",
-                    new object[] { rnID, mID });
 
-                MessageBox.Show("Đã xóa chi tiết đơn nhập hàng thành công.");
+                    DataProvider.Instance.ExecuteNonQuery("EXEC deleteReceiptNoteDetail @rnNoteID , @materialID",
+                        new object[] { rnID, mID });
 
-                dataRNDetail =
-                    DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
-                        new object[] { rnID });
-                loadDataRNDetail();
+                    MessageBox.Show("Đã xóa chi tiết đơn nhập hàng thành công.");
 
-                decimal price =
-                    (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )", new object[] { rnID });
-                lblPrice.Text = price.ToString() + " VND";
+                    dataRNDetail =
+                        DataProvider.Instance.ExecuteQuery("SELECT * from dbo.seeReceiptNoteDetail( @id )",
+                            new object[] { rnID });
+                    loadDataRNDetail();
+
+                    decimal price =
+                        (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.calReceiptNotePrice( @id )",
+                            new object[] { rnID });
+                    lblPrice.Text = price.ToString() + " VND";
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
             }
         }
 
