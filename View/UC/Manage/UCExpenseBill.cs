@@ -35,6 +35,11 @@ namespace WibuCoffee.View.UC.Manage
             data.Columns[2].ColumnName = "Giá trị";
             data.Columns[3].ColumnName = "Chi tiết";
             dgvExpenseBill.DataSource = data;
+
+            tbxID.Text = "";
+            dtpDate.Value = DateTime.Now;
+            tbxPrice.Text = "";
+            tbxDetail.Text = "";
         }
 
         private void loadData()
@@ -57,12 +62,10 @@ namespace WibuCoffee.View.UC.Manage
                 if (tbxID.Text != "")
                 {
                     MessageBox.Show("Vui lòng nhập thông tin phiếu chi mới!", "Thông báo");
-                    tbxID.Text = "";
-                    dtpDate.Value = DateTime.Now;
-                    tbxPrice.Text = "";
-                    tbxDetail.Text = "";
+                    initComponent();
                 }
-
+                else if (!double.TryParse(tbxPrice.Text, out double result))
+                    MessageBox.Show("Vui lòng nhập vào giá trị là một số.", "Báo lỗi!");
                 else
                 {
                     DateTime date = dtpDate.Value;
