@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Markup;
-using WibuCoffee.Model;
 
 namespace WibuCoffee.View.UC.Manage
 {
@@ -18,23 +18,36 @@ namespace WibuCoffee.View.UC.Manage
         public UCReceiptNote()
         {
             InitializeComponent();
-
             initComponent();
             loadData();
         }
 
         private void initComponent()
         {
-            cbxFilter.SelectedIndex = 0;
+            try
+            {
+                cbxFilter.SelectedIndex = 0;
 
-            data = DataProvider.Instance.ExecuteQuery("SELECT * FROM ReceiptNoteView");
+                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM ReceiptNoteView");
 
-            cbxSupplier.DataSource = DataProvider.Instance.ExecuteQuery("SELECT name FROM Supplier");
-            cbxSupplier.DisplayMember = "name";
-            cbxSupplier.SelectedIndex = -1;
-            cbxEmployee.DataSource = DataProvider.Instance.ExecuteQuery("SELECT name FROM Employee WHERE jobID = 'J03'");
-            cbxEmployee.DisplayMember = "name";
-            cbxEmployee.SelectedIndex = -1;
+                cbxSupplier.DataSource = DataProvider.Instance.ExecuteQuery("SELECT name FROM Supplier");
+                cbxSupplier.DisplayMember = "name";
+                cbxSupplier.SelectedIndex = -1;
+                cbxEmployee.DataSource =
+                    DataProvider.Instance.ExecuteQuery("SELECT name FROM Employee WHERE jobID = 'J03'");
+                cbxEmployee.DisplayMember = "name";
+                cbxEmployee.SelectedIndex = -1;
+
+                tbxID.Text = "";
+                dtpDate.Value = DateTime.Now;
+                tbxPrice.Text = "0";
+                cbxEmployee.Text = "";
+                cbxSupplier.Text = "";
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
+            }
         }
 
         private void loadData()
@@ -67,74 +80,67 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAddReceiptNote_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text != "")
+            try
             {
-                MessageBox.Show("Vui lòng nhập thông tin đơn nhập hàng mới!");
-                tbxID.Text = "";
-                dtpDate.Value = DateTime.Now;
-                cbxSupplier.SelectedIndex = -1;
-                cbxEmployee.SelectedIndex = -1;
-                tbxPrice.Text = "0";
+                if (tbxID.Text != "")
+                {
+                    MessageBox.Show("Vui lòng nhập thông tin đơn nhập hàng mới!");
+                    initComponent();
+                }
+
+                else
+                {
+                    DateTime date = dtpDate.Value;
+                    string supName = cbxSupplier.Text;
+                    string empName = cbxEmployee.Text;
+
+                    DataProvider.Instance.ExecuteNonQuery("EXEC addNewReceiptNote @date , @empName , @supName",
+                        new object[] { date, empName, supName });
+
+                    MessageBox.Show("Đã thêm đơn nhập hàng mới thành công.");
+                    initComponent();
+                    loadData();
+                }
             }
-            else if (DateTime.Now < dtpDate.Value)
-                MessageBox.Show("Vui lòng chọn ngày nhập đơn hàng hợp lệ!");
-            else if (cbxSupplier.Text == "")
-                MessageBox.Show("Vui lòng chọn nhà cung cấp!");
-            else if (cbxEmployee.Text == "")
-                MessageBox.Show("Vui lòng chọn nhân viên!");
-
-            else
+            catch (SqlException sqlException)
             {
-                DateTime date = dtpDate.Value;
-                string supName = cbxSupplier.Text;
-                string empName = cbxEmployee.Text;
-
-                DataProvider.Instance.ExecuteNonQuery("EXEC addNewReceiptNote @date , @empName , @supName",
-                    new object[] { date, empName, supName });
-
-                MessageBox.Show("Đã thêm đơn nhập hàng mới thành công.");
-                initComponent();
-                loadData();
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
         private void btnUpdateReceiptNote_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text == "")
+            try
             {
-                MessageBox.Show("Vui lòng chọn đơn nhập hàng cần sửa trong bảng dữ liệu!");
+                if (tbxID.Text == "")
+                {
+                    MessageBox.Show("Vui lòng chọn đơn nhập hàng cần sửa trong bảng dữ liệu!");
+                }
+
+                else
+                {
+                    string id = tbxID.Text;
+                    DateTime date = dtpDate.Value;
+                    string supName = cbxSupplier.Text;
+                    string empName = cbxEmployee.Text;
+
+                    DataProvider.Instance.ExecuteNonQuery("EXEC updateNewReceiptNote @id , @date , @empName , @supName",
+                        new object[] { id, date, empName, supName });
+
+                    MessageBox.Show("Đã sửa đơn nhập hàng thành công.");
+                    initComponent();
+                    loadData();
+                }
             }
-            else if (DateTime.Now < dtpDate.Value)
-                MessageBox.Show("Vui lòng chọn ngày nhập đơn hàng hợp lệ!");
-            else if (cbxSupplier.Text == "")
-                MessageBox.Show("Vui lòng chọn nhà cung cấp!");
-            else if (cbxEmployee.Text == "")
-                MessageBox.Show("Vui lòng chọn nhân viên!");
-
-            else
+            catch (SqlException sqlException)
             {
-                string id = tbxID.Text;
-                DateTime date = dtpDate.Value;
-                string supName = cbxSupplier.Text;
-                string empName = cbxEmployee.Text;
-
-                DataProvider.Instance.ExecuteNonQuery("EXEC updateNewReceiptNote @id , @date , @empName , @supName",
-                    new object[] { id, date, empName, supName });
-
-                MessageBox.Show("Đã sửa đơn nhập hàng thành công.");
-                initComponent();
-                loadData();
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
         private void btnDeleteReceiptNote_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text == "")
-            {
-                MessageBox.Show("Vui lòng chọn đơn nhập hàng cần xóa trong bảng dữ liệu!");
-            }
-
-            else
+            try
             {
                 string id = tbxID.Text;
 
@@ -144,6 +150,10 @@ namespace WibuCoffee.View.UC.Manage
                 MessageBox.Show("Đã xóa đơn nhập hàng thành công.");
                 initComponent();
                 loadData();
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
@@ -171,7 +181,16 @@ namespace WibuCoffee.View.UC.Manage
                 cbxSearch.SelectedIndex = -1;
                 cbxSearch.DataSource = null;
                 cbxSearch.Items.Clear();
-                cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT ID FROM ReceiptNoteView");
+
+                try
+                {
+                    cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT ID FROM ReceiptNoteView");
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
+
                 cbxSearch.DisplayMember = "ID";
                 cbxSearch.SelectedIndex = 0;
                 cbxSearch.Visible = true;
@@ -193,7 +212,16 @@ namespace WibuCoffee.View.UC.Manage
                 cbxSearch.SelectedIndex = -1;
                 cbxSearch.DataSource = null;
                 cbxSearch.Items.Clear();
-                cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT [Supplier Name] FROM ReceiptNoteView");
+
+                try
+                {
+                    cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT [Supplier Name] FROM ReceiptNoteView");
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
+                
                 cbxSearch.DisplayMember = "Supplier Name";
                 cbxSearch.SelectedIndex = 0;
                 cbxSearch.Visible = true;
@@ -206,7 +234,16 @@ namespace WibuCoffee.View.UC.Manage
                 cbxSearch.SelectedIndex = -1;
                 cbxSearch.DataSource = null;
                 cbxSearch.Items.Clear();
-                cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT [Employee Name] FROM ReceiptNoteView");
+
+                try
+                {
+                    cbxSearch.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT [Employee Name] FROM ReceiptNoteView");
+                }
+                catch (SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message, "Báo lỗi!");
+                }
+                
                 cbxSearch.DisplayMember = "Employee Name";
                 cbxSearch.SelectedIndex = 0;
                 cbxSearch.Visible = true;
@@ -219,34 +256,45 @@ namespace WibuCoffee.View.UC.Manage
         //Bắt sự kiện khi nút TÌM được bấm
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cbxFilter.SelectedItem.ToString() == "LỌC")
+            try
             {
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.ReceiptNoteView");
-                loadData();
+                if (cbxFilter.SelectedItem.ToString() == "LỌC")
+                {
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.ReceiptNoteView");
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "ID")
+                {
+                    string id = cbxSearch.Text;
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewByID( @id )",
+                        new object[] { id });
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "NGÀY")
+                {
+                    DateTime date = dtpSearch.Value;
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewByDate( @date )",
+                        new object[] { date });
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "NHÀ C.CẤP")
+                {
+                    string supName = cbxSearch.Text;
+                    data = DataProvider.Instance.ExecuteQuery(
+                        "SELECT * FROM dbo.filterReceiptNoteViewBySupplier( @supName )", new object[] { supName });
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "NHÂN VIÊN")
+                {
+                    string empName = cbxSearch.Text;
+                    data = DataProvider.Instance.ExecuteQuery(
+                        "SELECT * FROM dbo.filterReceiptNoteViewByEmployee( @empName )", new object[] { empName });
+                    loadData();
+                }
             }
-            else if (cbxFilter.SelectedItem.ToString() == "ID")
+            catch (SqlException sqlException)
             {
-                string id = cbxSearch.Text;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewByID( @id )", new object[] { id });
-                loadData();
-            }
-            else if (cbxFilter.SelectedItem.ToString() == "NGÀY")
-            {
-                DateTime date = dtpSearch.Value;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewByDate( @date )", new object[] { date });
-                loadData();
-            }
-            else if (cbxFilter.SelectedItem.ToString() == "NHÀ C.CẤP")
-            {
-                string supName = cbxSearch.Text;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewBySupplier( @supName )", new object[] { supName });
-                loadData();
-            }
-            else if (cbxFilter.SelectedItem.ToString() == "NHÂN VIÊN")
-            {
-                string empName = cbxSearch.Text;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterReceiptNoteViewByEmployee( @empName )", new object[] { empName });
-                loadData();
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
