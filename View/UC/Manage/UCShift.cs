@@ -75,6 +75,10 @@ namespace WibuCoffee.View.UC.Manage
             cbxDis.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxShift.Items.Clear();
             cbxShift.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxSearch.Items.Clear();
+            cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxFilter.Items.Clear();
+            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
 
             foreach (DataRow row in dataEmpInfo.Rows)
             {
@@ -263,7 +267,7 @@ namespace WibuCoffee.View.UC.Manage
             }
             catch (SqlException ev)
             {
-                MessageBox.Show("Thêm thất bại.\n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thêm thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -281,7 +285,7 @@ namespace WibuCoffee.View.UC.Manage
             }
             catch (SqlException ev)
             {
-                MessageBox.Show("Cập nhật thất bại.\n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cập nhật thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -298,7 +302,7 @@ namespace WibuCoffee.View.UC.Manage
             }
             catch (SqlException ev)
             {
-                MessageBox.Show("Xóa thất bại.\n" + ev.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xóa thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

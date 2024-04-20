@@ -192,26 +192,17 @@ namespace WibuCoffee.View.UC.Manage
             int bonusPoint = int.Parse(tbxBonusPoint.Text);
             int penatyPoint = int.Parse(tbxPenatyPoint.Text);
 
-            if (name == "" || address == "" || phone == "")
+            try
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                DataProvider.Instance.ExecuteNonQuery("EXEC dbo.insertEmployee @id , @name , @birth , @address , @phone , @recruitment , @job ,  @penatyPoint , @bonusPoint , @numberOfShift ", new object[] { id, name, birth, address, phone, recruitment, job, penatyPoint, bonusPoint, numberOfShift });
+                MessageBox.Show("Thêm nhân viên thành công! \n  Vui lòng vào LỊCH TRỰC xếp ca trực cho nhân viên " + name, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                reload();
             }
-            else
+            catch (SqlException ev)
             {
-                try 
-                {
-                    DataProvider.Instance.ExecuteNonQuery("EXEC dbo.insertEmployee @id , @name , @birth , @address , @phone , @recruitment , @job ,  @penatyPoint , @bonusPoint , @numberOfShift ", new object[] { id, name, birth, address, phone, recruitment, job, penatyPoint, bonusPoint, numberOfShift });
-                    MessageBox.Show("Thêm nhân viên thành công! \n  Vui lòng vào LỊCH TRỰC xếp ca trực cho nhân viên " + name, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reload();
-                }
-                catch (SqlException ev)
-                {
-                    MessageBox.Show("Thêm nhân viên thất bại! \n" + ev, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    reload();
-                    return;
-                }
-                
+                MessageBox.Show("Thêm nhân viên thất bại! \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                reload();
+                return;
             }
         }
 
@@ -384,26 +375,17 @@ namespace WibuCoffee.View.UC.Manage
             int bonusPoint = int.Parse(tbxBonusPoint.Text);
             int penatyPoint = int.Parse(tbxPenatyPoint.Text);
 
-            if (name == "" || address == "" || phone == "")
+            try
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateEmployee @id , @name , @birth , @address , @phone , @recruitment , @job ,  @penatyPoint , @bonusPoint , @numberOfShift ", new object[] { id, name, birth, address, phone, recruitment, job, penatyPoint, bonusPoint, numberOfShift });
+                MessageBox.Show("Sửa thông tin nhân viên thành công " + name + "!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                reload();
             }
-            else
+            catch (SqlException ev)
             {
-                try
-                {
-                    DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateEmployee @id , @name , @birth , @address , @phone , @recruitment , @job ,  @penatyPoint , @bonusPoint , @numberOfShift ", new object[] { id, name, birth, address, phone, recruitment, job, penatyPoint, bonusPoint, numberOfShift });
-                    MessageBox.Show("Sửa thông tin nhân viên thành công " + name + "!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reload();
-                }
-                catch (SqlException ev)
-                {
-                    MessageBox.Show("Sửa nhân viên thất bại! \n" + ev, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    reload();
-                    return;
-                }
-
+                MessageBox.Show("Sửa nhân viên thất bại! \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                reload();
+                return;
             }
         }
 
@@ -423,7 +405,7 @@ namespace WibuCoffee.View.UC.Manage
             }
             catch (SqlException ev)
             {
-                MessageBox.Show("Xóa nhân viên thất bại! \n" + ev, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Xóa nhân viên thất bại! \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 reload();
                 return;
             }
@@ -447,25 +429,17 @@ namespace WibuCoffee.View.UC.Manage
             Decimal salary = Decimal.Parse(tbxNewSalary.Text);
             string job = cbxJobDetail.Text;
 
-            if (salary == 0)
+            try
             {
-                MessageBox.Show("Vui lòng nhập lương mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateSalary @job , @salary ", new object[] { job, salary });
+                MessageBox.Show("Thay đổi lương thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                reload();
             }
-            else
+            catch (SqlException ev)
             {
-                try
-                {
-                    DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateSalary @job , @salary ", new object[] { job, salary });
-                    MessageBox.Show("Thay đổi lương thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reload();
-                }
-                catch (SqlException ev)
-                {
-                    MessageBox.Show("Thay đổi lương thất bại! \n" + ev, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    reload();
-                    return;
-                }
+                MessageBox.Show("Thay đổi lương thất bại! \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                reload();
+                return;
             }
         }
     }
