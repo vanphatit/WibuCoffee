@@ -23,11 +23,19 @@ namespace WibuCoffee.View.UC.Manage
 
         void LoadData()
         {
-            dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM MaterialDetailss");
-            dgvMaterial.DataSource = dtMaterial;
-            dgvMaterial.Columns["id"].HeaderText = "Mã";
-            dgvMaterial.Columns["name"].HeaderText = "Tên";
-            dgvMaterial.Columns["status"].HeaderText = "Trạng thái";
+            try
+            {
+                dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM MaterialDetailss");
+                dgvMaterial.DataSource = dtMaterial;
+                dgvMaterial.Columns["id"].HeaderText = "Mã";
+                dgvMaterial.Columns["name"].HeaderText = "Tên";
+                dgvMaterial.Columns["status"].HeaderText = "Trạng thái";
+            }
+            catch(SqlException err)
+            {
+                MessageBox.Show(err.Message);
+            }
+           
         }
 
 
@@ -48,12 +56,8 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (tbxNameMaterial.Text == "" || tbxStatusMaterial.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
+           
 
             try
             {
@@ -73,11 +77,6 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
-            if (tbxNameMaterial.Text == "" || tbxStatusMaterial.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             try
             {
                 // Edit product
