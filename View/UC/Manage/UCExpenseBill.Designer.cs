@@ -33,11 +33,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbSearch = new System.Windows.Forms.Label();
             this.searchPanel = new System.Windows.Forms.Panel();
+            this.dtpFilterEX = new System.Windows.Forms.DateTimePicker();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cbxFilter = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.dgvExpenseBill = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDeleteExpenseBill = new System.Windows.Forms.Button();
             this.btnUpdateExpenseBill = new System.Windows.Forms.Button();
@@ -53,6 +55,7 @@
             this.tbxPrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tbxID = new System.Windows.Forms.TextBox();
@@ -65,12 +68,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tbxIDBill = new System.Windows.Forms.TextBox();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.dgvExpenseBill = new System.Windows.Forms.DataGridView();
-            this.dtpFilterEX = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.searchPanel.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpenseBill)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -81,7 +82,6 @@
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpenseBill)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -120,6 +120,18 @@
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(1511, 93);
             this.searchPanel.TabIndex = 15;
+            // 
+            // dtpFilterEX
+            // 
+            this.dtpFilterEX.CalendarFont = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFilterEX.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dtpFilterEX.CustomFormat = "   yyyy - MM - dd";
+            this.dtpFilterEX.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFilterEX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFilterEX.Location = new System.Drawing.Point(340, 22);
+            this.dtpFilterEX.Name = "dtpFilterEX";
+            this.dtpFilterEX.Size = new System.Drawing.Size(950, 47);
+            this.dtpFilterEX.TabIndex = 17;
             // 
             // cbxSearch
             // 
@@ -185,6 +197,43 @@
             this.panel5.Padding = new System.Windows.Forms.Padding(20);
             this.panel5.Size = new System.Drawing.Size(1511, 811);
             this.panel5.TabIndex = 2;
+            // 
+            // dgvExpenseBill
+            // 
+            this.dgvExpenseBill.AllowUserToAddRows = false;
+            this.dgvExpenseBill.AllowUserToDeleteRows = false;
+            this.dgvExpenseBill.AllowUserToResizeColumns = false;
+            this.dgvExpenseBill.AllowUserToResizeRows = false;
+            this.dgvExpenseBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvExpenseBill.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExpenseBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvExpenseBill.ColumnHeadersHeight = 85;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvExpenseBill.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvExpenseBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvExpenseBill.Location = new System.Drawing.Point(20, 20);
+            this.dgvExpenseBill.Name = "dgvExpenseBill";
+            this.dgvExpenseBill.ReadOnly = true;
+            this.dgvExpenseBill.RowHeadersVisible = false;
+            this.dgvExpenseBill.RowHeadersWidth = 82;
+            this.dgvExpenseBill.RowTemplate.Height = 33;
+            this.dgvExpenseBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvExpenseBill.Size = new System.Drawing.Size(1469, 769);
+            this.dgvExpenseBill.TabIndex = 0;
+            this.dgvExpenseBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpenseBill_CellClick);
             // 
             // panel1
             // 
@@ -373,6 +422,14 @@
             this.panel11.Size = new System.Drawing.Size(437, 96);
             this.panel11.TabIndex = 15;
             // 
+            // dtpDate
+            // 
+            this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Location = new System.Drawing.Point(21, 26);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(384, 44);
+            this.dtpDate.TabIndex = 0;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -521,62 +578,6 @@
             this.tbxIDBill.Size = new System.Drawing.Size(393, 72);
             this.tbxIDBill.TabIndex = 21;
             // 
-            // dtpDate
-            // 
-            this.dtpDate.Location = new System.Drawing.Point(30, 36);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(384, 31);
-            this.dtpDate.TabIndex = 0;
-            // 
-            // dgvExpenseBill
-            // 
-            this.dgvExpenseBill.AllowUserToAddRows = false;
-            this.dgvExpenseBill.AllowUserToDeleteRows = false;
-            this.dgvExpenseBill.AllowUserToResizeColumns = false;
-            this.dgvExpenseBill.AllowUserToResizeRows = false;
-            this.dgvExpenseBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvExpenseBill.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExpenseBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvExpenseBill.ColumnHeadersHeight = 85;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvExpenseBill.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvExpenseBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvExpenseBill.Location = new System.Drawing.Point(20, 20);
-            this.dgvExpenseBill.Name = "dgvExpenseBill";
-            this.dgvExpenseBill.ReadOnly = true;
-            this.dgvExpenseBill.RowHeadersVisible = false;
-            this.dgvExpenseBill.RowHeadersWidth = 82;
-            this.dgvExpenseBill.RowTemplate.Height = 33;
-            this.dgvExpenseBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExpenseBill.Size = new System.Drawing.Size(1469, 769);
-            this.dgvExpenseBill.TabIndex = 0;
-            this.dgvExpenseBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExpenseBill_CellClick);
-            // 
-            // dtpFilterEX
-            // 
-            this.dtpFilterEX.CalendarFont = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFilterEX.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dtpFilterEX.CustomFormat = "   yyyy - MM - dd";
-            this.dtpFilterEX.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFilterEX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFilterEX.Location = new System.Drawing.Point(340, 22);
-            this.dtpFilterEX.Name = "dtpFilterEX";
-            this.dtpFilterEX.Size = new System.Drawing.Size(950, 47);
-            this.dtpFilterEX.TabIndex = 17;
-            // 
             // UCExpenseBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -591,6 +592,7 @@
             this.panel2.PerformLayout();
             this.searchPanel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpenseBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -610,7 +612,6 @@
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpenseBill)).EndInit();
             this.ResumeLayout(false);
 
         }
