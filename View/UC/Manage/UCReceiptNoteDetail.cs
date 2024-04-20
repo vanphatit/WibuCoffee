@@ -35,8 +35,6 @@ namespace WibuCoffee.View.UC.Manage
             tbxQuantity.Text = "0";
             tbxUnitPrice.Text = "0";
             dgvRNDetail.DataSource = null;
-
-
         }
 
         private void loadDataRN()
@@ -85,6 +83,10 @@ namespace WibuCoffee.View.UC.Manage
                     new object[] { id });
 
                 lblPrice.Text = price + " VND";
+
+                cbxMaterial.SelectedIndex = -1;
+                tbxQuantity.Text = "0";
+                tbxUnitPrice.Text = "0";
             }
         }
 
@@ -157,9 +159,9 @@ namespace WibuCoffee.View.UC.Manage
                 MessageBox.Show("Vui lòng chọn thông tin chi tiết đơn nhập hàng cần sửa!");
             }
             else if (!int.TryParse(tbxQuantity.Text, out int result1))
-                MessageBox.Show("Vui lòng nhập số lượng là một số nguyên hợp lệ!");
+                MessageBox.Show("Vui lòng nhập số lượng lớn hơn 0!");
             else if (!double.TryParse(tbxUnitPrice.Text, out double result2))
-                MessageBox.Show("Vui lòng nhập đơn giá là một số hợp lệ!");
+                MessageBox.Show("Vui lòng nhập đơn giá lớn hơn 0!");
 
             else
             {

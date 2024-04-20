@@ -18,7 +18,6 @@ namespace WibuCoffee.View.UC.Manage
         public UCReceiptNote()
         {
             InitializeComponent();
-
             initComponent();
             loadData();
         }
