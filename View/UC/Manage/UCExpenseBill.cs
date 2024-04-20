@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,11 @@ namespace WibuCoffee.View.UC.Manage
             data.Columns[2].ColumnName = "Giá trị";
             data.Columns[3].ColumnName = "Chi tiết";
             dgvExpenseBill.DataSource = data;
+
+            tbxID.Text = "";
+            dtpDate.Value = DateTime.Now;
+            tbxPrice.Text = "";
+            tbxDetail.Text = "";
         }
 
         private void loadData()
@@ -51,32 +57,31 @@ namespace WibuCoffee.View.UC.Manage
         //Bắt sự kiện khi nút THÊM được bấm
         private void btnAddExpenseBill_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text != "")
+            try
             {
-                MessageBox.Show("Vui lòng nhập thông tin phiếu chi mới!");
-                tbxID.Text = "";
-                dtpDate.Value = DateTime.Now;
-                tbxPrice.Text = "";
-                tbxDetail.Text = "";
+                if (tbxID.Text != "")
+                {
+                    MessageBox.Show("Vui lòng nhập thông tin phiếu chi mới!", "Thông báo");
+                    initComponent();
+                }
+                else if (!double.TryParse(tbxPrice.Text, out double result))
+                    MessageBox.Show("Vui lòng nhập vào giá trị là một số.", "Báo lỗi!");
+                else
+                {
+                    DateTime date = dtpDate.Value;
+                    string price = tbxPrice.Text;
+                    string detail = tbxDetail.Text;
+
+                    DataProvider.Instance.ExecuteNonQuery("EXEC addNewExpenseBill @date , @price , @detail",
+                        new object[] { date, price, detail });
+
+                    MessageBox.Show("Đã thêm phiếu chi mới thành công.");
+                    initComponent();
+                }
             }
-            else if (DateTime.Now < dtpDate.Value)
-                MessageBox.Show("Vui lòng chọn ngày nhập phiếu chi hợp lệ!");
-            else if (!decimal.TryParse(tbxPrice.Text, out decimal Decimal))
-                MessageBox.Show("Vui lòng nhập giá trị phiếu chi hợp lệ!");
-            else if (tbxDetail.Text == "")
-                MessageBox.Show("Vui lòng nhập chi tiết phiếu chi!");
-
-            else
+            catch (SqlException sqlException)
             {
-                DateTime date = dtpDate.Value;
-                Decimal price = Decimal.Parse(tbxPrice.Text);
-                string detail = tbxDetail.Text;
-
-                DataProvider.Instance.ExecuteNonQuery("EXEC addNewExpenseBill @date , @price , @detail",
-                    new object[] { date, price, detail });
-
-                MessageBox.Show("Đã thêm phiếu chi mới thành công.");
-                initComponent();
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
@@ -84,45 +89,48 @@ namespace WibuCoffee.View.UC.Manage
         //Bắt sự kiện khi nút SỬA được bấm
         private void btnUpdateExpenseBill_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text == "")
-                MessageBox.Show("Vui lòng chọn phiếu chi cần sửa trong bảng dữ liệu.");
-            else if (DateTime.Now < dtpDate.Value)
-                MessageBox.Show("Vui lòng chọn ngày nhập phiếu chi hợp lệ!");
-            else if (!decimal.TryParse(tbxPrice.Text, out decimal Decimal))
-                MessageBox.Show("Vui lòng nhập giá trị phiếu chi hợp lệ!");
-            else if (tbxDetail.Text == "")
-                MessageBox.Show("Vui lòng nhập chi tiết phiếu chi!");
-
-            else
+            try
             {
-                string id = tbxID.Text;
-                DateTime date = dtpDate.Value;
-                Decimal price = Decimal.Parse(tbxPrice.Text);
-                string detail = tbxDetail.Text;
+                if (tbxID.Text == "")
+                    MessageBox.Show("Vui lòng chọn phiếu chi cần sửa trong bảng dữ liệu.", "Thông báo");
+                else if (!double.TryParse(tbxPrice.Text, out double result))
+                    MessageBox.Show("Vui lòng nhập vào giá trị là một số.", "Báo lỗi!");
+                else
+                {
+                    string id = tbxID.Text;
+                    DateTime date = dtpDate.Value;
+                    string price = tbxPrice.Text;
+                    string detail = tbxDetail.Text;
 
-                DataProvider.Instance.ExecuteNonQuery("EXEC updateExpenseBill @id , @date , @price , @detail",
-                    new object[] { id, date, price, detail });
+                    DataProvider.Instance.ExecuteNonQuery("EXEC updateExpenseBill @id , @date , @price , @detail",
+                        new object[] { id, date, price, detail });
 
-                MessageBox.Show("Đã sửa phiếu chi thành công.");
-                initComponent();
+                    MessageBox.Show("Đã sửa phiếu chi thành công.", "Thông báo");
+                    initComponent();
+                }
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
         //Bắt sự kiện khi nút XÓA được bấm
         private void btnDeleteExpenseBill_Click(object sender, EventArgs e)
         {
-            if (tbxID.Text == "")
-                MessageBox.Show("Vui lòng chọn phiếu chi cần xóa trong bảng dữ liệu.");
-
-            else
+            try
             {
                 string id = tbxID.Text;
 
                 DataProvider.Instance.ExecuteNonQuery("EXEC deleteExpenseBill @id",
                     new object[] { id });
 
-                MessageBox.Show("Đã xóa phiếu chi thành công.");
+                MessageBox.Show("Đã xóa phiếu chi thành công.", "Thông báo");
                 initComponent();
+            }
+            catch (SqlException sqlException)
+            {
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
@@ -130,22 +138,31 @@ namespace WibuCoffee.View.UC.Manage
         //Bắt sự kiện khi nút TÌM được bấm
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cbxFilter.SelectedItem.ToString() == "LỌC")
+            try
             {
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.ExpenseBillView");
-                loadData();
+                if (cbxFilter.SelectedItem.ToString() == "LỌC")
+                {
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.ExpenseBillView");
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "ID")
+                {
+                    string id = cbxSearch.Text;
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterExpenseBillByID( @id )",
+                        new object[] { id });
+                    loadData();
+                }
+                else if (cbxFilter.SelectedItem.ToString() == "NGÀY")
+                {
+                    DateTime date = dtpFilterEX.Value;
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterExpenseBillByDate( @date )",
+                        new object[] { date });
+                    loadData();
+                }
             }
-            else if (cbxFilter.SelectedItem.ToString() == "ID")
+            catch (SqlException sqlException)
             {
-                string id = cbxSearch.Text;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterExpenseBillByID( @id )", new object[] {id});
-                loadData();
-            }
-            else if (cbxFilter.SelectedItem.ToString() == "NGÀY")
-            {
-                DateTime date = dtpFilterEX.Value;
-                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterExpenseBillByDate( @date )", new object[] { date });
-                loadData();
+                MessageBox.Show(sqlException.Message, "Báo lỗi!");
             }
         }
 
