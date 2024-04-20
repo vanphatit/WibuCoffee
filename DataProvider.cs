@@ -1,20 +1,27 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
 
 namespace WibuCoffee
 {
     public class DataProvider
     {
+
         // get the server name from the servername.txt file
         private static string dataSource = System.IO.File.ReadAllText("servername.txt");
 
-        public static string connectionString = "Data Source=" + dataSource + ";Initial Catalog=WibuCoffee;Integrated Security=True;";
+        private static string user = System.IO.File.ReadAllText("username.txt");
+        private static string pass = System.IO.File.ReadAllText("password.txt");
+
+        public static string connectionString = "Data Source=" + dataSource + ";Initial Catalog=WibuCoffee;User ID=" + user + ";Password=" + pass;
 
         private static DataProvider instance;
         public static DataProvider Instance

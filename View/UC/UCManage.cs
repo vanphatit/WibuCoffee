@@ -15,6 +15,9 @@ namespace WibuCoffee.View.UC
     {
         private List<Button> listButton;
 
+        // get user name from username.txt file
+        private string user = System.IO.File.ReadAllText("username.txt");
+
         public UCManage()
         {
             InitializeComponent();
@@ -29,6 +32,15 @@ namespace WibuCoffee.View.UC
             listButton.Add(btnExpenseBill);
 
             customButton();
+
+            if(user == "emp")
+            {
+                btnEmployee.Enabled = false;
+                btnProduct.Enabled = false;
+                btnSupplier.Enabled = false;
+                btnReceiptNote.Enabled = false;
+                btnExpenseBill.Enabled = false;
+            }
 
             //set color #737373 for btnOrder
             btnOrder.BackColor = Color.FromArgb(115, 115, 115);
