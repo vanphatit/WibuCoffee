@@ -289,6 +289,21 @@ namespace WibuCoffee.View.UC.Manage
              {
                 if (DataProvider.Instance.ExecuteNonQuery("EXEC updateReceiptMoney @ID , @receiptMoney ", new object[] { tbxIDBill.Text, tbxReceiptMoney.Text }) > 0)
                 {
+                    string billID = tbxIDBill.Text;
+                    string phone = tbxPhone.Text;
+                    try
+                    {
+                        if (DataProvider.Instance.ExecuteNonQuery("EXEC updateCustomerPoint @billID , @phone ", new object[] { billID, phone }) > 0)
+                        {
+                            MessageBox.Show("Cập nhật số tiền nhận thành công");
+                            tbxReceiptMoney.Enabled = false;
+                        }
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Cập nhật số tiền nhận thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     MessageBox.Show("Cập nhật số tiền nhận thành công");
                     tbxReceiptMoney.Enabled = false;
                 }

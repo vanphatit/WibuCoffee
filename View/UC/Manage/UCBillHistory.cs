@@ -26,6 +26,11 @@ namespace WibuCoffee.View.UC.Manage
 
             dgvListBill.CellClick += new DataGridViewCellEventHandler(dgvListBill_CellClick);
 
+            cbxFilter.Items.Clear();
+            cbxSearch.Items.Clear();
+            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+
             cbxFilter.Items.Add("Tất cả");
             cbxFilter.Items.Add("Mã hóa đơn");
             cbxFilter.Items.Add("Ngày lập");
