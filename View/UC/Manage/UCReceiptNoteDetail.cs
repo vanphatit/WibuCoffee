@@ -63,6 +63,7 @@ namespace WibuCoffee.View.UC.Manage
             dataRNDetail.Columns[0].ColumnName = "Tên ng.liệu";
             dataRNDetail.Columns[1].ColumnName = "Số lượng";
             dataRNDetail.Columns[2].ColumnName = "Đơn giá";
+            dataRNDetail.Columns[3].ColumnName = "Thành tiền";
             dgvRNDetail.DataSource = dataRNDetail;
         }
 
