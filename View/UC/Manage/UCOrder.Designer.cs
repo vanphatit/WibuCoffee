@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainOrderPanel = new System.Windows.Forms.Panel();
             this.pButton = new System.Windows.Forms.Panel();
             this.btnNewBill = new System.Windows.Forms.Button();
@@ -56,7 +56,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tbxAvai = new System.Windows.Forms.TextBox();
-            this.btdAddCus = new System.Windows.Forms.Button();
+            this.btnAddCus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -147,6 +147,7 @@
             // tbxReceiptMoney
             // 
             this.tbxReceiptMoney.BackColor = System.Drawing.Color.White;
+            this.tbxReceiptMoney.Enabled = false;
             this.tbxReceiptMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxReceiptMoney.ForeColor = System.Drawing.Color.Black;
             this.tbxReceiptMoney.Location = new System.Drawing.Point(16, 379);
@@ -343,43 +344,43 @@
             this.dgvBillInfo.AllowUserToDeleteRows = false;
             this.dgvBillInfo.AllowUserToResizeColumns = false;
             this.dgvBillInfo.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvBillInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dgvBillInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBillInfo.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvBillInfo.ColumnHeadersHeight = 35;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBillInfo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBillInfo.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvBillInfo.GridColor = System.Drawing.Color.Black;
             this.dgvBillInfo.Location = new System.Drawing.Point(34, 27);
             this.dgvBillInfo.Name = "dgvBillInfo";
             this.dgvBillInfo.RowHeadersVisible = false;
             this.dgvBillInfo.RowHeadersWidth = 50;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvBillInfo.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvBillInfo.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvBillInfo.RowTemplate.Height = 24;
             this.dgvBillInfo.Size = new System.Drawing.Size(735, 197);
             this.dgvBillInfo.TabIndex = 0;
@@ -390,7 +391,7 @@
             this.pBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pBill.Controls.Add(this.label1);
             this.pBill.Controls.Add(this.panel9);
-            this.pBill.Controls.Add(this.btdAddCus);
+            this.pBill.Controls.Add(this.btnAddCus);
             this.pBill.Controls.Add(this.label11);
             this.pBill.Controls.Add(this.label10);
             this.pBill.Controls.Add(this.label9);
@@ -447,18 +448,18 @@
             this.tbxAvai.Size = new System.Drawing.Size(81, 34);
             this.tbxAvai.TabIndex = 25;
             // 
-            // btdAddCus
+            // btnAddCus
             // 
-            this.btdAddCus.BackColor = System.Drawing.Color.Gold;
-            this.btdAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btdAddCus.ForeColor = System.Drawing.Color.White;
-            this.btdAddCus.Location = new System.Drawing.Point(676, 116);
-            this.btdAddCus.Name = "btdAddCus";
-            this.btdAddCus.Size = new System.Drawing.Size(110, 62);
-            this.btdAddCus.TabIndex = 20;
-            this.btdAddCus.Text = "THÊM";
-            this.btdAddCus.UseVisualStyleBackColor = false;
-            this.btdAddCus.Click += new System.EventHandler(this.btdAddCus_Click);
+            this.btnAddCus.BackColor = System.Drawing.Color.Gold;
+            this.btnAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCus.ForeColor = System.Drawing.Color.White;
+            this.btnAddCus.Location = new System.Drawing.Point(676, 116);
+            this.btnAddCus.Name = "btnAddCus";
+            this.btnAddCus.Size = new System.Drawing.Size(110, 62);
+            this.btnAddCus.TabIndex = 20;
+            this.btnAddCus.Text = "THÊM";
+            this.btnAddCus.UseVisualStyleBackColor = false;
+            this.btnAddCus.Click += new System.EventHandler(this.btnAddCus_Click);
             // 
             // label11
             // 
@@ -624,6 +625,7 @@
             this.tbxCustomerName.Name = "tbxCustomerName";
             this.tbxCustomerName.Size = new System.Drawing.Size(202, 46);
             this.tbxCustomerName.TabIndex = 23;
+            this.tbxCustomerName.Click += new System.EventHandler(this.tbxCustomerName_Click);
             // 
             // panel5
             // 
@@ -849,7 +851,7 @@
         private System.Windows.Forms.ComboBox cbxProduct;
         private System.Windows.Forms.ComboBox cbxCategories;
         private System.Windows.Forms.ComboBox cbxEmp;
-        private System.Windows.Forms.Button btdAddCus;
+        private System.Windows.Forms.Button btnAddCus;
         private System.Windows.Forms.Button btnNewBill;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel9;
