@@ -26,6 +26,11 @@ namespace WibuCoffee.View.UC.Manage
 
             dgvListBill.CellClick += new DataGridViewCellEventHandler(dgvListBill_CellClick);
 
+            cbxFilter.Items.Clear();
+            cbxSearch.Items.Clear();
+            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+
             cbxFilter.Items.Add("Tất cả");
             cbxFilter.Items.Add("Mã hóa đơn");
             cbxFilter.Items.Add("Ngày lập");
@@ -237,6 +242,9 @@ namespace WibuCoffee.View.UC.Manage
                 SelectionBackColor = Color.Gray,
             };
 
+            dtpSearch.Format = DateTimePickerFormat.Custom;
+            dtpSearch.CustomFormat = "dd/MM/yyyy";
+
             pListBillInfo.Controls.Add(dgvBillInfo);
             pListBill.Controls.Add(dgvListBill);
 
@@ -255,7 +263,21 @@ namespace WibuCoffee.View.UC.Manage
                 dgvBillInfo.DataSource = null;
                 
                 reloadDGV(dataBill);
+                reloadDGV();
             }
+        }
+
+        private void reloadDGV()
+        {
+            tbxCategories.Text = "";
+            tbxIDBill.Text = "";
+            tbxEmp.Text = "";
+            tbxDate.Text = "";
+            tbxPhone.Text = "";
+            tbxCustomerName.Text = "";
+            lbTableID.Text = "";
+            lbTotalPrice.Text = "";
+            lbShowDis.Text = "";
         }
     }
 }

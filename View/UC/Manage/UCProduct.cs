@@ -113,7 +113,7 @@ namespace WibuCoffee.View.UC.Manage
             {
                 // Add product
                 DataProvider.Instance.ExecuteNonQuery("EXEC AddProduct @id , @name , @categoryID , @price , @status"
-                                   , new object[] { "P00", tbxNameProduct.Text, productCategoryID, tbxPriceProduct, tbxStatusProduct.Text });
+                                   , new object[] { "P00", tbxNameProduct.Text, productCategoryID, tbxPriceProduct.Text, tbxStatusProduct.Text });
                 MessageBox.Show("Thêm sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
 
@@ -141,7 +141,7 @@ namespace WibuCoffee.View.UC.Manage
             {
                 // Edit product
                 DataProvider.Instance.ExecuteNonQuery("EXEC UpdateProductByID @id , @name , @categoryID , @price , @status"
-                                                      , new object[] { tbxIDProduct.Text, tbxNameProduct.Text, productCategoryID, tbxPriceProduct, tbxStatusProduct.Text });
+                                                      , new object[] { tbxIDProduct.Text, tbxNameProduct.Text, productCategoryID, tbxPriceProduct.Text, tbxStatusProduct.Text });
                 MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
 

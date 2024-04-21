@@ -68,24 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider.cs" />
-    <Compile Include="Model\Bill.cs" />
-    <Compile Include="Model\BillCategory.cs" />
-    <Compile Include="Model\BillInfo.cs" />
-    <Compile Include="Model\Customer.cs" />
-    <Compile Include="Model\Delivery.cs" />
-    <Compile Include="Model\Employee.cs" />
-    <Compile Include="Model\ExpenseBill.cs" />
-    <Compile Include="Model\Job.cs" />
-    <Compile Include="Model\Material.cs" />
-    <Compile Include="Model\OnDuty.cs" />
-    <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\ProductCategory.cs" />
-    <Compile Include="Model\ProductMaterial.cs" />
-    <Compile Include="Model\ReceiptNote.cs" />
-    <Compile Include="Model\ReceiptNoteDetail.cs" />
-    <Compile Include="Model\Shift.cs" />
-    <Compile Include="Model\Supplier.cs" />
-    <Compile Include="Model\Table.cs" />
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +123,12 @@
     </Compile>
     <Compile Include="View\UC\Manage\UCReceiptNote.Designer.cs">
       <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCShift.Designer.cs">
+      <DependentUpon>UCShift.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UC\Manage\UCReceiptNoteDetail.cs">
       <SubType>UserControl</SubType>
@@ -203,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCReceiptNote.resx">
       <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCShift.resx">
+      <DependentUpon>UCShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC\Manage\UCReceiptNoteDetail.resx">
       <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using WibuCoffee.View;
@@ -32,9 +33,6 @@ namespace WibuCoffee
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txbUserName.Text;
-            string password = txbPassword.Text;
-            bool isAdmin = false;
             object result;
 
             try
@@ -48,25 +46,43 @@ namespace WibuCoffee
 
                 if (System.IO.File.Exists("servername.txt") && System.IO.File.ReadAllText("servername.txt").Length > 0)
                 {
-                    result = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkLogin( @username , @password )", new object[] { username, password });
-                    if (result.ToString() != "Invalid")
+                    try
                     {
-                        if(result.Equals("0"))
+                        string username = txbUserName.Text;
+                        string password = txbPassword.Text;
+
+                        // write the user name to the username.txt file
+                        System.IO.File.WriteAllText("username.txt", username);
+                        // write the password to the password.txt file
+                        System.IO.File.WriteAllText("password.txt", password);
+
+                        bool isAdmin = false;
+                        result = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkLogin( @username , @password )", new object[] { username, password });
+                        if (result.ToString() != "Invalid")
                         {
-                            isAdmin = true;
+                            if (result.Equals("0"))
+                            {
+                                isAdmin = true;
+                            }
+                            else if (result.Equals("1"))
+                            {
+                                isAdmin = false;
+                            }
+
+                            this.Hide();
+                            MainWindow mainWindow = new MainWindow(isAdmin);
+                            mainWindow.Show();
                         }
-                        else if (result.Equals("1"))
+                        else
                         {
-                            isAdmin = false;
+                            MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
                         }
-                        this.Hide();
-                        MainWindow mainWindow = new MainWindow(isAdmin);
-                        mainWindow.Show();
                     }
-                    else
+                    catch (SqlException err)
                     {
-                        MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
+                        MessageBox.Show(Text = "Error from SQL!\n" + err.Message);
                     }
+                    
                 }
                 else
                 {
@@ -75,9 +91,9 @@ namespace WibuCoffee
                 }
                 
             }
-            catch (SqlException)
+            catch (SqlException err)
             {
-                MessageBox.Show("Lỗi kết nối đến cơ sở dữ liệu! Vui lòng xem lại server name");
+                MessageBox.Show("Error from SQL!\n" + err.Message);
                 // delete the servername.txt file
                 System.IO.File.Delete("servername.txt");
                 pnlServerName.Enabled = true;

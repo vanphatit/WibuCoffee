@@ -53,7 +53,10 @@
             this.pBillInfo = new System.Windows.Forms.Panel();
             this.dgvBillInfo = new System.Windows.Forms.DataGridView();
             this.pBill = new System.Windows.Forms.Panel();
-            this.btdAddCus = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.tbxAvai = new System.Windows.Forms.TextBox();
+            this.btnAddCus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -88,6 +91,7 @@
             this.pBillInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillInfo)).BeginInit();
             this.pBill.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -143,6 +147,7 @@
             // tbxReceiptMoney
             // 
             this.tbxReceiptMoney.BackColor = System.Drawing.Color.White;
+            this.tbxReceiptMoney.Enabled = false;
             this.tbxReceiptMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxReceiptMoney.ForeColor = System.Drawing.Color.Black;
             this.tbxReceiptMoney.Location = new System.Drawing.Point(16, 379);
@@ -290,7 +295,7 @@
             this.btnDeleteProduct.BackColor = System.Drawing.Color.Red;
             this.btnDeleteProduct.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteProduct.Location = new System.Drawing.Point(614, 326);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(594, 326);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(230, 65);
             this.btnDeleteProduct.TabIndex = 4;
@@ -303,7 +308,7 @@
             this.btnUpdateProduct.BackColor = System.Drawing.Color.Gold;
             this.btnUpdateProduct.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateProduct.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateProduct.Location = new System.Drawing.Point(319, 326);
+            this.btnUpdateProduct.Location = new System.Drawing.Point(312, 326);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(230, 65);
             this.btnUpdateProduct.TabIndex = 3;
@@ -384,7 +389,9 @@
             // pBill
             // 
             this.pBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pBill.Controls.Add(this.btdAddCus);
+            this.pBill.Controls.Add(this.label1);
+            this.pBill.Controls.Add(this.panel9);
+            this.pBill.Controls.Add(this.btnAddCus);
             this.pBill.Controls.Add(this.label11);
             this.pBill.Controls.Add(this.label10);
             this.pBill.Controls.Add(this.label9);
@@ -407,18 +414,52 @@
             this.pBill.Size = new System.Drawing.Size(800, 280);
             this.pBill.TabIndex = 1;
             // 
-            // btdAddCus
+            // label1
             // 
-            this.btdAddCus.BackColor = System.Drawing.Color.Gold;
-            this.btdAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btdAddCus.ForeColor = System.Drawing.Color.White;
-            this.btdAddCus.Location = new System.Drawing.Point(676, 116);
-            this.btdAddCus.Name = "btdAddCus";
-            this.btdAddCus.Size = new System.Drawing.Size(110, 62);
-            this.btdAddCus.TabIndex = 20;
-            this.btdAddCus.Text = "THÊM";
-            this.btdAddCus.UseVisualStyleBackColor = false;
-            this.btdAddCus.Click += new System.EventHandler(this.btdAddCus_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(305, 191);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "KHẢ DỤNG:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel9
+            // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.tbxAvai);
+            this.panel9.Location = new System.Drawing.Point(287, 200);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(116, 62);
+            this.panel9.TabIndex = 21;
+            // 
+            // tbxAvai
+            // 
+            this.tbxAvai.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbxAvai.BackColor = System.Drawing.Color.White;
+            this.tbxAvai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxAvai.Enabled = false;
+            this.tbxAvai.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxAvai.ForeColor = System.Drawing.Color.Black;
+            this.tbxAvai.Location = new System.Drawing.Point(19, 13);
+            this.tbxAvai.Multiline = true;
+            this.tbxAvai.Name = "tbxAvai";
+            this.tbxAvai.Size = new System.Drawing.Size(81, 34);
+            this.tbxAvai.TabIndex = 25;
+            // 
+            // btnAddCus
+            // 
+            this.btnAddCus.BackColor = System.Drawing.Color.Gold;
+            this.btnAddCus.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCus.ForeColor = System.Drawing.Color.White;
+            this.btnAddCus.Location = new System.Drawing.Point(676, 116);
+            this.btnAddCus.Name = "btnAddCus";
+            this.btnAddCus.Size = new System.Drawing.Size(110, 62);
+            this.btnAddCus.TabIndex = 20;
+            this.btnAddCus.Text = "THÊM";
+            this.btnAddCus.UseVisualStyleBackColor = false;
+            this.btnAddCus.Click += new System.EventHandler(this.btnAddCus_Click);
             // 
             // label11
             // 
@@ -457,7 +498,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Google Sans", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(304, 191);
+            this.label8.Location = new System.Drawing.Point(413, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 17);
             this.label8.TabIndex = 16;
@@ -545,9 +586,9 @@
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.tbxQuantity);
-            this.panel8.Location = new System.Drawing.Point(287, 200);
+            this.panel8.Location = new System.Drawing.Point(409, 200);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(233, 62);
+            this.panel8.Size = new System.Drawing.Size(111, 62);
             this.panel8.TabIndex = 1;
             // 
             // tbxQuantity
@@ -557,10 +598,10 @@
             this.tbxQuantity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbxQuantity.Font = new System.Drawing.Font("Google Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxQuantity.ForeColor = System.Drawing.Color.Black;
-            this.tbxQuantity.Location = new System.Drawing.Point(14, 7);
+            this.tbxQuantity.Location = new System.Drawing.Point(13, 13);
             this.tbxQuantity.Multiline = true;
             this.tbxQuantity.Name = "tbxQuantity";
-            this.tbxQuantity.Size = new System.Drawing.Size(202, 46);
+            this.tbxQuantity.Size = new System.Drawing.Size(81, 34);
             this.tbxQuantity.TabIndex = 25;
             // 
             // panel4
@@ -584,6 +625,7 @@
             this.tbxCustomerName.Name = "tbxCustomerName";
             this.tbxCustomerName.Size = new System.Drawing.Size(202, 46);
             this.tbxCustomerName.TabIndex = 23;
+            this.tbxCustomerName.Click += new System.EventHandler(this.tbxCustomerName_Click);
             // 
             // panel5
             // 
@@ -650,6 +692,7 @@
             this.cbxProduct.Size = new System.Drawing.Size(202, 34);
             this.cbxProduct.TabIndex = 0;
             this.cbxProduct.Text = "Tên sản phẩm";
+            this.cbxProduct.SelectedIndexChanged += new System.EventHandler(this.cbxProduct_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -740,6 +783,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillInfo)).EndInit();
             this.pBill.ResumeLayout(false);
             this.pBill.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
@@ -789,7 +834,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
@@ -799,9 +843,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbxQuantity;
         private System.Windows.Forms.TextBox tbxCustomerName;
         private System.Windows.Forms.TextBox tbxIDBill;
         private System.Windows.Forms.TextBox tbxPhone;
@@ -809,7 +851,13 @@
         private System.Windows.Forms.ComboBox cbxProduct;
         private System.Windows.Forms.ComboBox cbxCategories;
         private System.Windows.Forms.ComboBox cbxEmp;
-        private System.Windows.Forms.Button btdAddCus;
+        private System.Windows.Forms.Button btnAddCus;
         private System.Windows.Forms.Button btnNewBill;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox tbxAvai;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TextBox tbxQuantity;
     }
 }

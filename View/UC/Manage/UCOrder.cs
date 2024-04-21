@@ -1,8 +1,8 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,17 +37,19 @@ namespace WibuCoffee.View.UC.Manage
         };
 
         private DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
-        private DataTable dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Bill");
-        private DataTable dataProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Product");
+        private DataTable dataProduct = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllProduct");
         private DataTable dataCategories = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillCategory");
-        private DataTable dataEmployee = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Employee");
 
         private List<Button> listButton = new List<Button>();
         private List<Boolean> buttonClick = new List<Boolean>();
         public UCOrder()
         {
             InitializeComponent();
+            reload();
+        }
 
+        private void reload()
+        {
             Timer timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += (s, e) =>
@@ -55,10 +57,18 @@ namespace WibuCoffee.View.UC.Manage
                 tbxDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             };
             timer.Start();
+
             tbxDate.Enabled = false;
 
             tbxIDBill.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.createBillID ()").ToString();
             tbxIDBill.Enabled = false;
+
+            cbxCategories.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxCategories.Items.Clear();
+            cbxEmp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxEmp.Items.Clear();
+            cbxProduct.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxProduct.Items.Clear();
 
             for (int i = 0; i < dataProduct.Rows.Count; i++)
             {
@@ -68,13 +78,40 @@ namespace WibuCoffee.View.UC.Manage
             {
                 cbxCategories.Items.Add(dataCategories.Rows[i]["name"].ToString());
             }
+
             insertDataToEmployee();
-            tbxQuantity.Text = "0";
+
+            tbxPhone.Text = "";
+            tbxCustomerName.Text = "";
+            cbxCategories.Text = "Loại hóa đơn";
+            cbxEmp.Text = "Tên nhân viên";
             tbxReceiptMoney.Text = "0";
+
+            tbxReceiptMoney.Enabled = false;
+            tbxPhone.Enabled = true;
+            tbxCustomerName.Enabled = true;
+            cbxCategories.Enabled = true;
+            cbxEmp.Enabled = true;
+            dgvBillInfo.DataSource = null;
+
+            dgvBillInfo.Rows.Clear();
+            dgvBillInfo.Refresh();
+
             lbShowDis.Text = "0 VND";
             lbTotalPrice.Text = "0 VND";
+            tbxQuantity.Text = "0";
+            tbxAvai.Text = "0";
+            cbxProduct.Text = "";
+            cbxCategories.Text = "Loại hóa đơn";
+            cbxEmp.Text = "Tên nhân viên";
+
+            btnAdd.Enabled = true;
+            btnAddCus.Enabled = true;
+            btnSearch.Enabled = true;
+
             btnAddTable.Click += btnAddTable_Click;
             btnDeleteTable.Click += btnDeleteTable_Click;
+
             paintTable();
             addBtnClick();
         }
@@ -157,26 +194,17 @@ namespace WibuCoffee.View.UC.Manage
         {
             data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
             int count = data.Rows.Count;
-            if (count == 0)
+            try
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] {"T1", "Table1", "Available" }) > 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable") > 0)
                 {
                     paintTable();
                 }
             }
-            else if (count > 0 && count < 10)
+            catch (SqlException ev)
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T0" + (count + 1), "Table0" + (count + 1), "Available" }) > 0)
-                {
-                    paintTable();
-                }
-            }
-            else
-            {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertTable @ID , @name , @status", new object[] { "T" + (count + 1), "Table" + (count + 1), "Available" }) > 0)
-                {
-                    paintTable();
-                }
+                MessageBox.Show("Thêm bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                paintTable();
             }
         }
 
@@ -192,13 +220,20 @@ namespace WibuCoffee.View.UC.Manage
             }
             else
             {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteTableByID @ID", new object[] { data.Rows[count - 1]["ID"].ToString() }) > 0)
+                try
                 {
-                    paintTable();
+                    if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteTableByID @ID", new object[] { data.Rows[count - 1]["ID"].ToString() }) > 0)
+                    {
+                        paintTable();
+                    }
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Xóa bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        
+
         //viết hàm khi click vài một nút bất kì trong listButton thì ButtonList tương ứng sẽ thay đổi giá trị
 
         private void addBtnClick()
@@ -207,48 +242,76 @@ namespace WibuCoffee.View.UC.Manage
             {
                 btn.Click += (sender, e) =>
                 {
+                    Button clickedButton = (Button)sender;
+
+                    // Lặp qua tất cả các nút trong danh sách
                     for (int i = 0; i < listButton.Count; i++)
                     {
-                        if (sender == listButton[i])
+                        if (listButton[i] == clickedButton)
                         {
+                            // Nếu nút đang xem xét là nút được nhấp, đặt giá trị tương ứng trong mảng là true
                             buttonClick[i] = true;
+                        }
+                        else
+                        {
+                            // Nếu nút không được nhấp, đặt giá trị tương ứng trong mảng là false
+                            buttonClick[i] = false;
                         }
                     }
                 };
             }
         }
 
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < listButton.Count; i++)
             {
                 bool check = buttonClick[i];
-                if (check && listButton[i].BackColor == Color.DodgerBlue)
+                try
                 {
-                    if (DataProvider.Instance.ExecuteNonQuery("EXEC updateTableStatus @ID ", new object[] { listButton[i].Text }) > 0)
+                    if (check)
                     {
-                        paintTable();
-                        addBtnClick();
-                        break;
+                        if (DataProvider.Instance.ExecuteNonQuery("EXEC updateTableStatus @ID ", new object[] { listButton[i].Text }) > 0)
+                        {
+                            paintTable();
+                            addBtnClick();
+                            break;
+                        }
                     }
                 }
-                else if (check && listButton[i].BackColor == Color.LightGray)
+                catch (SqlException ev)
                 {
-                    MessageBox.Show("Bàn này đang trống");
-                    buttonClick[i] = false;
-                    break;
+                    MessageBox.Show("Cập nhật trạng thái bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            int receiptMoney = Convert.ToInt32(tbxReceiptMoney.Text);
-            if (receiptMoney > 0)
-            {
-                if(DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateReceiptMoney @ID , @receiptMoney ", new object[] { tbxIDBill.Text, receiptMoney }) <= 0)
+             try
+             {
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC updateReceiptMoney @ID , @receiptMoney ", new object[] { tbxIDBill.Text, tbxReceiptMoney.Text }) > 0)
                 {
-                    MessageBox.Show("Cập nhật số tiền nhận không thành công");
-                }
-                else
+                    string billID = tbxIDBill.Text;
+                    string phone = tbxPhone.Text;
+                    try
+                    {
+                        if (DataProvider.Instance.ExecuteNonQuery("EXEC updateCustomerPoint @billID , @phone ", new object[] { billID, phone }) > 0)
+                        {
+                            MessageBox.Show("Cập nhật số tiền nhận thành công");
+                            tbxReceiptMoney.Enabled = false;
+                        }
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Cập nhật số tiền nhận thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    MessageBox.Show("Cập nhật số tiền nhận thành công");
                     tbxReceiptMoney.Enabled = false;
-            }    
+                }
+             }
+             catch (SqlException ev)
+             {
+                MessageBox.Show("Cập nhật số tiền nhận thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -258,34 +321,57 @@ namespace WibuCoffee.View.UC.Manage
             {
                 MessageBox.Show("Vui lòng nhập số điện thoại");
             }
-            string name = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkCustomer ( @phone ) ", new object[] { phone }).ToString();
-            if (name == "CUSTOMER DOES NOT EXIST")
+            else if (phone.Length != 10)
             {
-                MessageBox.Show("Khách hàng không tồn tại");
+                MessageBox.Show("Số điện thoại không hợp lệ");
             }
             else
             {
-                tbxCustomerName.Text = name;
-            }
+                try
+                {
+                    tbxCustomerName.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkCustomer ( @phone ) ", new object[] { phone }).ToString();
+                    if (tbxCustomerName.Text == "CUSTOMER DOES NOT EXIST")
+                    {
+                        btnAddCus.Enabled = true;
+                        btnSearch.Enabled = true;
+                        tbxCustomerName.Enabled = true;
+                        tbxPhone.Enabled = true;
+                    }
+                    else
+                    {
+                        btnAddCus.Enabled = false;
+                        btnSearch.Enabled = false;
+                        tbxCustomerName.Enabled = false;
+                        tbxPhone.Enabled = false;
+                    }
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Tìm kiếm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }    
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             string billID = tbxIDBill.Text;
             string productName = cbxProduct.Text;
-            int quantity = Convert.ToInt32(tbxQuantity.Text);
+            string quantity = tbxQuantity.Text;
 
-            if (quantity == 0)
+            try
             {
-                MessageBox.Show("Vui lòng nhập số lượng");
-            }
-            else
-            {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC addBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) <= 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC addBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
                 {
-                    MessageBox.Show("Thêm sản phẩm thất bại");
+                    MessageBox.Show("Thêm sản phẩm thành công");
+                    tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                    tbxQuantity.Text = "0";
                 }
             }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Thêm sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
@@ -297,57 +383,36 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //Ngừng thời gian để lấy giờ hiện tại
-            Timer timer = new Timer();
-            timer.Stop();
-
-            if (cbxCategories.Text == "Loại hóa đơn")
+            tbxDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string billID = tbxIDBill.Text;
+            string date = tbxDate.Text;
+            string tableID = "";
+            string name = tbxCustomerName.Text;
+            string categories = cbxCategories.Text;
+            string emp = cbxEmp.Text;
+            int receipMoney = Convert.ToInt32(tbxReceiptMoney.Text);
+            if (categories == "In place")
             {
-                MessageBox.Show("Vui lòng chọn loại hóa đơn");
-            }
-            else if (cbxEmp.Text == "Tên nhân viên")
-            {
-                MessageBox.Show("Vui lòng chọn nhân viên");
-            }
-            else if (tbxReceiptMoney.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập số tiền nhận");
-            }
-            else if (tbxPhone.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập số điện thoại");
-            }
-            else if (tbxPhone.Text.Length != 10)
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ");
-            }
-            else if (tbxCustomerName.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập tên khách hàng");
-            }
-            else
-            {
-                int check = 0;
-                string billID = tbxIDBill.Text;
-                string date = tbxDate.Text;
-                string name = tbxCustomerName.Text;
-                string categories = cbxCategories.Text;
-                string emp = cbxEmp.Text;
-                int receipMoney = Convert.ToInt32(tbxReceiptMoney.Text);
-                for (int i = 0; i < listButton.Count; i++)
+                for (int i = 0; i <= listButton.Count; i++)
                 {
-                    if (buttonClick[i])
+                    if (i == listButton.Count)
                     {
-                        if (listButton[i].BackColor == Color.DodgerBlue)
+                        tableID = "";
+                    }
+                    else if (buttonClick[i])
+                    {
+                        tableID = listButton[i].Text;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                    try
+                    {
+                        if (DataProvider.Instance.ExecuteNonQuery("EXEC insertBill @ID , @date , @tableID , @name , @categories , @emp , @receiptMoney ", new object[] { billID, date, tableID, name, categories, emp, receipMoney }) > 0)
                         {
-                            MessageBox.Show("Bàn này đang được sử dụng!");                
-                        }    
-                        else if (DataProvider.Instance.ExecuteNonQuery("EXEC insertBill @ID , @date , @tableID , @name , @categories , @emp , @receiptMoney ", new object[] { billID, date, listButton[i].Text, name, categories, emp, receipMoney }) <= 0)
-                        {
-                            MessageBox.Show("Thêm hóa đơn thất bại");
-                        }
-                        else
-                        {
+                            MessageBox.Show("Thêm hóa đơn thành công");
+
                             lbShowDis.Text = "0 VND";
                             lbTotalPrice.Text = "0 VND";
 
@@ -358,27 +423,31 @@ namespace WibuCoffee.View.UC.Manage
                             tbxCustomerName.Enabled = false;
                             cbxEmp.Enabled = false;
 
+                            btnAdd.Enabled = false;
+
+                            tbxReceiptMoney.Enabled = true;
+
                             paintTable();
                             addBtnClick();
                             break;
                         }
                     }
-                    else
-                        check++;
-                }
-                if (check == listButton.Count && categories == "In place")
-                {
-                    MessageBox.Show("Vui lòng chọn bàn");
-                }
-                else if (categories != "In place")
-                {
-                    string tableID = "N/A";
-                    if (DataProvider.Instance.ExecuteNonQuery("EXEC insertBill @ID , @date , @tableID , @name , @categories , @emp , @receiptMoney ", new object[] { billID, date, tableID, name, categories, emp, receipMoney }) <= 0)
+                    catch (SqlException ev)
                     {
-                        MessageBox.Show("Thêm hóa đơn thất bại");
+                        MessageBox.Show("Thêm hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                     }
-                    else
+                }
+            }    
+            else if (categories != "In place")
+            {
+                tableID = "NA";
+                try
+                {
+                    if (DataProvider.Instance.ExecuteNonQuery("EXEC insertBill @ID , @date , @tableID , @name , @categories , @emp , @receiptMoney ", new object[] { billID, date, tableID, name, categories, emp, receipMoney }) > 0)
                     {
+                        MessageBox.Show("Thêm hóa đơn thành công");
+
                         lbShowDis.Text = "0 VND";
                         lbTotalPrice.Text = "0 VND";
 
@@ -389,44 +458,18 @@ namespace WibuCoffee.View.UC.Manage
                         tbxCustomerName.Enabled = false;
                         cbxEmp.Enabled = false;
 
+                        btnAdd.Enabled = false;
+
+                        tbxReceiptMoney.Enabled = true;
+
                         paintTable();
                         addBtnClick();
                     }
-                }    
-            }    
-        }
-
-        private void btdAddCus_Click(object sender, EventArgs e)
-        {
-            string phone = tbxPhone.Text;
-            string name = tbxCustomerName.Text;
-            string check = DataProvider.Instance.ExecuteScalar("SELECT dbo.checkCustomer ( @phone ) ", new object[] { phone }).ToString(); 
-            if (phone == "")
-            {
-                MessageBox.Show("Vui lòng nhập số điện thoại");
-            }
-            else if (phone.Length != 10)
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ");
-            }
-            else if (name == "")
-            {
-                MessageBox.Show("Vui lòng nhập tên khách hàng");
-            }
-            else if (check == "CUSTOMER DOES NOT EXIST")
-            {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertCustomer @name , @phone ", new object[] { name, phone }) > 0)
-                {
-                    MessageBox.Show("Thêm khách hàng thành công");
                 }
-                else
+                catch (SqlException ev)
                 {
-                    MessageBox.Show("Thêm khách hàng thất bại");
+                    MessageBox.Show("Thêm hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Khách hàng đã tồn tại");
             }
         }
 
@@ -444,76 +487,177 @@ namespace WibuCoffee.View.UC.Manage
         {
             string billID = tbxIDBill.Text;
             string productName = cbxProduct.Text;
-            int quantity = Convert.ToInt32(tbxQuantity.Text);
+            string quantity = tbxQuantity.Text;
 
-            if (quantity == 0)
+            try
             {
-                MessageBox.Show("Vui lòng nhập số lượng");
-            }
-            else
-            {
-                if (DataProvider.Instance.ExecuteNonQuery("EXEC updateBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) <= 0)
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC updateBillInfo @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
                 {
-                    MessageBox.Show("Cập nhật sản phẩm thất bại");
+                    MessageBox.Show("Cập nhật sản phẩm thành công");
+                    tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                    tbxQuantity.Text = "0";
                 }
             }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Cập nhật sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
 
-            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString() + "\nVND";
-            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString() + "\nVND";
+            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
             string billID = tbxIDBill.Text;
             string productName = cbxProduct.Text;
+            string quantity = tbxQuantity.Text;
 
-            if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName ", new object[] { billID, productName }) <= 0)
+            try
             {
-                MessageBox.Show("Xóa sản phẩm thất bại");
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillInfoByName @billID , @productName , @quantity ", new object[] { billID, productName, quantity }) > 0)
+                {
+                    MessageBox.Show("Xóa sản phẩm thành công");
+                    tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+                    tbxQuantity.Text = "0";
+                }
             }
-
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Xóa sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
 
-            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString() + "\nVND";
-            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString() + "\nVND";
+            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
-            //chuyển sang form lịch sử hóa đơn
-            UCBillHistory orderHistory = new UCBillHistory();
-            orderHistory.Dock = DockStyle.Fill;
+            string billID = tbxIDBill.Text;
+
+            int check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
+
+            if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn tạo hóa đơn mới không?\n Hóa đơn trước đó chưa được order!\n Máy sẽ xóa hóa đơn trước đó!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillByID @billID ", new object[] { tbxIDBill.Text });
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Xóa hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //chuyển sang form lịch sử hóa đơn
+                    UCBillHistory orderHistory = new UCBillHistory();
+                    changeUC(orderHistory);
+                }
+            }
+            else if (tbxReceiptMoney.Text != "0" && dgvBillInfo.Rows.Count != 0 && check == 1)
+            {
+                //chuyển sang form lịch sử hóa đơn
+                UCBillHistory orderHistory = new UCBillHistory();
+                changeUC(orderHistory);
+            }
+            else if (check == 0)
+            {
+                //chuyển sang form lịch sử hóa đơn
+                UCBillHistory orderHistory = new UCBillHistory();
+                changeUC(orderHistory);
+            }
+            else
+            {
+                MessageBox.Show("Hóa đơn đang được order!");
+            }
+        }
+
+        private void changeUC (UserControl uc)
+        {
+            uc.Dock = DockStyle.Fill;
             this.Controls.Clear();
-            this.Controls.Add(orderHistory);
+            this.Controls.Add(uc);
         }
 
         private void btnNewBill_Click(object sender, EventArgs e)
         {
-            tbxIDBill.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.createBillID ()").ToString();
+            string billID = tbxIDBill.Text;
 
-            tbxPhone.Text = "";
-            tbxCustomerName.Text = "";
-            cbxCategories.Text = "Loại hóa đơn";
-            cbxEmp.Text = "Tên nhân viên";
-            tbxReceiptMoney.Text = "0";
-            tbxReceiptMoney.Enabled = true;
-            tbxPhone.Enabled = true;
-            tbxCustomerName.Enabled = true;
-            cbxCategories.Enabled = true;
-            cbxEmp.Enabled = true;
-            dgvBillInfo.DataSource = null;
-            dgvBillInfo.Rows.Clear();
-            dgvBillInfo.Refresh();
-            lbShowDis.Text = "0 VND";
-            lbTotalPrice.Text = "0 VND";
+            int check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
 
+            if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn tạo hóa đơn mới không?\n Hóa đơn trước đó chưa được order!\n Máy sẽ xóa hóa đơn trước đó!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        DataProvider.Instance.ExecuteNonQuery("EXEC deleteBillByID @billID ", new object[] { tbxIDBill.Text });
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Xóa hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    reload();
+                }
+            }
+            else if ( tbxReceiptMoney.Text != "0" && dgvBillInfo.Rows.Count != 0 && check == 1)
+            {
+                reload();
+            }
+            else if (check == 0)
+            {
+                reload();
+            }
+            else
+            {
+                MessageBox.Show("Hóa đơn đang được order!");
+            }
+
+        }
+
+        private void cbxProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string productName = cbxProduct.Text;
+            tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+        }
+
+        private void tbxCustomerName_Click(object sender, EventArgs e)
+        {
+            tbxCustomerName.Clear();
+        }
+
+        private void btnAddCus_Click(object sender, EventArgs e)
+        {
+            string phone = tbxPhone.Text;
+            string name = tbxCustomerName.Text;
+            try
+            {
+                if (DataProvider.Instance.ExecuteNonQuery("EXEC insertCustomer @name , @phone ", new object[] { name, phone }) > 0)
+                {
+                    MessageBox.Show("Thêm khách hàng thành công");
+                    btnAddCus.Enabled = false;
+                    btnSearch.Enabled = false;
+                    tbxCustomerName.Enabled = false;
+                    tbxPhone.Enabled = false;
+                }
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Thêm khách hàng thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
