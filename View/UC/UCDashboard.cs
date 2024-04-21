@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -124,120 +125,127 @@ namespace WibuCoffee.View.UC
 
         void loadData()
         {
-            // get today date
-            DateTime today = DateTime.Now;
-            // get today income
-            decimal todayIncome = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalPriceBillbyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
-            decimal todayExpense = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalExpensebyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
-            decimal monthRevenue = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalRevenue1MonthAgo ()");
-            int emptyTable = (int)DataProvider.Instance.ExecuteScalar("SELECT dbo.getEmptyTableCount ()");
-
-            lbTodayIncome.Text = "VNĐ " + todayIncome.ToString();
-            lbTodayExpense.Text = "VNĐ " + todayExpense.ToString();
-            lbTodayRevenue.Text = "VNĐ " + monthRevenue.ToString();
-            lbEmptyTable.Text = emptyTable.ToString() + " bàn";
-
-            // get view MostPopularProducts from database and set to topProducts
-            top5Products = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.MostPopularProducts");
-            // Check if there are enough rows returned
-            if (top5Products.Rows.Count >= 5)
+            try
             {
-                // Set the text for lbTop1, lbTop2, lbTop3, lbTop4, lbTop5 from top5Products with format: "Quantity - Price - Product Name"
-                lbTop1.Text = top5Products.Rows[0]["ID"] + " - " + top5Products.Rows[0]["name"].ToString() + " - " 
-                    + top5Products.Rows[0]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[0]["totalQuantity"].ToString();
-                lbTop2.Text = top5Products.Rows[1]["ID"] + " - " + top5Products.Rows[1]["name"].ToString() + " - " 
-                    + top5Products.Rows[1]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[1]["totalQuantity"].ToString();
-                lbTop3.Text = top5Products.Rows[2]["ID"] + " - " + top5Products.Rows[2]["name"].ToString() + " - " 
-                    + top5Products.Rows[2]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[2]["totalQuantity"].ToString();
-                lbTop4.Text = top5Products.Rows[3]["ID"] + " - " + top5Products.Rows[3]["name"].ToString() + " - " 
-                    + top5Products.Rows[3]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[3]["totalQuantity"].ToString();
-                lbTop5.Text = top5Products.Rows[4]["ID"] + " - " + top5Products.Rows[4]["name"].ToString() + " - " 
-                    + top5Products.Rows[4]["price"] + "VNĐ - Đã bán:  " + top5Products.Rows[4]["totalQuantity"].ToString();
-            }
-            else
-            {
-                // Handle the case where less than 5 products are returned
-                // You may want to clear the labels or set them to a default text like "N/A"
-                lbTop1.Text = lbTop2.Text = lbTop3.Text = lbTop4.Text = lbTop5.Text = "N/A";
-            }
+                // get today date
+                DateTime today = DateTime.Now;
+                // get today income
+                decimal todayIncome = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalPriceBillbyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
+                decimal todayExpense = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalExpensebyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
+                decimal monthRevenue = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalRevenue1MonthAgo ()");
+                int emptyTable = (int)DataProvider.Instance.ExecuteScalar("SELECT dbo.getEmptyTableCount ()");
 
-            moneyRecents = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillExpenseCount7DaysAgo");
+                lbTodayIncome.Text = "VNĐ " + todayIncome.ToString();
+                lbTodayExpense.Text = "VNĐ " + todayExpense.ToString();
+                lbTodayRevenue.Text = "VNĐ " + monthRevenue.ToString();
+                lbEmptyTable.Text = emptyTable.ToString() + " bàn";
 
-            if(moneyRecents.Rows.Count >= 7) 
-            {
-                // get the Date of the first row in moneyRecents and set to lbDate1, lbDate2, lbDate3, lbDate4, lbDate5, lbDate6, lbDate7
-                lbDate1.Text = ((DateTime)moneyRecents.Rows[0]["Date"]).ToString("dd/MM/yyyy");
-                lbDate2.Text = ((DateTime)moneyRecents.Rows[1]["Date"]).ToString("dd/MM/yyyy");
-                lbDate3.Text = ((DateTime)moneyRecents.Rows[2]["Date"]).ToString("dd/MM/yyyy");
-                lbDate4.Text = ((DateTime)moneyRecents.Rows[3]["Date"]).ToString("dd/MM/yyyy");
-                lbDate5.Text = ((DateTime)moneyRecents.Rows[4]["Date"]).ToString("dd/MM/yyyy");
-                lbDate6.Text = ((DateTime)moneyRecents.Rows[5]["Date"]).ToString("dd/MM/yyyy");
-                lbDate7.Text = ((DateTime)moneyRecents.Rows[6]["Date"]).ToString("dd/MM/yyyy");
-
-                int max = 550;
-                for (int i = 0; i < 7; i++)
+                // get view MostPopularProducts from database and set to topProducts
+                top5Products = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.MostPopularProducts");
+                // Check if there are enough rows returned
+                if (top5Products.Rows.Count >= 5)
                 {
-                    decimal totalBill = Convert.ToDecimal(moneyRecents.Rows[i]["TotalBill"]);
-                    decimal totalExpense = Convert.ToDecimal(moneyRecents.Rows[i]["TotalExpense"]);
-                    decimal total = totalBill + totalExpense;
+                    // Set the text for lbTop1, lbTop2, lbTop3, lbTop4, lbTop5 from top5Products with format: "Quantity - Price - Product Name"
+                    lbTop1.Text = top5Products.Rows[0]["ID"] + " - " + top5Products.Rows[0]["name"].ToString() + " - "
+                        + top5Products.Rows[0]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[0]["totalQuantity"].ToString();
+                    lbTop2.Text = top5Products.Rows[1]["ID"] + " - " + top5Products.Rows[1]["name"].ToString() + " - "
+                        + top5Products.Rows[1]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[1]["totalQuantity"].ToString();
+                    lbTop3.Text = top5Products.Rows[2]["ID"] + " - " + top5Products.Rows[2]["name"].ToString() + " - "
+                        + top5Products.Rows[2]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[2]["totalQuantity"].ToString();
+                    lbTop4.Text = top5Products.Rows[3]["ID"] + " - " + top5Products.Rows[3]["name"].ToString() + " - "
+                        + top5Products.Rows[3]["price"] + "VNĐ - Đã bán: " + top5Products.Rows[3]["totalQuantity"].ToString();
+                    lbTop5.Text = top5Products.Rows[4]["ID"] + " - " + top5Products.Rows[4]["name"].ToString() + " - "
+                        + top5Products.Rows[4]["price"] + "VNĐ - Đã bán:  " + top5Products.Rows[4]["totalQuantity"].ToString();
+                }
+                else
+                {
+                    // Handle the case where less than 5 products are returned
+                    // You may want to clear the labels or set them to a default text like "N/A"
+                    lbTop1.Text = lbTop2.Text = lbTop3.Text = lbTop4.Text = lbTop5.Text = "N/A";
+                }
 
-                    int incomeWidth = (total > 0) ? (int)((totalBill / total) * max) : 0;
-                    int expenseWidth = (total > 0) ? (int)((totalExpense / total) * max) : 0;
+                moneyRecents = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillExpenseCount7DaysAgo");
 
-                    if (incomeWidth + expenseWidth >= max)
+                if (moneyRecents.Rows.Count >= 7)
+                {
+                    // get the Date of the first row in moneyRecents and set to lbDate1, lbDate2, lbDate3, lbDate4, lbDate5, lbDate6, lbDate7
+                    lbDate1.Text = ((DateTime)moneyRecents.Rows[0]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate2.Text = ((DateTime)moneyRecents.Rows[1]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate3.Text = ((DateTime)moneyRecents.Rows[2]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate4.Text = ((DateTime)moneyRecents.Rows[3]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate5.Text = ((DateTime)moneyRecents.Rows[4]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate6.Text = ((DateTime)moneyRecents.Rows[5]["Date"]).ToString("dd/MM/yyyy");
+                    lbDate7.Text = ((DateTime)moneyRecents.Rows[6]["Date"]).ToString("dd/MM/yyyy");
+
+                    int max = 550;
+                    for (int i = 0; i < 7; i++)
                     {
-                        double scaleFactor = (double)max / (incomeWidth + expenseWidth);
-                        incomeWidth = (int)(incomeWidth * scaleFactor);
-                        expenseWidth = (int)(expenseWidth * scaleFactor);
+                        decimal totalBill = Convert.ToDecimal(moneyRecents.Rows[i]["TotalBill"]);
+                        decimal totalExpense = Convert.ToDecimal(moneyRecents.Rows[i]["TotalExpense"]);
+                        decimal total = totalBill + totalExpense;
+
+                        int incomeWidth = (total > 0) ? (int)((totalBill / total) * max) : 0;
+                        int expenseWidth = (total > 0) ? (int)((totalExpense / total) * max) : 0;
+
+                        if (incomeWidth + expenseWidth >= max)
+                        {
+                            double scaleFactor = (double)max / (incomeWidth + expenseWidth);
+                            incomeWidth = (int)(incomeWidth * scaleFactor);
+                            expenseWidth = (int)(expenseWidth * scaleFactor);
+                        }
+
+                        string tooltipText = $"Total Bill: {totalBill} VNĐ\nTotal Expense: {totalExpense} VNĐ";
+                        btnToolTip.SetToolTip(btnMoneyChart_Income[i], tooltipText);
+                        btnToolTip.SetToolTip(btnMoneyChart_Expense[i], tooltipText);
+
+                        // Set width and position of income button
+                        btnMoneyChart_Income[i].Width = incomeWidth;
+
+                        // Set width and position of expense button
+                        btnMoneyChart_Expense[i].Width = expenseWidth;
+                        btnMoneyChart_Expense[i].Left = btnMoneyChart_Income[i].Left + btnMoneyChart_Income[i].Width;
                     }
-
-                    string tooltipText = $"Total Bill: {totalBill} VNĐ\nTotal Expense: {totalExpense} VNĐ";
-                    btnToolTip.SetToolTip(btnMoneyChart_Income[i], tooltipText);
-                    btnToolTip.SetToolTip(btnMoneyChart_Expense[i], tooltipText);
-
-                    // Set width and position of income button
-                    btnMoneyChart_Income[i].Width = incomeWidth;
-
-                    // Set width and position of expense button
-                    btnMoneyChart_Expense[i].Width = expenseWidth;
-                    btnMoneyChart_Expense[i].Left = btnMoneyChart_Income[i].Left + btnMoneyChart_Income[i].Width;
                 }
-            }
 
-            incomeMonthly = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.MonthlyTotalPriceBillView");
+                incomeMonthly = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.MonthlyTotalPriceBillView");
 
-            //find max value of incomeMonthly
-            decimal maxIncome = 0;
-            for (int i = 0; i < 12; i++)
-            {
-                decimal total = Convert.ToDecimal(incomeMonthly.Rows[i]["TotalPrice"]);
-                if (total > maxIncome)
-                {
-                    maxIncome = total;
-                }
-            }
-            if (incomeMonthly.Rows.Count >= 12)
-            {
-                int max = 200;
+                //find max value of incomeMonthly
+                decimal maxIncome = 0;
                 for (int i = 0; i < 12; i++)
                 {
                     decimal total = Convert.ToDecimal(incomeMonthly.Rows[i]["TotalPrice"]);
-                    int height = (int)(total / maxIncome * max);
-                    btnIncomeChart[i].Location = new Point(btnIncomeChart_point[i].X, 726 - height);
-                    btnIncomeChart[i].Height = height;
-
-                    if (height == 0)
+                    if (total > maxIncome)
                     {
-                        lbIncomeChart[i].Location = btnIncomeChart_point[i];
-                        lbIncomeChart[i].Text = "0 VNĐ";
-                    }
-                    else
-                    {
-                        // Set the location of the lbIncomeChart[i] to the top of the btnIncomeChart[i]
-                        lbIncomeChart[i].Top = btnIncomeChart[i].Top - lbIncomeChart[i].Height;
-                        lbIncomeChart[i].Text = ((int)(total / 100)).ToString() + "k";
+                        maxIncome = total;
                     }
                 }
+                if (incomeMonthly.Rows.Count >= 12)
+                {
+                    int max = 200;
+                    for (int i = 0; i < 12; i++)
+                    {
+                        decimal total = Convert.ToDecimal(incomeMonthly.Rows[i]["TotalPrice"]);
+                        int height = (int)(total / maxIncome * max);
+                        btnIncomeChart[i].Location = new Point(btnIncomeChart_point[i].X, 726 - height);
+                        btnIncomeChart[i].Height = height;
+
+                        if (height == 0)
+                        {
+                            lbIncomeChart[i].Location = btnIncomeChart_point[i];
+                            lbIncomeChart[i].Text = "0 VNĐ";
+                        }
+                        else
+                        {
+                            // Set the location of the lbIncomeChart[i] to the top of the btnIncomeChart[i]
+                            lbIncomeChart[i].Top = btnIncomeChart[i].Top - lbIncomeChart[i].Height;
+                            lbIncomeChart[i].Text = ((int)(total / 100)).ToString() + "k";
+                        }
+                    }
+                }
+            }
+            catch (SqlException err)
+            {
+                MessageBox.Show(err.Message, "Lỗi!");
             }
         }
 
