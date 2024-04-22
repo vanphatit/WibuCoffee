@@ -36,9 +36,12 @@ namespace WibuCoffee.View.UC.Manage
             BackColor = Color.Red
         };
 
-        private DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
-        private DataTable dataProduct = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllProduct");
-        private DataTable dataCategories = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillCategory");
+        DataTable data = new DataTable();
+        DataTable dataProduct = new DataTable();
+        DataTable dataCategories = new DataTable();
+        DataTable dataShift = new DataTable();
+        DataTable dataShiftInfo = new DataTable();
+
 
         private List<Button> listButton = new List<Button>();
         private List<Boolean> buttonClick = new List<Boolean>();
@@ -50,17 +53,43 @@ namespace WibuCoffee.View.UC.Manage
 
         private void reload()
         {
+            try
+            {
+                data.Clear();
+                dataProduct.Clear();
+                dataCategories.Clear();
+
+                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+                dataProduct = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllProduct");
+                dataCategories = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.BillCategory");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+
             Timer timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += (s, e) =>
             {
+                tbxDate.Clear();
                 tbxDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             };
             timer.Start();
 
             tbxDate.Enabled = false;
 
-            tbxIDBill.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.createBillID ()").ToString();
+            try
+            {
+                tbxIDBill.Clear();
+                tbxIDBill.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.createBillID ()").ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Tạo ID hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             tbxIDBill.Enabled = false;
 
             cbxCategories.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -121,7 +150,17 @@ namespace WibuCoffee.View.UC.Manage
             pTable.Controls.Clear();
             listButton.Clear();
             buttonClick.Clear();
-            data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+
+            try
+            {
+                data.Clear();
+                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             //Tạo ra các button tương ứng với số bàn mỗi button cách nhau 20 và có kích thước 75*75, nếu tableStatus = Occupied thì button màu đỏ, tableStatus = 0 thì button màu xanh
             for (int i = 1; i <= data.Rows.Count + 1; i++)
             {
@@ -172,8 +211,19 @@ namespace WibuCoffee.View.UC.Manage
 
         private void insertDataToEmployee()
         {
-            DataTable dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.findEmployeeShift");
-            DataTable dataShiftInfo = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllShift");
+            try
+            {
+                dataShift.Clear();
+                dataShiftInfo.Clear();
+
+                dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.findEmployeeShift");
+                dataShiftInfo = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllShift");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             // Lấy giờ hiện tại không lấy ngày tháng năm
             string time = DateTime.Now.ToString("HH:mm:ss");
             // So sánh giờ hiện tại với giờ bắt đầu và kết thúc của ca, giờ bắt đầu và kết thúc của ca làm trong bảng dataShiftInfo ứng với từng shiftID trong bảng dataShift
@@ -192,7 +242,16 @@ namespace WibuCoffee.View.UC.Manage
         //tạo sự kiện click btnAddTable để thêm bàn
         private void btnAddTable_Click(object sender, EventArgs e)
         {
-            data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+            try
+            {
+                data.Clear();
+                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             int count = data.Rows.Count;
             try
             {
@@ -212,7 +271,16 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
-            data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+            try
+            {
+                data.Clear();
+                data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.TableStatusView");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             int count = data.Rows.Count;
             if (count == 0)
             {
@@ -261,7 +329,6 @@ namespace WibuCoffee.View.UC.Manage
                 };
             }
         }
-
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -508,8 +575,16 @@ namespace WibuCoffee.View.UC.Manage
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
 
-            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
-            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            try
+            {
+                lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+                lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
@@ -537,15 +612,31 @@ namespace WibuCoffee.View.UC.Manage
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
 
-            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
-            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            try
+            {
+                lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+                lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
             string billID = tbxIDBill.Text;
+            int check = 0;
 
-            int check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
+            try
+            {
+                check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Kiểm tra hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
             {
@@ -594,7 +685,16 @@ namespace WibuCoffee.View.UC.Manage
         {
             string billID = tbxIDBill.Text;
 
-            int check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
+            int check = 0;
+
+            try
+            {
+                check = Convert.ToInt32(DataProvider.Instance.ExecuteScalar("SELECT dbo.checkBillID ( @billID )", new object[] { billID }));
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Kiểm tra hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
             {
@@ -631,7 +731,14 @@ namespace WibuCoffee.View.UC.Manage
         private void cbxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             string productName = cbxProduct.Text;
-            tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+            try
+            {
+                tbxAvai.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getProductStatus ( @productName )", new object[] { productName }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void tbxCustomerName_Click(object sender, EventArgs e)
