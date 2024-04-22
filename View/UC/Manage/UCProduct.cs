@@ -58,6 +58,7 @@ namespace WibuCoffee.View.UC.Manage
             {
                 MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void UCProduct_Load(object sender, EventArgs e)
