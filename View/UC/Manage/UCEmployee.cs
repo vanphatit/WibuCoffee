@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
 
 namespace WibuCoffee.View.UC.Manage
 {
@@ -58,15 +59,33 @@ namespace WibuCoffee.View.UC.Manage
         public UCEmployee()
         {
             InitializeComponent();
-            dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+
+            try
+            {
+                dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             reloadEmpShift(dataEmpShift);
             reload();
         }
 
         private void reload()
         {
-            dataEmp = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
-            dataJob = DataProvider.Instance.ExecuteQuery("EXEC dbo.getJob");
+            try
+            {
+                dataEmp = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
+                dataJob = DataProvider.Instance.ExecuteQuery("EXEC dbo.getJob");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             cbxJob.Items.Clear();
             cbxJob.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -118,7 +137,17 @@ namespace WibuCoffee.View.UC.Manage
             tbxNewSalary.Text = "0";
 
             string cate = cbxCateEmp.Text;
-            tbxIDEmp.Text = DataProvider.Instance.ExecuteScalar("select dbo.createID ( @cate )", new object[] { cate }).ToString();
+
+            try
+            {
+                tbxIDEmp.Text = DataProvider.Instance.ExecuteScalar("select dbo.createID ( @cate )", new object[] { cate }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             tbxIDEmp.Enabled = false;
 
         }
@@ -128,6 +157,7 @@ namespace WibuCoffee.View.UC.Manage
             tbxNumberOfShift.Enabled = true;
             tbxBonusPoint.Enabled = true;
             tbxPenatyPoint.Enabled = true;
+            DataTable data = new DataTable();
 
             int index = e.RowIndex;
             if (index >= 0)
@@ -135,7 +165,16 @@ namespace WibuCoffee.View.UC.Manage
                 DataGridViewRow row = dgvEmployee.Rows[index];
                 string name = row.Cells[0].Value.ToString();
                 string job = row.Cells[1].Value.ToString();
-                DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfo ( @name , @job )", new object[] { name, job });
+
+                try
+                {
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfo ( @name , @job )", new object[] { name, job });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 tbxIDEmp.Text = data.Rows[0][0].ToString();
 
@@ -152,8 +191,18 @@ namespace WibuCoffee.View.UC.Manage
                 tbxAddress.Text = data.Rows[0][3].ToString();
                 tbxPhone.Text = data.Rows[0][4].ToString();
                 dtpRecruitment.Value = DateTime.Parse(data.Rows[0][5].ToString());
-                cbxJob.Text = DataProvider.Instance.ExecuteScalar ("SELECT dbo.getJobDetail ( @job )", new object[] { data.Rows[0][6].ToString() }).ToString();
-                tbxPenatyPoint.Text = data.Rows[0][7].ToString();
+
+                try
+                {
+                    cbxJob.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getJobDetail ( @job )", new object[] { data.Rows[0][6].ToString() }).ToString();
+                    tbxPenatyPoint.Text = data.Rows[0][7].ToString();
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 tbxBonusPoint.Text = data.Rows[0][8].ToString();
                 tbxNumberOfShift.Text = data.Rows[0][9].ToString();
             }
@@ -176,7 +225,15 @@ namespace WibuCoffee.View.UC.Manage
         private void cbxCateEmp_SelectedIndexChanged(object sender, EventArgs e)
         {
             string cate = cbxCateEmp.Text;
-            tbxIDEmp.Text = DataProvider.Instance.ExecuteScalar("select dbo.createID ( @cate )", new object[] { cate }).ToString();
+
+            try
+            {
+                tbxIDEmp.Text = DataProvider.Instance.ExecuteScalar("select dbo.createID ( @cate )", new object[] { cate }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Tạo ID nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -219,7 +276,16 @@ namespace WibuCoffee.View.UC.Manage
         {
             if (cbxFilter.Text == "Tất cả")
             {
-                dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                try
+                {
+                    dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 reloadEmpShift(dataEmpShift);
                 cbxSearch.Visible = true;
                 dtpSearch.Visible = false;
@@ -237,7 +303,17 @@ namespace WibuCoffee.View.UC.Manage
             {
                 cbxSearch.Items.Clear();
                 cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
-                dataEmp = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
+
+                try
+                {
+                    dataEmp = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 foreach (DataRow row in dataEmp.Rows)
                 {
                     cbxSearch.Items.Add(row[1].ToString());
@@ -266,15 +342,40 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            DataTable dataName = new DataTable();
+            DataTable data = new DataTable();
+
             if (cbxFilter.Text == "Loại nhân viên")
             {
                 string cate = cbxSearch.Text;
-                DataTable dataName = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeID ( @cate )", new object[] { cate });
+
+                try
+                {
+                    dataName.Clear();
+                    dataName = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeID ( @cate )", new object[] { cate });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 dataEmpShift.Clear();
                 foreach (DataRow row in dataName.Rows)
                 {
                     string name = row[0].ToString();
-                    DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+
+                    try
+                    {
+                        data.Clear();
+                        data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (data.Rows.Count > 0)
                     {
                         dataEmpShift.Rows.Add(data.Rows[0][0].ToString(), data.Rows[0][1].ToString(), data.Rows[0][2].ToString(), data.Rows[0][3].ToString());
@@ -292,7 +393,18 @@ namespace WibuCoffee.View.UC.Manage
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+
+                    try
+                    {
+                        dataEmpShift.Clear();
+                        dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     reloadEmpShift(dataEmpShift);
                     return;
                 }
@@ -300,7 +412,18 @@ namespace WibuCoffee.View.UC.Manage
             else if (cbxFilter.Text == "Tên nhân viên")
             {
                 string name = cbxSearch.Text;
-                dataEmpShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+
+                try
+                {
+                    dataEmpShift.Clear();
+                    dataEmpShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (dataEmpShift.Rows.Count > 0)
                 {
                     reloadEmpShift(dataEmpShift);
@@ -308,7 +431,18 @@ namespace WibuCoffee.View.UC.Manage
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+
+                    try
+                    {
+                        dataEmpShift.Clear();
+                        dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     reloadEmpShift(dataEmpShift);
                     return;
                 }
@@ -316,7 +450,18 @@ namespace WibuCoffee.View.UC.Manage
             else if (cbxFilter.Text == "Công việc")
             {
                 string job = cbxSearch.Text;
-                dataEmpShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByJob ( @job )", new object[] { job });
+
+                try
+                {
+                    dataEmpShift.Clear();
+                    dataEmpShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByJob ( @job )", new object[] { job });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (dataEmpShift.Rows.Count > 0)
                 {
                     reloadEmpShift(dataEmpShift);
@@ -324,7 +469,18 @@ namespace WibuCoffee.View.UC.Manage
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+
+                    try
+                    {
+                        dataEmpShift.Clear();
+                        dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     reloadEmpShift(dataEmpShift);
                     return;
                 }
@@ -332,12 +488,35 @@ namespace WibuCoffee.View.UC.Manage
             else if (cbxFilter.Text == "Ngày tuyển dụng")
             {
                 DateTime date = dtpSearch.Value;
-                DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeNameByRecruitmentDate ( @date )", new object[] { date });
+
+                try
+                {
+                    data.Clear();
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeNameByRecruitmentDate ( @date )", new object[] { date });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 dataEmpShift.Clear();
                 foreach (DataRow row in data.Rows)
                 {
+                    DataTable data1 = new DataTable();
                     string name = row[0].ToString();
-                    DataTable data1 = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+                    
+                    try
+                    {
+                       data1.Clear();
+                       data1  = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getEmployeeInfoByName ( @name )", new object[] { name });
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Tìm kiếm nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (data1.Rows.Count > 0)
                     {
                         dataEmpShift.Rows.Add(data1.Rows[0][0].ToString(), data1.Rows[0][1].ToString(), data1.Rows[0][2].ToString(), data1.Rows[0][3].ToString());
@@ -355,7 +534,18 @@ namespace WibuCoffee.View.UC.Manage
                 else
                 {
                     MessageBox.Show("Không tìm thấy nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+
+                    try
+                    {
+                        dataEmpShift.Clear();
+                        dataEmpShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployee");
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     reloadEmpShift(dataEmpShift);
                     return;
                 }
@@ -414,12 +604,31 @@ namespace WibuCoffee.View.UC.Manage
         private void cbxJobDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbxCurentSalary.Enabled = false;
-            dataJob = DataProvider.Instance.ExecuteQuery("EXEC dbo.getJob");
+
+            try
+            {
+                dataJob.Clear();
+                dataJob = DataProvider.Instance.ExecuteQuery("EXEC dbo.getJob");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             foreach (DataRow row in dataJob.Rows)
             {
                 if (cbxJobDetail.Text == row[0].ToString())
                 {
-                    tbxCurentSalary.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getSalary ( @job )", new object[] { row[0].ToString() }).ToString();
+                    try
+                    {
+                        tbxCurentSalary.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getSalary ( @job )", new object[] { row[0].ToString() }).ToString();
+                    }
+                    catch (SqlException ev)
+                    {
+                        MessageBox.Show("Load dữ liệu thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
             }
         }
