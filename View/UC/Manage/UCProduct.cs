@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,28 +28,35 @@ namespace WibuCoffee.View.UC.Manage
 
         void LoadData()
         {
-            dtProductCategory = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductCategoryView");
-            foreach (DataRow row in dtProductCategory.Rows)
+            try
             {
-                cbbProductCategories.Items.Add(row["Name"]);
+                dtProductCategory = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductCategoryView");
+                foreach (DataRow row in dtProductCategory.Rows)
+                {
+                    cbbProductCategories.Items.Add(row["Name"]);
+                }
+                dgvProductCategory.DataSource = dtProductCategory;
+                dgvProductCategory.Columns["id"].HeaderText = "Mã";
+                dgvProductCategory.Columns["name"].HeaderText = "Tên";
+
+                dtProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductView");
+                dgvProduct.DataSource = dtProduct;
+                dgvProduct.Columns["id"].HeaderText = "Mã";
+                dgvProduct.Columns["name"].HeaderText = "Tên";
+                dgvProduct.Columns["price"].HeaderText = "Giá";
+                dgvProduct.Columns["productcategory"].HeaderText = "Loại";
+                dgvProduct.Columns["status"].HeaderText = "Trạng thái";
+
+
+                dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM Material");
+                foreach (DataRow row in dtMaterial.Rows)
+                {
+                    cbbMaterialName.Items.Add(row["Name"]);
+                }
             }
-            dgvProductCategory.DataSource = dtProductCategory;
-            dgvProductCategory.Columns["id"].HeaderText = "Mã";
-            dgvProductCategory.Columns["name"].HeaderText = "Tên";
-
-            dtProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductView");
-            dgvProduct.DataSource = dtProduct;
-            dgvProduct.Columns["id"].HeaderText = "Mã";
-            dgvProduct.Columns["name"].HeaderText = "Tên";
-            dgvProduct.Columns["price"].HeaderText = "Giá";
-            dgvProduct.Columns["productcategory"].HeaderText = "Loại";
-            dgvProduct.Columns["status"].HeaderText = "Trạng thái";
-
-
-            dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM Material");
-            foreach (DataRow row in dtMaterial.Rows)
+            catch (SqlException err)
             {
-                cbbMaterialName.Items.Add(row["Name"]);
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -64,44 +72,31 @@ namespace WibuCoffee.View.UC.Manage
 
         void LoadProductMaterial()
         {
-            // Get selected row
-            int index = dgvProduct.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dgvProduct.Rows[index];
-            IDProduct = tbxIDProduct.Text = selectedRow.Cells["id"].Value.ToString();
-            tbxNameProduct.Text = selectedRow.Cells["name"].Value.ToString();
-            tbxPriceProduct.Text = selectedRow.Cells["price"].Value.ToString();
-            cbbProductCategories.Text = selectedRow.Cells["productcategory"].Value.ToString();
-            tbxStatusProduct.Text = selectedRow.Cells["status"].Value.ToString();
+            try
+            {
+                // Get selected row
+                int index = dgvProduct.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dgvProduct.Rows[index];
+                IDProduct = tbxIDProduct.Text = selectedRow.Cells["id"].Value.ToString();
+                tbxNameProduct.Text = selectedRow.Cells["name"].Value.ToString();
+                tbxPriceProduct.Text = selectedRow.Cells["price"].Value.ToString();
+                cbbProductCategories.Text = selectedRow.Cells["productcategory"].Value.ToString();
+                tbxStatusProduct.Text = selectedRow.Cells["status"].Value.ToString();
 
-            dtProductMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM GetMaterials ( @productID )"
-                , new object[] { selectedRow.Cells["id"].Value.ToString() });
-            dgvMaterialProduct.DataSource = dtProductMaterial;
-            dgvMaterialProduct.Columns["materialname"].HeaderText = "Tên";
-            dgvMaterialProduct.Columns["quantity"].HeaderText = "SL";
+                dtProductMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM GetMaterials ( @productID )"
+                    , new object[] { selectedRow.Cells["id"].Value.ToString() });
+                dgvMaterialProduct.DataSource = dtProductMaterial;
+                dgvMaterialProduct.Columns["materialname"].HeaderText = "Tên";
+                dgvMaterialProduct.Columns["quantity"].HeaderText = "SL";
+            }
+            catch (SqlException err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (tbxNameProduct.Text == "" || tbxPriceProduct.Text == "" || cbbProductCategories.Text == "" || tbxStatusProduct.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check price
-            if (!decimal.TryParse(tbxPriceProduct.Text, out decimal price))
-            {
-                MessageBox.Show("Giá sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check status
-            if (String.IsNullOrEmpty(tbxStatusProduct.Text))
-            {
-                MessageBox.Show("Trạng thái sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             // Check product category
             string productCategoryID = "";
@@ -112,51 +107,25 @@ namespace WibuCoffee.View.UC.Manage
                     productCategoryID = row["ID"].ToString();
                     break;
                 }
-            }
-            if (String.IsNullOrEmpty(productCategoryID) || productCategoryID == "Loại món")
-            {
-                MessageBox.Show("Loại sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
 
             try
             {
                 // Add product
                 DataProvider.Instance.ExecuteNonQuery("EXEC AddProduct @id , @name , @categoryID , @price , @status"
-                                   , new object[] { "P00", tbxNameProduct.Text, productCategoryID, price, tbxStatusProduct.Text });
-                MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                   , new object[] { "P00", tbxNameProduct.Text, productCategoryID, tbxPriceProduct.Text, tbxStatusProduct.Text });
+                MessageBox.Show("Thêm sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
 
             } catch (SqlException err)
             {
-                MessageBox.Show("Thêm sản phẩm thất bại \n " + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Thêm sản phẩm thất bại!\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (tbxNameProduct.Text == "" || tbxPriceProduct.Text == "" || cbbProductCategories.Text == "" || tbxStatusProduct.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check price
-            if (!decimal.TryParse(tbxPriceProduct.Text, out decimal price))
-            {
-                MessageBox.Show("Giá sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check status
-            if (String.IsNullOrEmpty(tbxStatusProduct.Text))
-            {
-                MessageBox.Show("Trạng thái sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             // Check product category
             string productCategoryID = "";
             foreach (DataRow row in dtProductCategory.Rows)
@@ -167,17 +136,12 @@ namespace WibuCoffee.View.UC.Manage
                     break;
                 }
             }
-            if (String.IsNullOrEmpty(productCategoryID) || productCategoryID == "Loại món")
-            {
-                MessageBox.Show("Loại sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             try
             {
                 // Edit product
                 DataProvider.Instance.ExecuteNonQuery("EXEC UpdateProductByID @id , @name , @categoryID , @price , @status"
-                                                      , new object[] { tbxIDProduct.Text, tbxNameProduct.Text, productCategoryID, price, tbxStatusProduct.Text });
+                                                      , new object[] { tbxIDProduct.Text, tbxNameProduct.Text, productCategoryID, tbxPriceProduct.Text, tbxStatusProduct.Text });
                 MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
 
@@ -207,7 +171,7 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
                 MessageBox.Show("Xóa sản phẩm thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -225,13 +189,6 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (tbxNameCate.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 // Add product category
@@ -250,13 +207,6 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnEditCategory_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (tbxNameCate.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 // Edit product category
@@ -275,27 +225,6 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (cbbMaterialName.SelectedItem.ToString() == "" || txbMaterialCount.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check count
-            if (!Int32.TryParse(txbMaterialCount.Text, out int count) && count <= 0)
-            {
-                MessageBox.Show("Đơn vị không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check product
-            if (String.IsNullOrEmpty(IDProduct))
-            {
-                MessageBox.Show("Sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 string materialID = "";
@@ -324,27 +253,6 @@ namespace WibuCoffee.View.UC.Manage
 
         private void btnEditMaterial_Click(object sender, EventArgs e)
         {
-            // Check empty
-            if (cbbMaterialName.SelectedItem.ToString() == "" || txbMaterialCount.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check unit
-            if (Int32.TryParse(txbMaterialCount.Text, out int count) && count <= 0)
-            {
-                MessageBox.Show("Đơn vị không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Check product
-            if (String.IsNullOrEmpty(IDProduct))
-            {
-                MessageBox.Show("Sản phẩm không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
                 string materialID = "";
