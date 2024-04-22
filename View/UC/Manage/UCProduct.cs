@@ -27,29 +27,37 @@ namespace WibuCoffee.View.UC.Manage
 
         void LoadData()
         {
-            dtProductCategory = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductCategoryView");
-            foreach (DataRow row in dtProductCategory.Rows)
+            try
             {
-                cbbProductCategories.Items.Add(row["Name"]);
+                dtProductCategory = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductCategoryView");
+                foreach (DataRow row in dtProductCategory.Rows)
+                {
+                    cbbProductCategories.Items.Add(row["Name"]);
+                }
+                dgvProductCategory.DataSource = dtProductCategory;
+                dgvProductCategory.Columns["id"].HeaderText = "Mã";
+                dgvProductCategory.Columns["name"].HeaderText = "Tên";
+
+                dtProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductView");
+                dgvProduct.DataSource = dtProduct;
+                dgvProduct.Columns["id"].HeaderText = "Mã";
+                dgvProduct.Columns["name"].HeaderText = "Tên";
+                dgvProduct.Columns["price"].HeaderText = "Giá";
+                dgvProduct.Columns["productcategory"].HeaderText = "Loại";
+                dgvProduct.Columns["status"].HeaderText = "Trạng thái";
+
+
+                dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM Material");
+                foreach (DataRow row in dtMaterial.Rows)
+                {
+                    cbbMaterialName.Items.Add(row["Name"]);
+                }
             }
-            dgvProductCategory.DataSource = dtProductCategory;
-            dgvProductCategory.Columns["id"].HeaderText = "Mã";
-            dgvProductCategory.Columns["name"].HeaderText = "Tên";
-
-            dtProduct = DataProvider.Instance.ExecuteQuery("SELECT * FROM ProductView");
-            dgvProduct.DataSource = dtProduct;
-            dgvProduct.Columns["id"].HeaderText = "Mã";
-            dgvProduct.Columns["name"].HeaderText = "Tên";
-            dgvProduct.Columns["price"].HeaderText = "Giá";
-            dgvProduct.Columns["productcategory"].HeaderText = "Loại";
-            dgvProduct.Columns["status"].HeaderText = "Trạng thái";
-
-
-            dtMaterial = DataProvider.Instance.ExecuteQuery("SELECT * FROM Material");
-            foreach (DataRow row in dtMaterial.Rows)
+            catch (SqlException err)
             {
-                cbbMaterialName.Items.Add(row["Name"]);
+                MessageBox.Show(err.Message);
             }
+            
         }
 
         private void UCProduct_Load(object sender, EventArgs e)
@@ -207,7 +215,7 @@ namespace WibuCoffee.View.UC.Manage
                 LoadData();
 
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
                 MessageBox.Show("Xóa sản phẩm thất bại\n" + err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

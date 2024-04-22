@@ -77,6 +77,9 @@ namespace WibuCoffee.View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            // delete the username.txt, password.txt file
+            System.IO.File.Delete("username.txt");
+            System.IO.File.Delete("password.txt");
             this.Close();
             Application.Exit();
         }

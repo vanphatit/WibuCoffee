@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,15 +33,6 @@ namespace WibuCoffee.View.UC
             listButton.Add(btnExpenseBill);
 
             customButton();
-
-            if(user == "emp")
-            {
-                btnEmployee.Enabled = false;
-                btnProduct.Enabled = false;
-                btnSupplier.Enabled = false;
-                btnReceiptNote.Enabled = false;
-                btnExpenseBill.Enabled = false;
-            }
 
             //set color #737373 for btnOrder
             btnOrder.BackColor = Color.FromArgb(115, 115, 115);
@@ -91,6 +83,16 @@ namespace WibuCoffee.View.UC
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuery("SELECT * FROM dbo.Employee");
+            }
+            catch (SqlException err)
+            {
+                if(err.Number == 229)
+                MessageBox.Show("Lỗi phân quyền!\n" + err.Message);
+                return;
+            }
             btnEmployee.BackColor = Color.FromArgb(115, 115, 115);
             btnEmployee.ForeColor = Color.FromArgb(255, 255, 255);
 
@@ -112,6 +114,16 @@ namespace WibuCoffee.View.UC
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuery("SELECT * FROM dbo.Product");
+            }
+            catch (SqlException err)
+            {
+                if (err.Number == 229)
+                    MessageBox.Show("Lỗi phân quyền!\n" + err.Message);
+                return;
+            }
             btnProduct.BackColor = Color.FromArgb(115, 115, 115);
             btnProduct.ForeColor = Color.FromArgb(255, 255, 255);
 
@@ -154,6 +166,16 @@ namespace WibuCoffee.View.UC
 
         private void btnReceiptNote_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuery("SELECT * FROM dbo.ReceiptNote");
+            }
+            catch (SqlException err)
+            {
+                if (err.Number == 229)
+                    MessageBox.Show("Lỗi phân quyền!\n" + err.Message);
+                return;
+            }
             btnReceiptNote.BackColor = Color.FromArgb(115, 115, 115);
             btnReceiptNote.ForeColor = Color.FromArgb(255, 255, 255);
 
@@ -175,6 +197,16 @@ namespace WibuCoffee.View.UC
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuery("SELECT * FROM dbo.Supplier");
+            }
+            catch (SqlException err)
+            {
+                if (err.Number == 229)
+                    MessageBox.Show("Lỗi phân quyền!\n" + err.Message);
+                return;
+            }
             btnSupplier.BackColor = Color.FromArgb(115, 115, 115);
             btnSupplier.ForeColor = Color.FromArgb(255, 255, 255);
 
