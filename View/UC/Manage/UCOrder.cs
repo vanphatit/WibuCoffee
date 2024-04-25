@@ -439,13 +439,20 @@ namespace WibuCoffee.View.UC.Manage
                 MessageBox.Show("Thêm sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
-            dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
-            dgvBillInfo.Columns[1].HeaderText = "Số lượng";
-            dgvBillInfo.Columns[2].HeaderText = "Giá";
+            try
+            {
+                dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
+                dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
+                dgvBillInfo.Columns[1].HeaderText = "Số lượng";
+                dgvBillInfo.Columns[2].HeaderText = "Giá";
 
-            lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
-            lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+                lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+                lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @billID )", new object[] { tbxIDBill.Text }).ToString();
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -570,7 +577,15 @@ namespace WibuCoffee.View.UC.Manage
                 MessageBox.Show("Cập nhật sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
+            try
+            {
+                dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
@@ -606,8 +621,15 @@ namespace WibuCoffee.View.UC.Manage
             {
                 MessageBox.Show("Xóa sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
+            try
+            {
+                dgvBillInfo.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfo ( @billID )", new object[] { tbxIDBill.Text });
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
             dgvBillInfo.Columns[1].HeaderText = "Số lượng";
             dgvBillInfo.Columns[2].HeaderText = "Giá";
