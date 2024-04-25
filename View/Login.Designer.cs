@@ -110,9 +110,9 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Google Sans", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(535, 243);
+            this.btnLogin.Location = new System.Drawing.Point(508, 243);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(322, 54);
+            this.btnLogin.Size = new System.Drawing.Size(349, 54);
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Google Sans", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(598, 337);
+            this.label5.Location = new System.Drawing.Point(624, 337);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(250, 23);
             this.label5.TabIndex = 9;
@@ -131,7 +131,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::WibuCoffee.Properties.Resources.left_arrow;
-            this.pictureBox3.Location = new System.Drawing.Point(854, 306);
+            this.pictureBox3.Location = new System.Drawing.Point(880, 306);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(49, 54);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -141,7 +141,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WibuCoffee.Properties.Resources.database_storage;
-            this.pictureBox2.Location = new System.Drawing.Point(863, 243);
+            this.pictureBox2.Location = new System.Drawing.Point(889, 243);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(62, 54);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
