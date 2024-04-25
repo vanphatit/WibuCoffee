@@ -49,6 +49,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -64,6 +65,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -79,6 +81,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -92,6 +95,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -114,6 +118,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -132,6 +137,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 foreach (DataRow item in data.Rows)
@@ -160,6 +166,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 foreach (DataRow item in data.Rows)
@@ -179,6 +186,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadDGV(dataBill);
@@ -205,6 +213,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 tbxCategories.Text = dataBillView.Rows[0]["categoryName"].ToString();
@@ -229,6 +238,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 data.Columns["billID"].ColumnName = "Mã hóa đơn";
@@ -248,6 +258,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
             }
@@ -345,6 +356,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Xóa hóa đơn thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 try
@@ -354,6 +366,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 
                 dgvBillInfo.DataSource = null;
@@ -385,6 +398,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             dgvListBill.CellClick += new DataGridViewCellEventHandler(dgvListBill_CellClick);

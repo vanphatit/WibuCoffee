@@ -66,6 +66,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             };
 
 
@@ -88,6 +89,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Tạo ID hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             tbxIDBill.Enabled = false;
@@ -159,6 +161,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             //Tạo ra các button tương ứng với số bàn mỗi button cách nhau 20 và có kích thước 75*75, nếu tableStatus = Occupied thì button màu đỏ, tableStatus = 0 thì button màu xanh
@@ -222,6 +225,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // Lấy giờ hiện tại không lấy ngày tháng năm
@@ -250,6 +254,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             int count = data.Rows.Count;
@@ -264,6 +269,7 @@ namespace WibuCoffee.View.UC.Manage
             {
                 MessageBox.Show("Thêm bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 paintTable();
+                return;
             }
         }
 
@@ -279,6 +285,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             int count = data.Rows.Count;
@@ -298,6 +305,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Xóa bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }
@@ -343,13 +351,14 @@ namespace WibuCoffee.View.UC.Manage
                         {
                             paintTable();
                             addBtnClick();
-                            break;
+                            return;
                         }
                     }
                 }
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Cập nhật trạng thái bàn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
              try
@@ -369,6 +378,7 @@ namespace WibuCoffee.View.UC.Manage
                     catch (SqlException ev)
                     {
                         MessageBox.Show("Cập nhật số tiền nhận thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
 
                     MessageBox.Show("Cập nhật số tiền nhận thành công");
@@ -378,7 +388,8 @@ namespace WibuCoffee.View.UC.Manage
              catch (SqlException ev)
              {
                 MessageBox.Show("Cập nhật số tiền nhận thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
+                return; 
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -415,6 +426,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Tìm kiếm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }    
         }
@@ -437,6 +449,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Thêm sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try
@@ -452,6 +465,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -503,13 +517,13 @@ namespace WibuCoffee.View.UC.Manage
 
                             paintTable();
                             addBtnClick();
-                            break;
+                            return;
                         }
                     }
                     catch (SqlException ev)
                     {
                         MessageBox.Show("Thêm hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
+                        return;
                     }
                 }
             }    
@@ -543,6 +557,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Thêm hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }
@@ -575,6 +590,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try
@@ -584,6 +600,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
@@ -598,6 +615,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -620,6 +638,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Xóa sản phẩm thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             try
             {
@@ -628,6 +647,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             dgvBillInfo.Columns[0].HeaderText = "Tên sản phẩm";
@@ -642,6 +662,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật giá trị thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -658,6 +679,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Kiểm tra hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
@@ -672,6 +694,7 @@ namespace WibuCoffee.View.UC.Manage
                     catch (SqlException ev)
                     {
                         MessageBox.Show("Xóa hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     //chuyển sang form lịch sử hóa đơn
                     UCBillHistory orderHistory = new UCBillHistory();
@@ -693,6 +716,7 @@ namespace WibuCoffee.View.UC.Manage
             else
             {
                 MessageBox.Show("Hóa đơn đang được order!");
+                return;
             }
         }
 
@@ -716,6 +740,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Kiểm tra hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (tbxReceiptMoney.Text == "0" && dgvBillInfo.Rows.Count == 0 && check == 1)
@@ -730,6 +755,7 @@ namespace WibuCoffee.View.UC.Manage
                     catch (SqlException ev)
                     {
                         MessageBox.Show("Xóa hóa đơn thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
 
                     reload();
@@ -746,6 +772,7 @@ namespace WibuCoffee.View.UC.Manage
             else
             {
                 MessageBox.Show("Hóa đơn đang được order!");
+                return;
             }
 
         }
@@ -760,6 +787,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Load dữ liệu thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -786,6 +814,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Thêm khách hàng thất bại! \n Do: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }
