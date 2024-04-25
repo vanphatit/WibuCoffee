@@ -233,6 +233,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Tạo ID nhân viên thất bại! \nDo: \n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 

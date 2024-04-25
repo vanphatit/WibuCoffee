@@ -68,6 +68,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             reloadShiftInfo(dataShift);
@@ -86,6 +87,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             cbxEmpName.Items.Clear();
@@ -206,6 +208,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadShiftInfo(dataShift);
@@ -220,6 +223,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadShiftInfo(dataShift);
@@ -234,6 +238,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadShiftInfo(dataShift);
@@ -297,6 +302,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadShiftInfo(dataShift);
@@ -313,6 +319,7 @@ namespace WibuCoffee.View.UC.Manage
                 catch (SqlException ev)
                 {
                     MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 reloadShiftInfo(dataShift);
@@ -336,6 +343,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Thêm thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -356,6 +364,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -375,6 +384,7 @@ namespace WibuCoffee.View.UC.Manage
             catch (SqlException ev)
             {
                 MessageBox.Show("Xóa thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }
