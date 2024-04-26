@@ -136,7 +136,7 @@ namespace WibuCoffee.View.UC
             {
                 // get today income
                 todayIncome = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalPriceBillbyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
-                todayIncome = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalExpensebyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
+                todayExpense = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalExpensebyDate ( @date )", new object[] { today.Date.ToString("yyyy-MM-dd") });
                 monthRevenue = (decimal)DataProvider.Instance.ExecuteScalar("SELECT dbo.getTotalRevenue1MonthAgo ()");
                 emptyTable = (int)DataProvider.Instance.ExecuteScalar("SELECT dbo.getEmptyTableCount ()");
             }
