@@ -51,23 +51,44 @@ namespace WibuCoffee.View.UC.Manage
             }
         };
 
-        DataTable dataShift;
-        DataTable dataShiftID;
-        DataTable dataEmpInfo;
+        DataTable dataShift = new DataTable();
+        DataTable dataShiftID = new DataTable();
+        DataTable dataEmpInfo = new DataTable();
         
 
         public UCShift()
         {
             InitializeComponent();
-            dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+
+            try
+            {
+                dataShift.Clear();
+                dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             reloadShiftInfo(dataShift);
             reload();
         }
 
         private void reload()
         {
-            dataShiftID = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShift");
-            dataEmpInfo = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
+            try
+            {
+                dataShiftID.Clear();
+                dataEmpInfo.Clear();
+                dataShiftID = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShift");
+                dataEmpInfo = DataProvider.Instance.ExecuteQuery("EXEC dbo.getEmployeeList");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             cbxEmpName.Items.Clear();
             cbxEmpName.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -179,17 +200,47 @@ namespace WibuCoffee.View.UC.Manage
             string dis = cbxDis.Text;
             if (dis == "Tất cả.")
             {
-                dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetail");
+                try
+                {
+                    dataShift.Clear();
+                    dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetail");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadShiftInfo(dataShift);
             }
             else if (dis == "Tuần tiếp theo.")
             {
-                dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getNextWeekShiftDetail");
+                try
+                {
+                    dataShift.Clear();
+                    dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getNextWeekShiftDetail");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadShiftInfo(dataShift);
             }
             else
             {
-                dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+                try
+                {
+                    dataShift.Clear();
+                    dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadShiftInfo(dataShift);
             }
         }
@@ -242,13 +293,35 @@ namespace WibuCoffee.View.UC.Manage
            if (cbxFilter.Text == "Tên nhân viên")
            {
                 string name = cbxSearch.Text;
-                dataShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterEmployeeByName ( @name )", new object[] { name });
+
+                try
+                {
+                    dataShift.Clear();
+                    dataShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterEmployeeByName ( @name )", new object[] { name });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadShiftInfo(dataShift);
            }
            else
            {
                 string date = dtpSearch.Value.ToString("yyyy-MM-dd");
-                dataShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterEmployeeByDate ( @date )", new object[] { date });
+                
+                try
+                {
+                    dataShift.Clear();
+                    dataShift = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterEmployeeByDate ( @date )", new object[] { date });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show("Lỗi kết nối.\nDo:\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadShiftInfo(dataShift);
            }
         }
@@ -262,12 +335,15 @@ namespace WibuCoffee.View.UC.Manage
                 DateTime date = dtpDateOfShift.Value;
 
                 DataProvider.Instance.ExecuteNonQuery("EXEC dbo.insertEmployeeToShift @phone , @date , @shiftID", new object[] { phone, date, shiftID });
+
                 dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+
                 reloadShiftInfo(dataShift);
             }
             catch (SqlException ev)
             {
                 MessageBox.Show("Thêm thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -280,12 +356,15 @@ namespace WibuCoffee.View.UC.Manage
                 DateTime date = dtpDateOfShift.Value;
 
                 DataProvider.Instance.ExecuteNonQuery("EXEC dbo.updateEmployeeInShift @phone , @date , @shiftID", new object[] { phone, date, shiftID });
+                
                 dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+
                 reloadShiftInfo(dataShift);
             }
             catch (SqlException ev)
             {
                 MessageBox.Show("Cập nhật thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -296,13 +375,16 @@ namespace WibuCoffee.View.UC.Manage
                 string phone = tbxPhone.Text;
 
                 DataProvider.Instance.ExecuteNonQuery("EXEC dbo.deleteEmployeeInShift @phone ", new object[] { phone });
+                
                 dataShift = DataProvider.Instance.ExecuteQuery("EXEC dbo.getShiftDetailByWeek");
+                
                 reloadShiftInfo(dataShift);
                 reload();
             }
             catch (SqlException ev)
             {
                 MessageBox.Show("Xóa thất bại.\n" + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

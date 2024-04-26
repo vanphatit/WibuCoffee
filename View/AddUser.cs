@@ -31,8 +31,8 @@ namespace WibuCoffee.View
         {
             try
             {
-                string username = txbUserName.Text.ToString();
-                string password = txbPassword.Text.ToString();
+                string username = txbUserName.Text;
+                string password = txbPassword.Text;
                 string role = cbbRoles.Text;
 
                 // thực thi với Windows Authentication (Integrated Security = True)

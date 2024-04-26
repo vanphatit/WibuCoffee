@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -122,6 +123,25 @@ namespace WibuCoffee.View
         {
             isDashboard = false;
             checkIsDashboard();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuery("SELECT * FROM dbo.Account");
+            }
+            catch (SqlException err)
+            {
+                if (err.Number == 229)
+                    MessageBox.Show("Lỗi phân quyền!\n" + err.Message);
+                return;
+            }
+
+            // call the AddUser form
+            AddUser addUser = new AddUser();
+            addUser.ShowDialog();
+
         }
     }
 }

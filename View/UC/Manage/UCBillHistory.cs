@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace WibuCoffee.View.UC.Manage
         DataGridView dgvListBill = new DataGridView();
         DataGridView dgvBillInfo = new DataGridView();
 
-        DataTable dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+        DataTable dataBill;
  
         Font font = new Font("Google Sans", 12, FontStyle.Regular);
         Font fontSmall = new Font("Google Sans", 12, FontStyle.Regular);
@@ -23,24 +24,7 @@ namespace WibuCoffee.View.UC.Manage
         public UCBillHistory()
         {
             InitializeComponent();
-
-            dgvListBill.CellClick += new DataGridViewCellEventHandler(dgvListBill_CellClick);
-
-            cbxFilter.Items.Clear();
-            cbxSearch.Items.Clear();
-            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            cbxFilter.Items.Add("Tất cả");
-            cbxFilter.Items.Add("Mã hóa đơn");
-            cbxFilter.Items.Add("Ngày lập");
-            cbxFilter.Items.Add("Loại hóa đơn");
-
-            dataBill.Columns["ID"].ColumnName = "Mã hóa đơn";
-            dataBill.Columns["dateTime"].ColumnName = "Ngày lập";
-            dataBill.Columns["name"].ColumnName = "Loại hóa đơn";
-            dataBill.Columns["receiptMoney"].ColumnName = "Tiền nhận";
-
+            reload();
             reloadDGV(dataBill);
         }
 
@@ -57,36 +41,86 @@ namespace WibuCoffee.View.UC.Manage
             if (cbxFilter.Text == "Mã hóa đơn")
             {
                 string id = cbxSearch.Text;
-                dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByID ( @id )", new object[] { id });
+
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByID ( @id )", new object[] { id });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }  
             else if (cbxFilter.Text == "Ngày lập")
             {
                 DateTime date = dtpSearch.Value;
 
-                dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByDate ( @date )", new object[] { date });
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByDate ( @date )", new object[] { date });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }
             else if (cbxFilter.Text == "Loại hóa đơn")
             {
                 string category = cbxSearch.Text;
-                dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByCategory ( @category )", new object[] { category });
+                
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.filterBillByCategory ( @category )", new object[] { category });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }
             else
             {
-                dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }
         }
 
         private void cbxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataTable data = new DataTable();
+
             if (cbxFilter.Text == "Tất cả")
             {
                 dtpSearch.Visible = true;
                 cbxSearch.Visible = false;
-                dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }
             else if (cbxFilter.Text == "Mã hóa đơn")
@@ -95,7 +129,17 @@ namespace WibuCoffee.View.UC.Manage
                 dtpSearch.Visible = false;
                 cbxSearch.Items.Clear();
                 cbxSearch.Text = "Chọn mã hóa đơn";
-                DataTable data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillID");
+
+                try
+                {
+                    data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillID");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 foreach (DataRow item in data.Rows)
                 {
                     cbxSearch.Items.Add(item["ID"]);
@@ -114,7 +158,17 @@ namespace WibuCoffee.View.UC.Manage
                 dtpSearch.Visible = false;
                 cbxSearch.Items.Clear();
                 cbxSearch.Text = "Chọn loại hóa đơn";
-                DataTable data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillCategory");
+
+                try
+                {
+                    data = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillCategory");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 foreach (DataRow item in data.Rows)
                 {
                     cbxSearch.Items.Add(item["name"]);
@@ -124,13 +178,26 @@ namespace WibuCoffee.View.UC.Manage
             {
                 dtpSearch.Visible = true;
                 cbxSearch.Visible = false;
-                dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 reloadDGV(dataBill);
             }
         }
 
         public void dgvListBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataTable dataBillView = new DataTable();
+            DataTable data = new DataTable();
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvListBill.SelectedRows[0];
@@ -138,8 +205,16 @@ namespace WibuCoffee.View.UC.Manage
                 string id = row.Cells[0].Value.ToString();
 
                 tbxCategories.Text = row.Cells[2].Value.ToString();
-                
-                DataTable dataBillView = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfoViewByID ( @id )", new object[] { id });
+
+                try
+                {
+                    dataBillView = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillInfoViewByID ( @id )", new object[] { id });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 tbxCategories.Text = dataBillView.Rows[0]["categoryName"].ToString();
                 tbxIDBill.Text = dataBillView.Rows[0]["ID"].ToString();
@@ -156,7 +231,15 @@ namespace WibuCoffee.View.UC.Manage
                 tbxPhone.Enabled = false;
                 tbxCustomerName.Enabled = false;
 
-                DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillDetail ( @id )", new object[] { id });
+                try
+                {
+                    data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.getBillDetail ( @id )", new object[] { id });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 data.Columns["billID"].ColumnName = "Mã hóa đơn";
                 data.Columns["name"].ColumnName = "Tên sản phẩm";
@@ -167,8 +250,17 @@ namespace WibuCoffee.View.UC.Manage
                 pListBillInfo.Controls.Clear();
                 pListBillInfo.Controls.Add(dgvBillInfo);
 
-                lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @id )", new object[] { id }).ToString();
-                lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @id )", new object[] { id }).ToString();
+                try
+                {
+                    lbTotalPrice.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillTotalPrice ( @id )", new object[] { id }).ToString();
+                    lbShowDis.Text = DataProvider.Instance.ExecuteScalar("SELECT dbo.getBillDiscount ( @id )", new object[] { id }).ToString();
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
             }
         }
 
@@ -257,9 +349,26 @@ namespace WibuCoffee.View.UC.Manage
                 DataGridViewRow row = dgvListBill.SelectedRows[0];
                 string id = row.Cells[0].Value.ToString();
 
-                DataProvider.Instance.ExecuteNonQuery("EXEC dbo.deleteBillByID @id", new object[] { id });
+                try
+                {
+                    DataProvider.Instance.ExecuteNonQuery("EXEC dbo.deleteBillByID @id", new object[] { id });
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Xóa hóa đơn thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                try
+                {
+                    dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+                }
+                catch (SqlException ev)
+                {
+                    MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
                 dgvBillInfo.DataSource = null;
                 
                 reloadDGV(dataBill);
@@ -278,6 +387,36 @@ namespace WibuCoffee.View.UC.Manage
             lbTableID.Text = "";
             lbTotalPrice.Text = "";
             lbShowDis.Text = "";
+        }
+
+        private void reload ()
+        {
+            try
+            {
+                dataBill = DataProvider.Instance.ExecuteQuery("EXEC dbo.selectAllBillView");
+            }
+            catch (SqlException ev)
+            {
+                MessageBox.Show(" Load dữ liệu thất bại! \n Do: \n " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            dgvListBill.CellClick += new DataGridViewCellEventHandler(dgvListBill_CellClick);
+
+            cbxFilter.Items.Clear();
+            cbxSearch.Items.Clear();
+            cbxFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxSearch.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cbxFilter.Items.Add("Tất cả");
+            cbxFilter.Items.Add("Mã hóa đơn");
+            cbxFilter.Items.Add("Ngày lập");
+            cbxFilter.Items.Add("Loại hóa đơn");
+
+            dataBill.Columns["ID"].ColumnName = "Mã hóa đơn";
+            dataBill.Columns["dateTime"].ColumnName = "Ngày lập";
+            dataBill.Columns["name"].ColumnName = "Loại hóa đơn";
+            dataBill.Columns["receiptMoney"].ColumnName = "Tiền nhận";
         }
     }
 }
