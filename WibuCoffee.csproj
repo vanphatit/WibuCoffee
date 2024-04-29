@@ -36,6 +36,9 @@
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts.Geared, Version=1.2.8.2, Culture=neutral, PublicKeyToken=7292f245d14ab8bf, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.Geared.1.2.9\lib\net45\LiveCharts.Geared.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
     </Reference>
@@ -65,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProvider.cs" />
+    <Compile Include="View\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +88,78 @@
     <Compile Include="View\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC\Manage\UCBillHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCBillHistory.Designer.cs">
+      <DependentUpon>UCBillHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCEmployee.Designer.cs">
+      <DependentUpon>UCEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCExpenseBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCExpenseBill.Designer.cs">
+      <DependentUpon>UCExpenseBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCMaterial.Designer.cs">
+      <DependentUpon>UCMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCOrder.Designer.cs">
+      <DependentUpon>UCOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCProduct.Designer.cs">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNote.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNote.Designer.cs">
+      <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCShift.Designer.cs">
+      <DependentUpon>UCShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNoteDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCReceiptNoteDetail.Designer.cs">
+      <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCSupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\Manage\UCSupplier.Designer.cs">
+      <DependentUpon>UCSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\UCDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\UCDashboard.Designer.cs">
+      <DependentUpon>UCDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC\UCManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC\UCManage.Designer.cs">
+      <DependentUpon>UCManage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,14 +171,53 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.docx" />
-    <None Include="Docs_SQL\DBMS PROJECT REPORT K22.pdf" />
+    <EmbeddedResource Include="View\UC\Manage\UCBillHistory.resx">
+      <DependentUpon>UCBillHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCEmployee.resx">
+      <DependentUpon>UCEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCExpenseBill.resx">
+      <DependentUpon>UCExpenseBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCMaterial.resx">
+      <DependentUpon>UCMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCOrder.resx">
+      <DependentUpon>UCOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCProduct.resx">
+      <DependentUpon>UCProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCReceiptNote.resx">
+      <DependentUpon>UCReceiptNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCShift.resx">
+      <DependentUpon>UCShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCReceiptNoteDetail.resx">
+      <DependentUpon>UCReceiptNoteDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\Manage\UCSupplier.resx">
+      <DependentUpon>UCSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\UCDashboard.resx">
+      <DependentUpon>UCDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC\UCManage.resx">
+      <DependentUpon>UCManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Backup\DBMS PROJECT REPORT K22.docx" />
+    <None Include="Backup\DBMS PROJECT REPORT K22.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,17 +234,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAO\" />
-    <Folder Include="Model\" />
-    <Folder Include="View\UserControl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ico\logo.ico" />
+    <None Include="Assets\img\income.png" />
+    <None Include="Assets\img\expense.png" />
+    <None Include="Assets\img\first.png" />
+    <None Include="Assets\img\4.png" />
+    <None Include="Assets\img\5.png" />
+    <None Include="Assets\img\database-storage.png" />
+    <None Include="Assets\img\left-arrow.png" />
+    <None Include="Assets\img\edit.png" />
+    <None Include="Assets\img\delete.png" />
+    <None Include="Assets\img\add-user.png" />
     <Content Include="Assets\img\logo.png" />
     <None Include="Assets\img\meoden.jpg" />
     <None Include="Assets\img\meoden-removebg.png" />
-    <Content Include="Docs_SQL\Data\DATA.sql" />
-    <Content Include="Docs_SQL\Data\Feature.sql" />
-    <Content Include="Docs_SQL\Data\WibuCoffee.sql" />
+    <None Include="Assets\img\revenue.png" />
+    <None Include="Assets\img\table.png" />
+    <None Include="Assets\img\second.png" />
+    <None Include="Assets\img\third.png" />
+    <None Include="Assets\img\plus.png" />
+    <Content Include="Backup\Data\Dashboard.sql" />
+    <Content Include="Backup\Data\DATA.sql" />
+    <Content Include="Backup\Data\Feature.sql" />
+    <Content Include="Backup\Data\Order.sql" />
+    <Content Include="Backup\Data\WibuCoffee.sql" />
     <None Include="Resources\acheronn.jpg" />
     <None Include="Resources\h1CBC93F0.png" />
   </ItemGroup>
